@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from '../Navbar/Navbar';
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Draggable from 'react-draggable';
+
 type Props = {
     children?: React.ReactNode
 };
@@ -12,7 +13,8 @@ const Window:React.FC<Props> = ({ children }) => {
         <Draggable
             handle=".handle"
         >
-            <Flex 
+            <Flex
+                mt={5}
                 direction="column" 
                 height="500px" 
                 width="700px" 
@@ -33,7 +35,7 @@ const Window:React.FC<Props> = ({ children }) => {
                 >        
                     <Text fontSize="11pt">Probabilty Hand</Text>
                 </Flex>
-                <Box px={3} py={7} w="100%" h="100%"> 
+                <Box px={3} py={5} w="100%" h="100%"> 
                     <main>{children}</main>
                 </Box> 
             </Flex>
