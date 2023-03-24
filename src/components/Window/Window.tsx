@@ -24,7 +24,7 @@ const Window:React.FC<Props> = ({ children }) => {
                     borderTopRadius="5px" 
                     className="handle"
                     bg="#1c2127" 
-                    h="26px" 
+                    h="28px" 
                     w="100%" 
                     _hover={{cursor: 'all-scroll'}}
                     p={1}
