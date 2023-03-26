@@ -8,7 +8,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-        <Flex direction="column" p={10}>
+        <Flex direction="column">
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />

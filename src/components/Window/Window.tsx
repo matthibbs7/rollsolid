@@ -1,45 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar } from '../Navbar/Navbar';
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import Draggable from 'react-draggable';
+import { RxCross1 } from 'react-icons/rx';
+import { FiMinimize2 } from 'react-icons/fi';
 
 type Props = {
     children?: React.ReactNode
+    render: boolean;
+    setRender: (a: boolean) => void;
 };
 
-const Window:React.FC<Props> = ({ children }) => {
-    
+const Window:React.FC<Props> = ({ children, render, setRender }) => {
+
+    useEffect(() => {
+    }, [render])
+
     return (
-        <Draggable
-            handle=".handle"
-        >
-            <Flex
-                mt={5}
-                direction="column" 
-                height="500px" 
-                width="700px" 
-                bg="#252A31"
-                border="1px solid #494D51"
-                borderRadius="3px"
+        <>
+            {render && <Draggable
+                handle=".handle"
             >
                 <Flex
-                    borderTopRadius="5px" 
-                    className="handle"
-                    bg="#1c2127" 
-                    h="28px" 
-                    w="100%" 
-                    _hover={{cursor: 'all-scroll'}}
-                    p={1}
-                    px={3}
-                    align="center"
-                >        
-                    <Text fontSize="11pt">Probabilty Hand</Text>
+                    direction="column" 
+                    height="500px" 
+                    width="700px" 
+                    bg="#282828"
+                    border="1px solid #494D51"
+                >
+                    <Flex 
+                        className="handle"
+                        bg="#353535" 
+                        h="28px" 
+                        w="100%" 
+                        p={1}
+                        px={3}
+                        align="center"
+                    >   
+                        <Flex width="90%" _hover={{cursor: 'all-scroll'}}>   
+                            <Text fontSize="11pt">Probabilty Hand</Text>
+                        </Flex>  
+                        <Flex align="center" mr={-2}>
+                            <Button borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                                <FiMinimize2 color="white" />
+                            </Button>
+                            <Button onClick={() => setRender(false)} borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                                <RxCross1 color="#fa7970" />
+                            </Button>
+                        </Flex>
+                    </Flex>
+                    <Box px={3} py={5} w="100%" h="100%"> 
+                        <main>{children}</main>
+                    </Box> 
                 </Flex>
-                <Box px={3} py={5} w="100%" h="100%"> 
-                    <main>{children}</main>
-                </Box> 
-            </Flex>
-        </Draggable>
+            </Draggable> }
+        </>
     )
 }
 export default Window;
