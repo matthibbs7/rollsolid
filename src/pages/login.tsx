@@ -6,6 +6,7 @@ import Window from '../components/Window/Window'
 
 import Draggable from 'react-draggable'
 import { useState } from 'react'
+import UserLogin from '@/components/Auth/UserLogin'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,9 +21,7 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex px={4} py={4}>
-        <Window render={render} setRender={setRender}>
-          <Text>Login</Text>
-        </Window>
+        <UserLogin />
       </Flex>
     </>
   )
