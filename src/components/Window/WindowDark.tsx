@@ -12,7 +12,7 @@ type Props = {
     id?: number;
 };
 
-const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
+const WindowDark:React.FC<Props> = ({ children, render, setRender, id }) => {
 
     useEffect(() => {
     }, [render])
@@ -23,16 +23,16 @@ const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
                 handle=".handle"
             >
                 <Flex
-                    zIndex="12"
+                    zIndex="10"
                     direction="column" 
                     height="500px" 
                     width="700px" 
-                    bg="#282828"
+                    bg="#121212"
                     border="1px solid black"
                 >
                     <Flex 
                         className="handle"
-                        bg="#353535" 
+                        bg="#282828" 
                         h="28px" 
                         w="100%" 
                         p={1}
@@ -60,4 +60,4 @@ const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
         </>
     )
 }
-export default Window;
+export default WindowDark;

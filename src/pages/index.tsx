@@ -6,11 +6,13 @@ import Window from '../components/Window/Window'
 
 import Draggable from 'react-draggable'
 import { useState } from 'react'
+import WindowDark from '@/components/Window/WindowDark'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [render, setRender] = useState(true);
+  const [activeWindow, setActiveWindow] = useState(0)
   return (
     <>
       <Head>
@@ -20,9 +22,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex px={4} py={4}>
-        <Window render={render} setRender={setRender}>
+        <Window id={1} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
         </Window>
+        <WindowDark id={2} render={render} setRender={setRender}>
+          <Text>Select the two cards that you were dealt to view probabilities</Text>
+        </WindowDark>
       </Flex>
     </>
   )
