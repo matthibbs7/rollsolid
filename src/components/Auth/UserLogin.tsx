@@ -34,15 +34,16 @@ const UserLogin:React.FC = () => {
     }, [user])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        console.log("HELLO")
         event.preventDefault();
-
+        console.log(loginForm)
         signInWithEmailAndPassword(loginForm.email, loginForm.password);
     }
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoginForm((prev) => ({
             ...prev,
-            [event.target.name]: event.target.name
+            [event.target.name]: event.target.value
         }))
     }
     
