@@ -66,8 +66,9 @@ const UserSignUp:React.FC = () => {
                         <InputGroup width="100%">
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<Box mt={5}><MdAlternateEmail fontSize="14pt" color='#454545' /></Box>}
-                            />
+                            >
+                                <Box mt={5}><MdAlternateEmail fontSize="14pt" color='#454545' /></Box>
+                            </InputLeftElement>
                             
                             <Input onChange={onChange} required name="email" type="email" border="none" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" borderRadius="0" bg="#282828" mt={2} color="white" mb="17px" />
                         </InputGroup>
@@ -76,8 +77,9 @@ const UserSignUp:React.FC = () => {
                         <InputGroup width="100%">
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<Box mt={5}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>}
-                            />
+                            >
+                                <Box mt={5}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>
+                            </InputLeftElement>
                             
                             <Input onChange={onChange} required name="password" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="0" mt={2} color="white" type="password" bg="#282828" />
                         </InputGroup>
@@ -85,8 +87,9 @@ const UserSignUp:React.FC = () => {
                         <InputGroup width="100%">
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<Box mt={5}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>}
-                            />
+                            >
+                                <Box mt={5}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>
+                            </InputLeftElement>
                             <Input onChange={onChange} required name="confirmPassword" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="0" mt={2} color="white" type="password" bg="#282828" />
                         </InputGroup>
                         <Box height="17px">
