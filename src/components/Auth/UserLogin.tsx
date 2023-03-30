@@ -49,15 +49,15 @@ const UserLogin:React.FC = () => {
     
     return (
         <Flex justifyContent="center" width="100%">
-            <Flex bg="#121212" border="1px solid black" flexDir="column" mt={10} width={['90%', '80%', '80%', '60%']} maxWidth="540px" height="640px" align="center">
-                <Flex align="center" mt={8} direction="row">
-                    <Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">Login to Rollsolid&nbsp;</Text>
+            <Flex bg="#121212" border="1px solid black" flexDir="column" mt={5} width={['100%', '90%', '80%', '60%']} maxWidth="500px" height="620px" align="center">
+                <Flex align="center" mt={7} direction="row">
+                    <Text fontSize={["24pt", "24pt", "28pt", "28pt"]} fontWeight={700} fontFamily="AvenirNext-DemiBold">Login to Rollsolid&nbsp;</Text>
                     
                     {/* <Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                     <GiRollingBomb fontSize="28pt" />
                 </Flex>
-                <Text lineHeight="19px" width="66%" textAlign="center" mt={3} mb={1} fontSize="13pt" fontFamily="AvenirNext-Regular" color="#868686">Explore your Poker games and simulate your strategy through the power of data</Text>
-                <Flex mt={10} ml="auto" mr="auto" width="65%" direction="column">
+                <Text lineHeight="19px" width={["90%", "90%", "65%", "65%"]} textAlign="center" mt={3} mb={1} fontSize="13pt" fontFamily="AvenirNext-Regular" color="#868686">Explore your Poker games and simulate your strategy through the power of data</Text>
+                <Flex mt={10} ml="auto" mr="auto" width={["90%", "90%", "65%", "65%"]} direction="column">
                     <form onSubmit={onSubmit}>
                         <Text fontWeight={600} fontFamily="AvenirNext-Regular">Username</Text>
                         

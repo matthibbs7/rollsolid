@@ -12,7 +12,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
     // const [authenticated, setAuthenticated]
     const { colorMode, toggleColorMode } = useColorMode()
     const router = useRouter()
-    const cmb = colorMode === 'light' ? '#282828' : 'white';
+    const cmb = colorMode === 'light' ? '#121212' : 'white';
     
     useEffect(() => {
         if (!user) {

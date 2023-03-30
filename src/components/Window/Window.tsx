@@ -28,7 +28,7 @@ const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
                     height="500px" 
                     width="700px" 
                     bg="#282828"
-                    border="1px solid black"
+                    border="1px solid #494D51"
                 >
                     <Flex 
                         className="handle"

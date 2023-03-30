@@ -1,10 +1,11 @@
 import { Box, Button, Flex, Switch, Text, useColorMode } from "@chakra-ui/react"
-import { GiRollingBomb, GiPokerHand } from 'react-icons/gi'
+import { GiRollingBomb, GiPokerHand, GiAbstract089 } from 'react-icons/gi'
 import { FaChartLine } from 'react-icons/fa'
 import AuthButtons from "../Auth/AuthButtons"
 import { useRouter } from "next/router"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "@/firebase/clientApp"
+import { SiInformatica } from 'react-icons/si'
 
 export const Navbar = () => {
 
@@ -17,10 +18,10 @@ export const Navbar = () => {
 
     return (
         <Flex
-            height="55px"
+            height="45px"
             bgColor={cmb}
             width="100%"
-            borderBottom="1px solid black"
+            borderBottom="1px solid #494D51"
             align="center"
             px="15px"
             direction="row"
@@ -28,9 +29,18 @@ export const Navbar = () => {
             <GiRollingBomb />
             <Text onClick={() => router.push('/')} _hover={{cursor: 'pointer'}} ml={2} fontWeight={700} color={cmt}>Rollsolid</Text>
             <Box ml={5} borderLeft="1px solid " w="1px" h="45%" />
-            <Button _hover={{backgroundColor: '#1f1f1f'}} ml={7} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><GiPokerHand color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Hands</Text></Button>
+            <Button onClick={() => router.push('/about')} _hover={{backgroundColor: '#1f1f1f'}} ml={7} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><SiInformatica color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">About</Text></Button>
+            {user && (
+                <>
+                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><GiPokerHand color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Hands</Text></Button>
+                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="12pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Charts</Text></Button>
+                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><GiAbstract089 color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Simulate</Text></Button>
+                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Play</Text></Button>
+                </>
+            )}
+            
             {/* <Button _hover={{backgroundColor: '#252A30'}} ml={7} bg={cmb} h="55%" borderRadius="3px" fontWeight={500}>Hands</Button> */}
-            <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Charts</Text></Button>
+            
             
             <AuthButtons user={user} />
             
