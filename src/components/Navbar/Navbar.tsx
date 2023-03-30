@@ -21,6 +21,7 @@ export const Navbar = () => {
             height="45px"
             bgColor={cmb}
             width="100%"
+            borderTop="1px solid #494D51"
             borderBottom="1px solid #494D51"
             align="center"
             px="15px"
