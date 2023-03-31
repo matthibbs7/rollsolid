@@ -15,12 +15,12 @@ const GoogleSignIn:React.FC = () => {
 
     useEffect(() => {
         if (user) {
-            router.push('/')
+            router.push('/dashboard')
         }
     }, [user])
 
     return (
-        <Button onClick={() => signInWithGoogle()} width="100%" _hover={{bg: '#282828'}} height="48px" bg="black" borderRadius="5px">Continue with Google&nbsp;&nbsp;→</Button>
+        <Button onClick={() => signInWithGoogle()} width="100%" _hover={{bg: '#1c1c1c'}} height="48px" bg="black" borderRadius="5px">Continue with Google&nbsp;&nbsp;→</Button>
     )
 }
 export default GoogleSignIn;

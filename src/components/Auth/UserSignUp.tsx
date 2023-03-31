@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Text, Flex, useColorMode, Input, Box, InputGroup, InputLeftElement, InputRightElement, IconButton } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import { BsQuestionSquare } from 'react-icons/bs';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { GiRollingBomb } from 'react-icons/gi';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/clientApp';
 import { FIREBASE_ERRORS } from '../../firebase/errors';
 import { MdAlternateEmail } from 'react-icons/md';
@@ -52,6 +52,18 @@ const UserSignUp:React.FC = () => {
             [event.target.name]: event.target.value
         }))
     }
+
+    const [
+        userAuth,
+        authLoading,
+        authError
+    ] = useAuthState(auth);
+
+    useEffect(() => {
+        if (userAuth) {
+            router.push('/dashboard')
+        }
+    }, [user])
     
     return (
         <Flex justifyContent="center" width="100%">
@@ -65,7 +77,7 @@ const UserSignUp:React.FC = () => {
                 
                 <Flex mt={5} ml="auto" mr="auto" width={["90%", "90%", "65%", "65%"]} direction="column">
                     <form onSubmit={onSubmit}>
-                        <Text fontWeight={600} fontFamily="AvenirNext-Regular">Username</Text>
+                        <Text fontWeight={600} fontFamily="AvenirNext-Regular">Email</Text>
                         <InputGroup width="100%">
                             <InputLeftElement
                                 pointerEvents='none'

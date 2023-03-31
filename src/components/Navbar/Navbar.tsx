@@ -30,13 +30,13 @@ export const Navbar = () => {
             <GiRollingBomb />
             <Text onClick={() => router.push('/')} _hover={{cursor: 'pointer'}} ml={2} fontWeight={700} color={cmt}>Rollsolid</Text>
             <Box ml={5} borderLeft="1px solid " w="1px" h="45%" />
-            <Button onClick={() => router.push('/about')} _hover={{backgroundColor: '#1f1f1f'}} ml={7} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><SiInformatica color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">About</Text></Button>
+            <Button onClick={() => router.push('/about')} border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={7} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><SiInformatica color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">About</Text></Button>
             {user && (
                 <>
-                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><GiPokerHand color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Hands</Text></Button>
-                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="12pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Charts</Text></Button>
-                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><GiAbstract089 color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Simulate</Text></Button>
-                    <Button _hover={{backgroundColor: '#1f1f1f'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Play</Text></Button>
+                    <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><GiPokerHand color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Hands</Text></Button>
+                    <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="12pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Charts</Text></Button>
+                    <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="11pt"><GiAbstract089 color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Simulate</Text></Button>
+                    <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="15pt"><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Play</Text></Button>
                 </>
             )}
             

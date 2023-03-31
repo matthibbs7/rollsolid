@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Button, Flex, Text } from '@chakra-ui/react'
+import Footer from '@/components/Footer/Footer'
 
 export default function About() {
   return (
@@ -10,8 +11,11 @@ export default function About() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex px={4} py={4}>
-        <Text>Hi</Text>
+      <Flex flexDirection="column"  width="100%">
+        <Flex height="720px">
+          <Text>Hi</Text>
+        </Flex>
+        <Footer />
       </Flex>
     </>
   )
