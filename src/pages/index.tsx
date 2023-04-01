@@ -25,9 +25,9 @@ export default function Home() {
         <Window id={1} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
         </Window>
-        <WindowDark id={2} render={render} setRender={setRender}>
+        {/* <WindowDark id={2} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
-        </WindowDark>
+        </WindowDark> */}
       </Flex>
     </>
   )
