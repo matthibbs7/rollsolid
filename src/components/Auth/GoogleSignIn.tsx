@@ -20,7 +20,7 @@ const GoogleSignIn:React.FC = () => {
     }, [user])
 
     return (
-        <Button onClick={() => signInWithGoogle()} width="100%" _hover={{bg: '#1c1c1c'}} height="48px" bg="black" borderRadius="5px">Continue with Google&nbsp;&nbsp;→</Button>
+        <Button onClick={() => signInWithGoogle()} width="100%" _hover={{bg: '#1c1c1c'}} height="48px" bg="black" borderRadius="0px">Continue with Google&nbsp;&nbsp;→</Button>
     )
 }
 export default GoogleSignIn;

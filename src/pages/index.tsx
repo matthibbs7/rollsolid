@@ -7,6 +7,7 @@ import Window from '../components/Window/Window'
 import Draggable from 'react-draggable'
 import { useState } from 'react'
 import WindowDark from '@/components/Window/WindowDark'
+import TestWindow2 from '@/components/Window/TestWindow'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,30 @@ export default function Home() {
         {/* <WindowDark id={2} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
         </WindowDark> */}
+        <TestWindow2
+          id={"rnd-1"}
+          componentKey={"1"}
+        >
+          <Flex position="relative" width="100%" height="100%" bg="red.300">
+            <Text>Helo guy</Text>
+          </Flex>
+        </TestWindow2>
+        <TestWindow2 
+          id={"rnd-2"}
+          componentKey={"2"}
+        >
+          <Flex position="relative" width="100%" height="100%" bg="blue.300">
+            <Text>Helo guys</Text>
+          </Flex>
+        </TestWindow2>
+        <TestWindow2 
+          id={"rnd-3"}
+          componentKey={"3"}
+        >
+          <Flex position="relative" width="100%" height="100%" bg="green.300">
+            <Text>Helo guys!</Text>
+          </Flex>
+        </TestWindow2>
       </Flex>
     </>
   )
