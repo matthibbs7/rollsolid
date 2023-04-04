@@ -26,6 +26,8 @@ export const Navbar = () => {
             align="center"
             px="15px"
             direction="row"
+            zIndex="1111111"
+            position="relative"
         >   
             <GiRollingBomb />
             <Text onClick={() => router.push('/')} _hover={{cursor: 'pointer'}} ml={2} fontWeight={700} color={cmt}>Rollsolid</Text>

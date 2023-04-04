@@ -10,6 +10,10 @@ import { DraggableEvent } from "react-draggable";
 import { useRecoilState } from "recoil";
 import { frontWindowState } from "@/atoms/frontWindowAtom";
 import { useEffect, useState } from "react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { RxCross1 } from "react-icons/rx";
+import { FiMinimize2 } from "react-icons/fi";
+import { useWindowSize } from "rooks";
 
 interface State {
   width: number | string;
@@ -31,7 +35,7 @@ type RndManagerRef = {
 const TestWindow2:React.FC<Props> = (props) => {
     const root = "ResizableElement";
     const [frontWindow, setFrontWindow] = useRecoilState(frontWindowState);
-
+    const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
 
     // const [windowState, setWindowState] = useRecoilState(frontWindowState) ;
     const [windowState, setWindowState] = useState<State>({
@@ -45,7 +49,9 @@ const TestWindow2:React.FC<Props> = (props) => {
     const defaultStyle = {
         className: "",
         minWidth: "200px",
-        minHeight: "200px"
+        minHeight: "200px",
+        maxWidth: innerWidth,
+        maxHeight: innerHeight,
     } as Props;
 
     useEffect(() => {
@@ -143,10 +149,40 @@ const TestWindow2:React.FC<Props> = (props) => {
             onResize={onResize}
             onResizeStop={onResizeStop}
             enableUserSelectHack
-            style={{zIndex: windowState.maxZIndex}}
-            {...props}
+            bounds="parent"
+            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: 'black'}}
+            {...defaultStyle}
         >
-            {props.children}
+            <Flex flexDir="column" width="100%" height="100%">
+                {/* <Flex className="handle" width="100%" minHeight="44px" height="10%" border="1px solid red">
+                    
+                </Flex> */}
+                <Flex 
+                    className="handle"
+                    bg="#353535" 
+                    h="28px" 
+                    w="100%" 
+                    p={1}
+                    px={3}
+                    align="center"
+                    borderBottom="1px solid black"
+                >   
+                    <Flex width="90%" _hover={{cursor: 'all-scroll'}}>   
+                        <Text fontSize="11pt" fontFamily="AvenirNext-DemiBold">Probabilty Hand</Text>
+                    </Flex>  
+                    <Flex align="center" mr={-2}>
+                        <Button borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                            <FiMinimize2 color="white" />
+                        </Button>
+                        <Button onClick={() => {}} borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                            <RxCross1 color="#fa7970" />
+                        </Button>
+                    </Flex>
+                </Flex>
+                <Flex fontFamily="AvenirNext-Regular" height="100%" width="100%" _hover={{cursor: 'default'}} px={3} py={1.5}>
+                {props.children}
+                </Flex>
+            </Flex>
         </Rnd>
     )
 }
