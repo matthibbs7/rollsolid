@@ -10,6 +10,7 @@ import { FIREBASE_ERRORS } from '../../firebase/errors';
 import { MdAlternateEmail } from 'react-icons/md';
 import { HiFingerPrint } from 'react-icons/hi';
 import GoogleSignIn from './GoogleSignIn';
+import Footer from '../Footer/Footer';
 
 const UserSignUp:React.FC = () => {
     // const [authenticated, setAuthenticated]
@@ -66,8 +67,9 @@ const UserSignUp:React.FC = () => {
     }, [user])
     
     return (
-        <Flex justifyContent="center" width="100%">
-            <Flex bg="#121212" border="1px solid black" flexDir="column" mt={[1,1,5,5]} width={['100%', '90%', '80%', '60%']} maxWidth="500px" height="620px" align="center">
+        <Flex width="100%" flexDirection="column">
+            <Flex justifyContent="center" width="100%" height={["640px","640px","720px","720px"]}>
+            <Flex bg="#121212" border="1px solid black" flexDir="column" mt={[0,0,5,5]} width={['100%', '90%', '80%', '60%']} maxWidth="500px" height="620px" align="center">
                 <Flex align="center" mt={5}>
                     <Text fontSize={["24pt", "24pt", "28pt", "28pt"]} fontWeight={700} fontFamily="AvenirNext-DemiBold">Create an Account&nbsp;</Text>
                     <GiRollingBomb fontSize="28pt" />
@@ -85,7 +87,7 @@ const UserSignUp:React.FC = () => {
                                 <Box mt={5}><MdAlternateEmail fontSize="14pt" color='#454545' /></Box>
                             </InputLeftElement>
                             
-                            <Input onChange={onChange} required name="email" type="email" border="none" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" borderRadius="5px" bg="#282828" mt={2} color="white" mb="17px" />
+                            <Input onChange={onChange} required name="email" type="email" border="none" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="45px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" borderRadius="0px" bg="#282828" mt={2} color="white" mb="17px" />
                         </InputGroup>
                         <Text mt={-2} fontWeight={600} fontFamily="AvenirNext-Regular">Password</Text>
                         
@@ -96,7 +98,7 @@ const UserSignUp:React.FC = () => {
                                 <Box mt={4}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>
                             </InputLeftElement>
                             
-                            <Input onChange={onChange} required name="password" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="5px" mt={2} color="white" type="password" bg="#282828" />
+                            <Input onChange={onChange} required name="password" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="45px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="0px" mt={2} color="white" type="password" bg="#282828" />
                         </InputGroup>
                         <Text mt={3} fontWeight={600} fontFamily="AvenirNext-Regular">Confirm Password</Text>
                         <InputGroup width="100%">
@@ -105,9 +107,9 @@ const UserSignUp:React.FC = () => {
                             >
                                 <Box mt={4}><HiFingerPrint fontSize="14pt" color='#454545' /></Box>
                             </InputLeftElement>
-                            <Input onChange={onChange} required name="confirmPassword" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="42px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="5px" mt={2} color="white" type={show ? 'text' : 'password'} bg="#282828" />
+                            <Input onChange={onChange} required name="confirmPassword" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="45px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="0px" mt={2} color="white" type={show ? 'text' : 'password'} bg="#282828" />
                             <InputRightElement width='3rem'>
-                                <IconButton mt={4} fontSize="16pt" _hover={{bg: 'none'}} color='#454545' bg="none" aria-label='see password' icon={show ? <AiFillEyeInvisible /> : <AiFillEye />} onClick={handleClick}>
+                                <IconButton mt={5} fontSize="16pt" _hover={{bg: 'none'}} color='#454545' bg="none" aria-label='see password' icon={show ? <AiFillEyeInvisible /> : <AiFillEye />} onClick={handleClick}>
                                 {show ? 'Hide' : 'Show'}
                                 </IconButton>
                             </InputRightElement>
@@ -116,15 +118,18 @@ const UserSignUp:React.FC = () => {
                             <Text fontSize="10pt" color="red.300">{error || FIREBASE_ERRORS[userError?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                         </Box>
                         {/* <Text fontSize="10pt" mt={2} fontFamily='AvenirNext-Regular'>Forget your <Text _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span">password</Text> ?</Text> */}
-                        <Button isLoading={loading} type="submit" width="100%" _hover={{color: 'white', bg: 'linear-gradient(90deg, rgba(94,94,105,1) 0%, rgba(250,121,112,1) 35%, rgba(0,255,222,1) 100%);'}} border="none" height="48px" bg="linear-gradient(90deg, rgba(94,94,105,1) 0%, rgba(250,121,112,1) 35%, rgba(0,255,222,1) 100%);" borderRadius="5px" mt={5} color="black">Create Account&nbsp;&nbsp;→</Button>
+                        <Button isLoading={loading} type="submit" width="100%" _hover={{color: 'white'}} border="none" height="48px" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" borderRadius="0px" mt={3} color="black">Create Account&nbsp;&nbsp;→</Button>
                         <Box width="100%" mt={5}>
                             <GoogleSignIn />
                         </Box>
-                        <Text textAlign="center" fontSize="10pt" mt={5} fontFamily='AvenirNext-Regular'>Already have an account? <Text onClick={() => router.push('/login')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span">Login</Text></Text>
+                        <Text textAlign="center" fontSize="10pt" mt={5} fontFamily='AvenirNext-Regular'>Already have an account? <Text onClick={() => router.push('/login')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span" color="purple.300">Login</Text></Text>
                     </form>
                 </Flex>
                 
             </Flex>
+            
+            </Flex>
+            <Footer />
         </Flex>
     )
 }

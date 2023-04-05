@@ -53,8 +53,8 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                     <Flex width="100%">
                                         <Flex width="30px" height="90px" bg={(isHovering === -1 || isHovering === -2 || isHovering === -3) ? 'black' : 'none'}></Flex>
                                         <Flex flexDirection="column">
-                                            <MenuItem mt="-1px" ml="0px" width="165px" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(1)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C'}} bg="#121212">{isHovering === 1 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 1 && <Text>&nbsp;&nbsp;</Text>}Profile</MenuItem>
-                                            <MenuItem ml="0px" width="165px" borderLeft="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(2)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C'}} bg="#121212">{isHovering === 2 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 2 && <Text>&nbsp;&nbsp;</Text>}Subscriptions</MenuItem>
+                                            <MenuItem mt="-1px" ml="0px" width="165px" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(1)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C'}} bg="#121212">{isHovering === 1 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 1 && <Text>&nbsp;&nbsp;</Text>}Profile</MenuItem>
+                                            <MenuItem ml="0px" width="165px" borderLeft="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(2)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C'}} bg="#121212">{isHovering === 2 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 2 && <Text>&nbsp;&nbsp;</Text>}Subscriptions</MenuItem>
                                             <MenuItem ml="0px" width="165px" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onClick={() => router.push('/reset-password')} mb={4} onMouseEnter={() => setIsHovering(3)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C'}} bg="#121212">{isHovering === 3 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 3 && <Text>&nbsp;&nbsp;</Text>}Reset Password</MenuItem>
                                         </Flex>
                                     </Flex>
@@ -74,16 +74,17 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                     
                                     <Box mt={6} width="100%" borderBottom="1px solid #1c1c1c"></Box>
                                     
-                                    <Flex align="center" onClick={() => signOut(auth)} height="35px" px={1} mt={4} _hover={{bg: '#1C1C1C', cursor: 'pointer'}} >
-                                        <Text color="white" ml={2}><TbLogout /></Text>
-                                        <Text color="white" mt="12px" fontFamily="AvenirNext-Demibold" height="35px">&nbsp; Logout</Text>
-                                        
+                                    <Flex align="center" onClick={() => signOut(auth)} height="35px" px={1} mt={3}>
+                                        <Flex _hover={{bg: '#1c1c1c', cursor: 'pointer'}} ml="auto" mr={5} flexDir="row" align="center" border="1px solid #1c1c1c" width="100px" height="30px">
+                                            <Text color="white" ml={2}><TbLogout /></Text>
+                                            <Text color="white" mt="12px" fontFamily="AvenirNext-Demibold" height="35px">&nbsp; Logout</Text>
+                                        </Flex>
                                     </Flex>
-                                    <Box mb={4} mt={3} px={3}>
-                                        <span style={{fontSize: '9.5pt'}}>
-                                            <Text fontFamily="AvenirNext-Regular" as="span">Tip: use &nbsp;</Text>
-                                            <Kbd bg="black">↑</Kbd> <Text as="span" fontFamily="AvenirNext-Regular">or</Text> <Kbd bg="black">↓</Kbd>
-                                            <Text as="span" fontFamily="AvenirNext-Regular">&nbsp;&nbsp;to navigate menu items</Text>
+                                    <Box mb={4} mt={1} px={3}>
+                                        <span style={{fontSize: '7pt'}}>
+                                            <Text color="#868686" fontFamily="AvenirNext-Regular" as="span">© 2023 Rollsolid, Inc. All rights reserved</Text>
+                                            {/* <Kbd bg="black">↑</Kbd> <Text as="span" fontFamily="AvenirNext-Regular">or</Text> <Kbd bg="black">↓</Kbd>
+                                            <Text as="span" fontFamily="AvenirNext-Regular">&nbsp;&nbsp;to navigate menu items</Text> */}
                                         </span>
                                     </Box>
                                     {/* <Text mt={3} mb={3} ml={5} fontSize="8pt" fontFamily="AvenirNext-Regular" color="#454545">© 2023 Rollsolid Inc. All rights reserved</Text> */}

@@ -8,6 +8,7 @@ import Draggable from 'react-draggable'
 import { useState } from 'react'
 import WindowDark from '@/components/Window/WindowDark'
 import TestWindow2 from '@/components/Window/TestWindow'
+import Timer from '@/components/Modules/Timer/Timer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -117,10 +118,19 @@ export default function Home() {
         <TestWindow2 
           id={"rnd-3"}
           componentKey={"3"}
+          title="Probability Hand"
         >
           <Flex position="relative" width="100%" height="100%">
             <Text>Helo guys!</Text>
           </Flex>
+        </TestWindow2>
+        <TestWindow2 
+          id={"rnd-4"}
+          componentKey={"4"}
+          moduleSize={{width: '250px', height: '100px'}}
+          title="Timer"
+        >
+          <Timer />
         </TestWindow2>
       </Flex>
     </Flex>

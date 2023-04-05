@@ -25,6 +25,8 @@ interface State {
 
 interface Props extends RndProps {
   componentKey: string;
+  moduleSize?: {width: string, height: string};
+  title?: string;
 }
 
 type RndManagerRef = {
@@ -39,8 +41,8 @@ const TestWindow2:React.FC<Props> = (props) => {
 
     // const [windowState, setWindowState] = useRecoilState(frontWindowState) ;
     const [windowState, setWindowState] = useState<State>({
-        width: "400px",
-        height: "400px",
+        width: props.moduleSize ? props.moduleSize.width : "400px",
+        height: props.moduleSize ? props.moduleSize.height : "400px",
         x: 0,
         y: 0,
         maxZIndex: 0
@@ -168,7 +170,7 @@ const TestWindow2:React.FC<Props> = (props) => {
                     borderBottom="1px solid black"
                 >   
                     <Flex width="90%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontSize="11pt" fontFamily="AvenirNext-DemiBold">Probabilty Hand</Text>
+                        <Text fontSize="11pt" fontFamily="AvenirNext-DemiBold">{props.title}</Text>
                     </Flex>  
                     <Flex align="center" mr={-2}>
                         <Button borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">

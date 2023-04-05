@@ -65,7 +65,7 @@ const UserResetPassword:React.FC = () => {
                         <Box height="17px">
                             <Text fontSize="10pt" color="red.300">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                         </Box>
-                        <Button isLoading={loading} width="100%" type="submit" _hover={{color: 'white', bg: 'linear-gradient(90deg, rgba(94,94,105,1) 0%, rgba(250,121,112,1) 35%, rgba(0,255,222,1) 100%);'}} border="none" height="48px" bg="linear-gradient(90deg, rgba(94,94,105,1) 0%, rgba(250,121,112,1) 35%, rgba(0,255,222,1) 100%);" borderRadius="5px" mt={-2} color="black">Reset Password&nbsp;&nbsp;→</Button>
+                        <Button isLoading={loading} width="100%" type="submit" _hover={{color: 'white'}} border="none" height="48px" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" borderRadius="0px" mt={-2} color="black">Reset Password&nbsp;&nbsp;→</Button>
                         <Text fontSize="10pt" mt={2} fontFamily='AvenirNext-Regular'>Back to <Text onClick={() => router.push('/login')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span">login</Text></Text>
                         <Text textAlign="center" fontSize="10pt" mt={5} fontFamily='AvenirNext-Regular'>New to Rollsolid? <Text onClick={() => router.push('/signup')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span">Sign Up</Text></Text>
                     </form>
