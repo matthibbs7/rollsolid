@@ -152,7 +152,7 @@ const TestWindow2:React.FC<Props> = (props) => {
             onResizeStop={onResizeStop}
             enableUserSelectHack
             bounds="parent"
-            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: 'black'}}
+            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: '#1c1c1c'}}
             {...defaultStyle}
         >
             <Flex flexDir="column" width="100%" height="100%">

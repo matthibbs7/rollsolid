@@ -2,13 +2,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
-import Window from '../components/Window/Window'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Draggable from 'react-draggable'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import WindowDark from '@/components/Window/WindowDark'
 import TestWindow2 from '@/components/Window/TestWindow'
 import Timer from '@/components/Modules/Timer/Timer'
+import { activeWindowsState, Window } from '@/atoms/activeWindowsAtom'
+import { useRecoilState } from 'recoil'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -59,8 +60,6 @@ export default function Home() {
     },
   ];
 
-  const [render, setRender] = useState(true);
-  const [activeWindow, setActiveWindow] = useState(0)
   return (
     <Flex flexDir="column" height="100%">
       <Head>
@@ -70,13 +69,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex position="fixed" top="45px" right="0" bottom="0" left="0" px={4} py={4} height='calc(100vh - 47px)'>
-        <Button>Window new</Button>
+        <>
+        <Button onClick={() => {}}>Window new</Button>
         {/* <Window id={1} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
         </Window> */}
         {/* <WindowDark id={2} render={render} setRender={setRender}>
           <Text>Select the two cards that you were dealt to view probabilities</Text>
         </WindowDark> */}
+      
         <TestWindow2
           id={"rnd-1"}
           componentKey={"1"}
@@ -132,6 +133,7 @@ export default function Home() {
         >
           <Timer />
         </TestWindow2>
+        </>
       </Flex>
     </Flex>
   )
