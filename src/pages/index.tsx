@@ -3,14 +3,8 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Draggable from 'react-draggable'
-import { useEffect, useState } from 'react'
-import WindowDark from '@/components/Window/WindowDark'
 import TestWindow2 from '@/components/Window/TestWindow'
 import Timer from '@/components/Modules/Timer/Timer'
-import { activeWindowsState } from '@/atoms/activeWindowsAtom'
-import { useRecoilState } from 'recoil'
-import Window from '../components/Window/Window'
 
 const inter = Inter({ subsets: ['latin'] })
 
