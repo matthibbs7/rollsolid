@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Button, Flex, Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
 import { auth } from '@/firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';

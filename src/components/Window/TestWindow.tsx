@@ -10,7 +10,7 @@ import { DraggableEvent } from "react-draggable";
 import { useRecoilState } from "recoil";
 import { frontWindowState } from "@/atoms/frontWindowAtom";
 import { useEffect, useState } from "react";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { RxCross1 } from "react-icons/rx";
 import { FiMinimize2 } from "react-icons/fi";
 import { useWindowSize } from "rooks";
