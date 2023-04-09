@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, Text, Flex, useColorMode, Input, Box, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
-import { HiFingerPrint } from 'react-icons/hi';
 import { GiRollingBomb } from 'react-icons/gi';
-import { MdAlternateEmail } from 'react-icons/md';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/clientApp';
-import { FIREBASE_ERRORS } from '@/firebase/errors';
 import Footer from '../Footer/Footer';
 
 const ProfileView:React.FC = () => {

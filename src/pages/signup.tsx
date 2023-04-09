@@ -1,10 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Button, Flex, Text } from '@chakra-ui/react'
-import Window from '../components/Window/Window'
-
-import Draggable from 'react-draggable'
+import { Flex } from '@chakra-ui/react'
 import { useState } from 'react'
 import UserSignUp from '@/components/Auth/UserSignUp'
 
