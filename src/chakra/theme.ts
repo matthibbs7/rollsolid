@@ -5,7 +5,7 @@ const styles = {
     body: {
     //   fontFamily: 'body',
       color: mode('#F6F7F9', 'whiteAlpha.900')(props),
-      bg: mode('#181818', 'red.300')(props),
+      bg: mode('#171717', 'red.300')(props),
     //   lineHeight: 'base',
     },
     // '*::placeholder': {

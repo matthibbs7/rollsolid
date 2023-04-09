@@ -4,24 +4,21 @@ import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import Draggable from 'react-draggable';
 import { RxCross1 } from 'react-icons/rx';
 import { FiMinimize2 } from 'react-icons/fi';
+import { ResizableBox } from 'react-resizable';
 
 type Props = {
     children?: React.ReactNode
-    render: boolean;
-    setRender: (a: boolean) => void;
-    id?: number;
 };
 
-const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
-
-    useEffect(() => {
-    }, [render])
+const Window:React.FC<Props> = ({ children }) => {
 
     return (
         <>
-            {render && <Draggable
+            <Draggable
                 handle=".handle"
+                
             >
+                
                 <Flex
                     zIndex="12"
                     direction="column" 
@@ -33,7 +30,7 @@ const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
                     <Flex 
                         className="handle"
                         bg="#353535" 
-                        h="28px" 
+                        h="22px" 
                         w="100%" 
                         p={1}
                         px={3}
@@ -47,16 +44,18 @@ const Window:React.FC<Props> = ({ children, render, setRender, id }) => {
                             <Button borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
                                 <FiMinimize2 color="white" />
                             </Button>
-                            <Button onClick={() => setRender(false)} borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                            <Button onClick={() => {}} borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
                                 <RxCross1 color="#fa7970" />
                             </Button>
                         </Flex>
                     </Flex>
-                    <Box px={3} py={5} w="100%" h="100%"> 
+                    <Box px={3} py={5} w="100%" h="100%">
+                    
                         <main>{children}</main>
                     </Box> 
                 </Flex>
-            </Draggable> }
+                
+            </Draggable>
         </>
     )
 }

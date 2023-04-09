@@ -101,8 +101,7 @@ const TestWindow2:React.FC<Props> = (props) => {
             ...prev,
             maxZ: prev.maxZ + 1,
         }))
-        console.log(frontWindow, "TEST", windowState.maxZIndex)
-
+        return
     };
 
     const onDragStop: RndDragCallback = (
@@ -145,6 +144,7 @@ const TestWindow2:React.FC<Props> = (props) => {
             key={props.componentKey}
             className={`${props.className}`}
             size={{ height: windowState.height, width: windowState.width }}
+            dragHandleClassName="handle"
             position={{ x: windowState.x, y: windowState.y }}
             onDragStart={onDragStart}
             onDragStop={onDragStop}
@@ -154,6 +154,7 @@ const TestWindow2:React.FC<Props> = (props) => {
             bounds="parent"
             style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: '#1c1c1c'}}
             {...defaultStyle}
+            onClick={onDragStart}
         >
             <Flex flexDir="column" width="100%" height="100%">
                 {/* <Flex className="handle" width="100%" minHeight="44px" height="10%" border="1px solid red">
@@ -161,23 +162,23 @@ const TestWindow2:React.FC<Props> = (props) => {
                 </Flex> */}
                 <Flex 
                     className="handle"
-                    bg="#353535" 
-                    h="28px" 
+                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#121212' : '#2b2b2b'}
+                    h="30px" 
                     w="100%" 
                     p={1}
                     px={3}
                     align="center"
-                    borderBottom="1px solid black"
+                    
                 >   
                     <Flex width="90%" _hover={{cursor: 'all-scroll'}}>   
                         <Text fontSize="11pt" fontFamily="AvenirNext-DemiBold">{props.title}</Text>
                     </Flex>  
-                    <Flex align="center" mr={-2}>
-                        <Button borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
+                    <Flex align="center" mr={-2} height="100%">
+                        <Button borderRadius='0' _hover={{bg: '#383838', cursor: 'default'}} width="10px" height="100%" padding="0" fontSize="11pt" bg='none'>
                             <FiMinimize2 color="white" />
                         </Button>
-                        <Button onClick={() => {}} borderRadius='0' _hover={{bg: '#282828'}} width="10px" height="22px" padding="0" fontSize="11pt" bg="#353535">
-                            <RxCross1 color="#fa7970" />
+                        <Button height="100%" onClick={() => {}} borderRadius='0' _hover={{bg: 'red.400', cursor: 'default'}} width="10px" padding="0" fontSize="11pt" bg='none'>
+                            <RxCross1 color="white" />
                         </Button>
                     </Flex>
                 </Flex>

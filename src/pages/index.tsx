@@ -8,8 +8,9 @@ import { useEffect, useState } from 'react'
 import WindowDark from '@/components/Window/WindowDark'
 import TestWindow2 from '@/components/Window/TestWindow'
 import Timer from '@/components/Modules/Timer/Timer'
-import { activeWindowsState, Window } from '@/atoms/activeWindowsAtom'
+import { activeWindowsState } from '@/atoms/activeWindowsAtom'
 import { useRecoilState } from 'recoil'
+import Window from '../components/Window/Window'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -81,6 +82,7 @@ export default function Home() {
         <TestWindow2
           id={"rnd-1"}
           componentKey={"1"}
+          title={"Notes"}
         >
           <Flex position="relative" width="100%" height="100%">
             <Text>Helo guy</Text>
@@ -89,6 +91,7 @@ export default function Home() {
         <TestWindow2 
           id={"rnd-2"}
           componentKey={"2"}
+          title={"Chart"}
         >
           <Flex width="100%" height="100%" flexDirection="column" pb="45px">
             <Text>Helo guys</Text>
