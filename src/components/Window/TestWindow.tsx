@@ -27,6 +27,8 @@ interface Props extends RndProps {
   componentKey: string;
   moduleSize?: {width: string, height: string};
   title?: string;
+  x?: number;
+  y?: number;
 }
 
 type RndManagerRef = {
@@ -43,8 +45,8 @@ const TestWindow2:React.FC<Props> = (props) => {
     const [windowState, setWindowState] = useState<State>({
         width: props.moduleSize ? props.moduleSize.width : "400px",
         height: props.moduleSize ? props.moduleSize.height : "400px",
-        x: 0,
-        y: 0,
+        x: props.x ? props.x : 0,
+        y: props.y ? props.y : 0,
         maxZIndex: 0
     })
     
