@@ -1,10 +1,7 @@
 import { Button, Divider, Flex, Input, Text } from '@chakra-ui/react';
-import router from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import React from 'react';
 
 const Timer:React.FC = () => {
-    const [timeSelected, setTimeSelected] = useState();
     return (
         <Flex w='100%' h='100%'>
             <Flex flexDir="column" width="100%" height="100%">
