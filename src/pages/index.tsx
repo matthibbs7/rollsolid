@@ -187,7 +187,7 @@ export default function Home() {
         <Flex position='absolute' top="calc(100vh - 84px)" zIndex="1111111" ml={1} my={0.5} height="34px" width="100%" flexDir='row'>
           {minimizedWindows.stack.map((w) => {
             return (
-              <Flex borderRadius={3} _hover={{bg: '#636363', cursor: 'pointer'}} alignItems='center' pl={2} pr={1} m={0.5} bg='#434343'>
+              <Flex key={w.id} borderRadius={3} _hover={{bg: '#636363', cursor: 'pointer'}} alignItems='center' pl={2} pr={1} m={0.5} bg='#434343'>
                 <Text fontWeight={600}>{w.type}</Text>
                 <Text onClick={() => removeFromStack(w)} ml={2} fontSize="9pt"><RxCross1 color="white" /></Text>
               </Flex>

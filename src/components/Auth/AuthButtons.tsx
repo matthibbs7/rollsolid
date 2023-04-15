@@ -46,36 +46,38 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
     transition: { duration: 0 },
     animate: 'visible'}} minW="0" width="200px" mt={1.5} border="1px solid #494D51" p="1px" bg="#121212" borderRadius="0" py={0}>
                                     <Flex mt={2.5} px={1} borderBottom="1px solid #1c1c1c">
-                                        <Text ml={2} color="purple.300" mt="3px"><RiAccountBoxFill /></Text>
-                                        <Text color="purple.300" fontFamily="Avenir Next" fontWeight="semibold" height="35px">&nbsp; Account</Text>
-                                        
+                                        <Flex mb={2.5} ml={3} align='center' border='1px solid grey' p={0.25} pr={2}>
+                                            {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
+                                            <Text fontSize='10.5pt' color="#C7AE7A" fontWeight={700}>&nbsp; ACCOUNT</Text>
+                                        </Flex>
                                     </Flex>
                                     <Flex width="100%">
                                         <Flex width="30px" height="90px" bg={(isHovering === -1 || isHovering === -2 || isHovering === -3) ? 'black' : 'none'}></Flex>
                                         <Flex flexDirection="column">
-                                            <MenuItem onClick={() => router.push('/profile')} mt="-1px" ml="0px" width="165px" borderRight="1px solid #121212" borderBottom="1px solid #121212" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(1)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 1 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 1 && <Text>&nbsp;&nbsp;</Text>}Profile</MenuItem>
-                                            <MenuItem ml="0px" width="165px" borderTop="1px solid #121212" borderRight="1px solid #121212" borderBottom="1px solid #121212" borderLeft="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(2)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 2 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 2 && <Text>&nbsp;&nbsp;</Text>}Subscriptions</MenuItem>
-                                            <MenuItem ml="0px" width="165px" borderRight="1px solid #121212" borderTop="1px solid #121212" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onClick={() => router.push('/reset-password')} mb={4} onMouseEnter={() => setIsHovering(3)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 3 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 3 && <Text>&nbsp;&nbsp;</Text>}Reset Password</MenuItem>
+                                            <MenuItem color='#87B6D3' onClick={() => router.push('/profile')} mt="-1px" ml="0px" width="165px" borderRight="1px solid #121212" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(1)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-DemiBold" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 1 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 1 && <Text>&nbsp;&nbsp;</Text>}Profile</MenuItem>
+                                            <MenuItem color='#87B6D3' ml="0px" width="165px" borderRight="1px solid #121212" borderLeft="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(2)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-DemiBold" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 2 ? <FiChevronRight color="purple.300" /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 2 && <Text>&nbsp;&nbsp;</Text>}Subscriptions</MenuItem>
+                                            <MenuItem color='#87B6D3' ml="0px" width="165px" borderRight="1px solid #121212" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onClick={() => router.push('/reset-password')} mb={4} onMouseEnter={() => setIsHovering(3)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-DemiBold" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 3 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 3 && <Text>&nbsp;&nbsp;</Text>}Reset Password</MenuItem>
                                         </Flex>
                                     </Flex>
                                     {/* <Box width="100%" borderBottom="1px solid #1c1c1c"></Box> */}
                                     
-                                    <Flex pt={3} mt="-17px" px={1} borderY="1px solid #1c1c1c" >
-                                        <Text ml={2} color="purple.300" mt="3px"><MdSettingsApplications /></Text>
-                                        <Text color="purple.300" fontFamily="AvenirNext-Demibold" height="35px">&nbsp; Settings</Text>
-                                        
+                                    <Flex p={2} mt="0px" px={1} borderY="1px solid #1c1c1c" >
+                                        <Flex my={1} ml={3} align='center' border='1px solid grey' p={0.25} pr={2}>
+                                            {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
+                                            <Text fontSize='10.5pt' color="#C7AE7A" fontWeight={700}>&nbsp; SETTINGS</Text>
+                                        </Flex>
                                     </Flex>
 
 
                                     
                                     
-                                    <MenuItem mt="-1px" ml="30px" width="165px" borderRight="1px solid #121212" borderBottom="1px solid #121212" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(4)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 4 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 4 && <Text>&nbsp;&nbsp;</Text>}Theme</MenuItem>
-                                    <MenuItem ml="30px" width="165px" borderRight="1px solid #121212" borderTop="1px solid #121212" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(5)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 5 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 5 && <Text>&nbsp;&nbsp;</Text>}Language</MenuItem>
+                                    <MenuItem mt="-1px" ml="30px" width="165px" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(4)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 4 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 4 && <Text>&nbsp;&nbsp;</Text>}Theme</MenuItem>
+                                    <MenuItem ml="30px" width="165px" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(5)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 5 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 5 && <Text>&nbsp;&nbsp;</Text>}Language</MenuItem>
                                     
                                     <Box mt={6} width="100%" borderBottom="1px solid #1c1c1c"></Box>
                                     
                                     <Flex align="center" onClick={() => signOut(auth)} height="35px" px={1} mt={3}>
-                                        <Flex _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid grey'}} ml="auto" mr={5} flexDir="row" align="center" border="1px solid #1c1c1c" width="100px" height="30px">
+                                        <Flex _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid #1c1c1c'}} ml="auto" mr={5} flexDir="row" align="center" border="1px solid #1c1c1c" width="100px" height="30px">
                                             <Text color="white" ml={2}><TbLogout /></Text>
                                             <Text color="white" mt="12px" fontFamily="AvenirNext-Demibold" height="35px">&nbsp; Logout</Text>
                                         </Flex>
