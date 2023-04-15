@@ -22,7 +22,7 @@ export default function Login() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex px={4} py={4}>
+      <Flex>
         {!loading && !error && <UserLogin />}
       </Flex>
     </>

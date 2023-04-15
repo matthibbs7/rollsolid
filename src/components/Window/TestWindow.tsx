@@ -14,6 +14,8 @@ import { Button, Flex, Text } from "@chakra-ui/react";
 import { RxCross1 } from "react-icons/rx";
 import { FiMinimize2 } from "react-icons/fi";
 import { useWindowSize } from "rooks";
+import { minimizedWindowsState } from "@/atoms/minimizedWindowsAtom";
+import { WindowState } from "@/types/windows";
 
 interface State {
   width: number | string;
@@ -25,6 +27,7 @@ interface State {
 
 interface Props extends RndProps {
   componentKey: string;
+  type: WindowState;
   moduleSize?: {width: string, height: string};
   title?: string;
   x?: number;
@@ -40,8 +43,8 @@ const TestWindow2:React.FC<Props> = (props) => {
     const root = "ResizableElement";
     const [frontWindow, setFrontWindow] = useRecoilState(frontWindowState);
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
-
-    // const [windowState, setWindowState] = useRecoilState(frontWindowState) ;
+    const [minimizedWindows, setMinimizedWindows] = useRecoilState(minimizedWindowsState);
+    
     const [windowState, setWindowState] = useState<State>({
         width: props.moduleSize ? props.moduleSize.width : "400px",
         height: props.moduleSize ? props.moduleSize.height : "400px",
@@ -141,6 +144,25 @@ const TestWindow2:React.FC<Props> = (props) => {
         });
     };
 
+    const addToQue = (type: WindowState) => {
+        // if (minimizedWindows.stack.includes(w)) {
+        //   toast({
+        //     position: 'top-right',
+        //     render: () => (
+        //       <Box borderRadius="12px" color="black" fontWeight={800} p={3} bg="white">
+        //         Tool already on your dashboard!
+        //       </Box>
+        //     ),
+        //   });
+        //   return;
+        // }
+    
+        setMinimizedWindows((prevState) => ({
+          ...prevState,
+          stack: [...prevState.stack, type],
+        }));
+      };
+
     return (
         <Rnd
             key={props.componentKey}
@@ -176,7 +198,7 @@ const TestWindow2:React.FC<Props> = (props) => {
                         <Text fontSize="11pt" fontFamily="AvenirNext-DemiBold">{props.title}</Text>
                     </Flex>  
                     <Flex align="center" mr={-2} height="100%">
-                        <Button borderRadius='0' _hover={{bg: '#383838', cursor: 'default'}} width="10px" height="100%" padding="0" fontSize="11pt" bg='none'>
+                        <Button onClick={() => addToQue(props.type)} borderRadius='0' _hover={{bg: '#383838', cursor: 'default'}} width="10px" height="100%" padding="0" fontSize="11pt" bg='none'>
                             <FiMinimize2 color="white" />
                         </Button>
                         <Button height="100%" onClick={() => {}} borderRadius='0' _hover={{bg: 'red.400', cursor: 'default'}} width="10px" padding="0" fontSize="11pt" bg='none'>
