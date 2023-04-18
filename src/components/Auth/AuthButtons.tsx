@@ -46,7 +46,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
     transition: { duration: 0 },
     animate: 'visible'}} minW="0" width="200px" mt={1.5} border="1px solid #494D51" p="1px" bg="#121212" borderRadius="0" py={0}>
                                     <Flex mt={2.5} px={1} borderBottom="1px solid #1c1c1c">
-                                        <Flex mb={2.5} ml={3} align='center' border='1px solid grey' p={0.25} pr={2}>
+                                        <Flex mb={2.5} ml={3} align='center' p={0.25} pr={2}>
                                             {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
                                             <Text fontSize='10.5pt' color="#C7AE7A" fontWeight={700}>&nbsp; ACCOUNT</Text>
                                         </Flex>
@@ -62,7 +62,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                     {/* <Box width="100%" borderBottom="1px solid #1c1c1c"></Box> */}
                                     
                                     <Flex p={2} mt="0px" px={1} borderY="1px solid #1c1c1c" >
-                                        <Flex my={1} ml={3} align='center' border='1px solid grey' p={0.25} pr={2}>
+                                        <Flex my={1} ml={3} align='center' p={0.25} pr={2}>
                                             {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
                                             <Text fontSize='10.5pt' color="#C7AE7A" fontWeight={700}>&nbsp; SETTINGS</Text>
                                         </Flex>
