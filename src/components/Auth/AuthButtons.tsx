@@ -67,10 +67,6 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                             <Text fontSize='10.5pt' color="#C7AE7A" fontWeight={700}>&nbsp; SETTINGS</Text>
                                         </Flex>
                                     </Flex>
-
-
-                                    
-                                    
                                     <MenuItem mt="-1px" ml="30px" width="165px" borderLeft="1px solid #1c1c1c" borderTop="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(4)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 4 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 4 && <Text>&nbsp;&nbsp;</Text>}Theme</MenuItem>
                                     <MenuItem ml="30px" width="165px" borderLeft="1px solid #1c1c1c" borderBottom="1px solid #1c1c1c" onMouseEnter={() => setIsHovering(5)} onMouseLeave={() => setIsHovering(0)} height="30px" pl="2px" fontFamily="AvenirNext-Regular" _hover={{bg: '#1C1C1C', border: '1px solid grey'}} bg="#121212">{isHovering === 5 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 5 && <Text>&nbsp;&nbsp;</Text>}Language</MenuItem>
                                     

@@ -60,8 +60,6 @@ const UserResetPassword:React.FC = () => {
                             
                         </InputGroup>
                         
-                        
-                        
                         <Box height="17px">
                             <Text fontSize="10pt" color="red.300">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                         </Box>
