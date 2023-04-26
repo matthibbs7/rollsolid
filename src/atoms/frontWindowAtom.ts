@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 // TypeScript interface
 export interface FrontWindowState {
@@ -9,9 +9,9 @@ export interface FrontWindowState {
 // Auth Modal, default state
 const defaultFrontWindowState: FrontWindowState = {
     maxZ: 0,
-}
+};
 
 export const frontWindowState = atom<FrontWindowState>({
     key: 'frontWindowState',
     default: defaultFrontWindowState
-})
+});

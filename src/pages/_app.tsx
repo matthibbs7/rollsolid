@@ -1,25 +1,20 @@
-import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
-import theme from '../chakra/theme'
-import { useState } from 'react'
-import Layout from '@/components/Layout/Layout'
+import React from 'react';
+import type { AppProps } from 'next/app';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from '../chakra/theme';
+import Layout from '@/components/Layout/Layout';
 import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+    RecoilRoot,
 } from 'recoil';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [colorMode, setColorMode] = useState('light')
-  return (
-    <RecoilRoot>
-      <ChakraProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </RecoilRoot>
-  )
+    return (
+        <RecoilRoot>
+            <ChakraProvider theme={theme}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </ChakraProvider>
+        </RecoilRoot>
+    );
 }

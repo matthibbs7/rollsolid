@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Text, Flex, useColorMode, Input, Box, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
+import { Button, Text, Flex, Input, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { HiFingerPrint } from 'react-icons/hi';
 import { GiRollingBomb } from 'react-icons/gi';
-import { MdAlternateEmail } from 'react-icons/md';
 import GoogleSignIn from './GoogleSignIn';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/clientApp';
@@ -12,88 +10,81 @@ import Footer from '../Footer/Footer';
 
 const UserLogin:React.FC = () => {
     // const [authenticated, setAuthenticated]
-    const { colorMode, toggleColorMode } = useColorMode()
-    const router = useRouter()
-    const cmb = colorMode === 'light' ? '#282828' : 'white';
+    const router = useRouter();
 
     const [loginForm, setLoginForm] = useState({
         email: '',
         password: '',
-    })
+    });
     
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth)
+    ] = useSignInWithEmailAndPassword(auth);
 
     const [
         userAuth,
         authLoading,
-        authError
     ] = useAuthState(auth);
 
     useEffect(() => {
         if (userAuth) {
-            router.push('/dashboard')
+            router.push('/dashboard');
         }
-    }, [user])
+    }, [user]);
 
     if (userAuth || authLoading) {
         return (
             <></>
-        )
+        );
     }
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        console.log("HELLO")
+        console.log('HELLO');
         event.preventDefault();
-        console.log(loginForm)
+        console.log(loginForm);
         signInWithEmailAndPassword(loginForm.email, loginForm.password);
-    }
+    };
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoginForm((prev) => ({
             ...prev,
             [event.target.name]: event.target.value
-        }))
-    }
+        }));
+    };
     
     return (
-        <Flex flexDirection="column" width="100%" mt={4}>
-            <Flex justifyContent="center" width="100%" height={["640px","640px","720px","720px"]}>
-                <Flex bg="#121212" border="1px solid black" flexDir="column" mt={[0,0,5,5]} width={['100%', '90%', '80%', '60%']} maxWidth="500px" height="620px" align="center">
-                    <Flex align="center" mt={9} direction="row">
-                        <Text fontSize={["24pt", "24pt", "28pt", "28pt"]} fontWeight={700} fontFamily="AvenirNext-DemiBold">Login to Rollsolid&nbsp;</Text>
+        <Flex direction="column" w="100%" mt={4}>
+            <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
+                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid black">
+                    <Flex align="center" direction="row" mt={9}>
+                        <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Login to Rollsolid&nbsp;</Text>
                         
                         {/* <1Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                         <GiRollingBomb fontSize="28pt" />
                     </Flex>
-                    <Text lineHeight="19px" width={["90%", "90%", "65%", "65%"]} textAlign="center" mt={3} mb={1} fontSize="13pt" fontFamily="AvenirNext-Regular" color="#868686">Explore your Poker games and simulate your strategy through the power of data</Text>
-                    <Flex mt={5} ml="auto" mr="auto" width={["90%", "90%", "65%", "65%"]} direction="column">
+                    <Text w={['90%', '90%', '65%', '65%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
+                    <Flex direction="column" w={['90%', '90%', '65%', '65%']} mt={5} mr="auto" ml="auto">
                         <form onSubmit={onSubmit}>
-                            <Text fontWeight={600} fontFamily="AvenirNext-Regular">Username</Text>
+                            <Text fontFamily="AvenirNext-Regular" fontWeight={600}>Username</Text>
                             
-                            
-                            
-                            <Input required name="email" type="email" onChange={onChange} border="none" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="45px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" borderRadius="0px" bg="#282828" mt={2} color="white" mb="17px" />
-                                
+                            <Input h="45px" mt={2} mb="17px" color="white" fontFamily="AvenirNext-DemiBold" bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
                         
-                            <Text fontWeight={600} fontFamily="AvenirNext-Regular">Password</Text>
-                            
+                            <Text fontFamily="AvenirNext-Regular" fontWeight={600}>Password</Text>
                                 
-                            <Input required name="password" onChange={onChange} _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} placeholder="" height="45px" focusBorderColor='black' fontFamily="AvenirNext-DemiBold" border="none" borderRadius="0px" mt={2} color="white" type="password" bg="#282828" />
+                            <Input h="45px" mt={2} color="white" fontFamily="AvenirNext-DemiBold" bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
                             
-                            <Text fontSize="10pt" mt={2} fontFamily='AvenirNext-Regular'>Forget your <Text onClick={() => router.push('/reset-password')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span" color="white">password</Text> ?</Text>
-                            <Box height="17px">
-                                <Text fontSize="10pt" color="red.300">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
+                            <Text mt={2} fontFamily='AvenirNext-Regular' fontSize="10pt">Forget your <Text as="span" color="white" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/reset-password')}>password</Text> ?</Text>
+                            <Box h="17px">
+                                <Text color="red.300" fontSize="10pt">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                             </Box>
-                            <Button isLoading={loading} width="100%" type="submit" _hover={{color: 'white'}} border="1px solid #494D51" height="48px" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" borderRadius="0px" mt={6} color="black">Login to Your Account&nbsp;&nbsp;→</Button>
-                            <Box width="100%" mt={5}>
-                                    <GoogleSignIn />
+                            <Button w="100%" h="48px" mt={6} color="black" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" border="1px solid #494D51" borderRadius="0px" _hover={{color: 'white'}} isLoading={loading} type="submit">Login to Your Account&nbsp;&nbsp;→</Button>
+                            <Box w="100%" mt={5}>
+                                <GoogleSignIn />
                             </Box>
-                            <Text textAlign="center" fontSize="10pt" mt={5} fontFamily='AvenirNext-Regular'>New to Rollsolid? <Text onClick={() => router.push('/signup')} _hover={{cursor: 'pointer'}} textDecoration="underline" fontFamily='AvenirNext-DemiBold' as="span" color="purple.300">Sign Up</Text></Text>
+                            <Text mt={5} fontFamily='AvenirNext-Regular' fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" color="purple.300" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
                         </form>
                     </Flex>
                     {/* <Flex align="center" flexDirection="row" mt={6} borderTop="1px solid black" bg="#353535" width="100%" h="36px">
@@ -106,6 +97,6 @@ const UserLogin:React.FC = () => {
             </Flex>
             <Footer />
         </Flex>
-    )
-}
+    );
+};
 export default UserLogin;

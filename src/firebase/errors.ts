@@ -4,4 +4,4 @@ export const FIREBASE_ERRORS = {
     'Firebase: Error (auth/invalid-email).': 'Invalid email or password',
     'Firebase: Error (auth/wrong-password).': 'Invalid email or password',
     'Firebase: Error (auth/popup-closed-by-user).': 'Provider popup was closed by user. Please try again.'
-}
+};
