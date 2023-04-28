@@ -5,7 +5,11 @@ export const getWindowTypeProps = (type: WindowType) => {
     case 'timer':
         return {
             title: 'Timer'
-        }; 
+        };
+    case 'notes':
+        return {
+            title: 'Notes'
+        };
     default:
         return {};
     }

@@ -11,7 +11,7 @@ import { useRecoilState } from 'recoil';
 import { frontWindowState } from '@/atoms/frontWindowAtom';
 import { useEffect, useState } from 'react';
 import { Button, Flex, Text } from '@chakra-ui/react';
-import { RxCross1 } from 'react-icons/rx';
+import { RxCross1, RxGear } from 'react-icons/rx';
 import { FiMinimize2 } from 'react-icons/fi';
 import { useWindowSize } from 'rooks';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -189,6 +189,11 @@ const WindowWrapper:React.FC<Props> = (props) => {
                         <Text fontFamily="AvenirNext-DemiBold" fontSize="11pt">{props.title}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2}>
+                        {windowState.maxZIndex === frontWindow.maxZ && (
+                            <Button w="10px" h="100%" p="0" color="grey" fontSize="12pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer', color: 'white'}} onClick={() => toggleMinimized(props.type.processId)}>
+                                <RxGear  />
+                            </Button>
+                        )}
                         <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
                             <FiMinimize2 color="white" />
                         </Button>

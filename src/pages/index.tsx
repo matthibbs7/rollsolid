@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { windowsState } from '@/atoms/windowsAtom';
 import { useRecoilState } from 'recoil';
 import { WindowState } from '@/types/windows';
@@ -75,6 +75,11 @@ export default function Home() {
                     h="100%"
                 >
                     <>
+                        {minimizedWindows.stack.length === 0 && (
+                            <Flex mt={10} ml={10}>
+                                <Text fontWeight={600}>Empty :(</Text>
+                            </Flex>
+                        )}
                         {minimizedWindows.stack.map((w) => {
                             if (!w.isMinimizied) {
                                 const windowComponent = getWindowComponent(w.type);

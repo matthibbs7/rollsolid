@@ -26,14 +26,14 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
     // }, [user])
 
     return (
-        <Flex align="center" h="100%" ml="auto">  
+        <Flex align="center" h="100%" ml={user ? '0px' : 'auto'} >  
             {user ? (
                 <Menu>
                     {({ isOpen }) => (
                         <>
-                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} bg="none" border="1px solid #121212" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen} motionPreset="none">
+                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} bg="#121212" border="1px solid #121212" borderRadius="0" _hover={{cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: '#1C1C1C', border: '1px solid #494D51'}} isActive={isOpen} motionPreset="none">
                                 <Flex textAlign="center">
-                                    <Text p={0.5} px={2.5} color="white" fontFamily="AvenirNext-DemiBold" borderRadius="0px">{user.email.match(emailRegex)}</Text>
+                                    <Text p={0.5} px={1.5} color="white" fontFamily="AvenirNext-DemiBold" borderRadius="0px">{user.email.match(emailRegex)}&nbsp;&nbsp;</Text>
                                     <Text as="span" mt="5px" mr={2} ml={-1} fontSize="10pt"><BsChevronDown /></Text>
                                     {/* <Button onClick={() => signOut(auth)} _hover={{backgroundColor: '#1f1f1f'}} bg={cmb} h="60%" borderRadius="0" fontWeight={500} fontSize="11pt">Profile</Button> */}
                                 </Flex>

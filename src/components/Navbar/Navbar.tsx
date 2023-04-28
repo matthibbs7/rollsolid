@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
-import { Box, Button, Flex, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, Tooltip, useColorMode } from '@chakra-ui/react';
 import { GiRollingBomb, GiAbstract089 } from 'react-icons/gi';
 import { FaChartLine } from 'react-icons/fa';
 import AuthButtons from '../Auth/AuthButtons';
@@ -8,6 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/clientApp';
 import { SiInformatica } from 'react-icons/si';
 import WidgetNavbar from '../Widget/WidgetNavbar/WidgetNavbar';
+import { IdenticonImg } from './IdenticonImage.tsx/IdenticonImage';
 
 export const Navbar = () => {
 
@@ -15,7 +18,7 @@ export const Navbar = () => {
     const router = useRouter();
     const cmb = colorMode === 'light' ? '#121212' : 'white';
     const cmt = colorMode === 'light' ? '#F6F7F9' : '#2F343C';
-
+    const emailRegex = /.+?(?=@)/;
     const [user] = useAuthState(auth);
 
     return (
@@ -46,7 +49,16 @@ export const Navbar = () => {
             )}
             
             {/* <Button _hover={{backgroundColor: '#252A30'}} ml={7} bg={cmb} h="55%" borderRadius="3px" fontWeight={500}>Hands</Button> */}
+            {/* <Box w="1px" h="45%" mr={3} ml="auto" borderLeft="1px solid " /> */}
             
+            {user?.email &&
+                <Tooltip mt={1.5} mr={2} fontWeight={700} bg='#434343' label='Status: Connected' placement='bottom'>
+                    <Box mr="6px" ml="auto" p={0.5} bg='none' border='1.5px solid none' borderRadius='12px' _hover={{bg: 'none'}}>
+                        <IdenticonImg saturation='50' lightness='50' height="28px" width="28px" username={user.email.match(emailRegex)?.toString()!} />
+                    </Box> 
+                </Tooltip> 
+            }
+
             <AuthButtons user={user} />
             
             {/* <Button onClick={toggleColorMode} ml="auto" mr="5px" border="2px solid red" colorScheme="facebook">Toggle {colorMode === 'light' ? 'Dark' : 'Light'}</Button> */}

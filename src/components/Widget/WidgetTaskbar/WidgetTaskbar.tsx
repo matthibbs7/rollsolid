@@ -45,14 +45,13 @@ const WidgetTaskbar:React.FC = () => {
                     return (
                         <Flex key={w.processId} align='center' m={0.5} pr={1} pl={2} bg='#434343' borderRadius={3} _hover={{bg: '#636363', cursor: 'pointer'}} onClick={() => toggleMinimized(w.processId)}>
                             <Text fontWeight={600}>{w.type}</Text>
-                            <Text ml={2} fontSize="9pt" onClick={() => removeFromStack(w)}><RxCross1 color="white" /></Text>
+                            <Text ml={2} fontSize="9pt" _hover={{color: 'red'}}><RxCross1 color="white" /></Text>
                         </Flex>
                     ); 
                 } 
             })
 
             }
-            <Text>Test</Text>
         </Flex>
     );
 };
