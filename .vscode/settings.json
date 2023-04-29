@@ -2,5 +2,8 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "eslint.validate": ["typescript"]
+    "eslint.validate": [
+        "typescript"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
