@@ -82,12 +82,10 @@ const WidgetNavbar:React.FC = () => {
             <Menu>
                 {({ isOpen }) => (
                     <>
-                        <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg={cmb} border="1px solid #121212" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen} motionPreset="none">
-                            {/* <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="13pt"><MdOutlineWidgets color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Widgets</Text></Button> */}
+                        <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg={cmb} border="1px solid #121212" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen}>
                             <Flex align='center' textAlign="center">
                                 <Text fontSize='13pt'><MdOutlineWidgets color="#D3D8DE" /></Text>
-                                <Text pt={0.5} pl={2.5} color="white" fontFamily="AvenirNext-DemiBold" fontSize='11pt' borderRadius="0px">Widgets</Text>
-                                    
+                                <Text pt={0.5} pl={2.5} color="white" fontFamily="AvenirNext-DemiBold" fontSize='11pt' borderRadius="0px">Widgets</Text>    
                             </Flex>
                         </MenuButton>
                         <MenuList w="600px" minW="0" h="236px" mt={1.5} p="1px" py={0} bg="#121212" border="1px solid #494D51" borderRadius="0" motionProps={{
@@ -166,7 +164,6 @@ const WidgetNavbar:React.FC = () => {
                                   
                             </Flex>
                             <Text mt={-1} ml={5} color='#7083B3' fontSize='11.5pt' fontWeight={600}>Select a widget above to load it on your dashboard.</Text> 
-                            {/* <Text mt={3} mb={3} ml={5} fontSize="8pt" fontFamily="AvenirNext-Regular" color="#454545">© 2023 Rollsolid Inc. All rights reserved</Text> */}
                         </MenuList>
                     </>
                 )}
