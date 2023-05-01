@@ -31,7 +31,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                 <Menu>
                     {({ isOpen }) => (
                         <>
-                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} bg="#121212" border="1px solid #121212" borderRadius="0" _hover={{cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: '#1C1C1C', border: '1px solid #494D51'}} isActive={isOpen} motionPreset="none">
+                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} bg="#121212" border="1px solid #121212" borderRadius="0" _hover={{cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: '#1C1C1C', border: '1px solid #494D51'}} isActive={isOpen}>
                                 <Flex textAlign="center">
                                     <Text p={0.5} px={2} color="white" borderRadius="0px">{user.email.match(emailRegex)}&nbsp;&nbsp;</Text>
                                     <Text as="span" mt="5px" mr={2} ml={-1} fontSize="10pt"><BsChevronDown /></Text>
@@ -43,7 +43,6 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                 animate: 'visible'}}>
                                 <Flex mt={2.5} px={1} borderBottom="1px solid #1c1c1c">
                                     <Flex align='center' mb={2.5} ml={3} p={0.25} pr={2}>
-                                        {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
                                         <Text color="#C7AE7A" fontFamily='Inter' fontSize='10.5pt' fontWeight={700}>&nbsp; ACCOUNT</Text>
                                     </Flex>
                                 </Flex>

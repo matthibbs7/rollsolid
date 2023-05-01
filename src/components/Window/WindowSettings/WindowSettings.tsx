@@ -1,7 +1,5 @@
 import React from 'react';
 import { WindowState } from '@/types/windows';
-import { useRecoilState } from 'recoil';
-import { windowsState } from '@/atoms/windowsAtom';
 import { Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Flex, Checkbox, Input, Box } from '@chakra-ui/react';
 
 interface WindowSettingsProps {
@@ -12,16 +10,13 @@ interface WindowSettingsProps {
 }
 
 export const WindowSettings = ({ currentWindow, isOpen, onOpen, onClose }: WindowSettingsProps) => {
-    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
+    // const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} size='xl'>
                 <ModalOverlay />
                 <ModalContent p={4} bg='#171717' border='1px solid #2B2B2B' borderRadius='0px'>
-                    {/* <Box w='100%' h='20px' bg='black'>
-                        
-                    </Box> */}
                     <ModalHeader p='2px' px={1.5} color='#C7AE7A' fontSize='10.5pt' fontWeight={700} bg='#171717' border='1px solid grey'>WINDOW SETTINGS</ModalHeader>
                     <ModalBody mt={4} p={0}>
                         <Flex w='100%' p={0.5} px={1.5} border='1px solid grey'>
