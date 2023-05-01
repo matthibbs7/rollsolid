@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { mode } from '@chakra-ui/theme-tools';
 import { extendTheme } from '@chakra-ui/react';
+import { switchTheme } from './components/switch';
 const styles = {
     fonts: {
-        heading: '\'Figtree\', "Helvetica Neue", Arial, sans-serif',
-        body: '\'Figtree\', "Helvetica Neue", Arial, sans-serif',
+        heading: '"Mulish", "Helvetica Neue", Arial, sans-serif',
+        body: '"Mulish", "Helvetica Neue", Arial, sans-serif',
     },
     global: (props: any) => ({
         body: {
@@ -20,9 +21,11 @@ const config = {
     useSystemColorMode: false,
 };
 
+const components = { Switch: switchTheme };
+
 const colors = {
     primary: '#e29578',
 };
 
-const theme = extendTheme({ styles, colors, config });
+const theme = extendTheme({ styles, colors, config, components });
 export default theme;

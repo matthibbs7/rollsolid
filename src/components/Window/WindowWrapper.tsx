@@ -10,9 +10,9 @@ import { DraggableEvent } from 'react-draggable';
 import { useRecoilState } from 'recoil';
 import { frontWindowState } from '@/atoms/frontWindowAtom';
 import { useEffect, useState } from 'react';
-import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Flex, Input, Switch, Text, useDisclosure } from '@chakra-ui/react';
 import { RxCross1 } from 'react-icons/rx';
-import { IoReorderThree } from 'react-icons/io5';
+import { IoCube, IoReorderThree } from 'react-icons/io5';
 import { FiMinimize2 } from 'react-icons/fi';
 import { useWindowSize } from 'rooks';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -41,6 +41,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [windowSettings, setWindowSettings] = useState(false);
 
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({
@@ -197,8 +198,8 @@ const WindowWrapper:React.FC<Props> = (props) => {
                                 <IoReorderThree  />
                             </Button>
                         )} */}
-                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
-                            <IoReorderThree  />
+                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => setWindowSettings(!windowSettings)}>
+                            {windowSettings ? <IoCube /> : <IoReorderThree  />}
                         </Flex>
                         <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
                             <FiMinimize2  />
@@ -214,8 +215,37 @@ const WindowWrapper:React.FC<Props> = (props) => {
                         </Button> */}
                     </Flex>
                 </Flex>
-                <Flex w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
-                    {props.children}
+                <Flex direction='column' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
+                    {windowSettings ? (
+                        <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid grey'>
+                            <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
+                            <Flex align='center' mt={2}>
+                                <Flex direction='column'>
+                                    <Text>Widget Name</Text>
+                                    <Text color='#868686' fontSize='10.5pt'>Title displayed on the window handle</Text>
+                                </Flex>
+                                <Input maxW='120px' maxH='26px' ml='auto' fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' value={props.title} />
+                                {/* <Switch ml='auto' variant='boxy' /> */}
+                            </Flex>
+                            <Flex align='center' mt={2}>
+                                <Flex direction='column'>
+                                    <Text>Handle Color</Text>
+                                    <Text color='#868686' fontSize='10.5pt'>Hex code for handle color</Text>
+                                </Flex>
+                                <Input maxW='120px' maxH='26px' ml='auto' fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' value={props.title} />
+                            </Flex>
+                            <Flex align='center' mt={2}>
+                                <Flex direction='column'>
+                                    <Text>Lock Position</Text>
+                                    <Text color='#868686' fontSize='10.5pt'>Disable resize/drag</Text>
+                                </Flex>
+                                <Switch ml='auto' variant='boxy' />
+                            </Flex>
+                        </Flex>
+                    ) : (
+                        props.children
+                    )}
+                    
                     <WindowSettings isOpen={isOpen} onOpen={onOpen} onClose={onClose} currentWindow={props.type} />
                 </Flex>
             </Flex>

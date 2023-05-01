@@ -11,6 +11,7 @@ import { auth } from '@/firebase/clientApp';
 import { SiInformatica } from 'react-icons/si';
 import WidgetNavbar from '../Widget/WidgetNavbar/WidgetNavbar';
 import { IdenticonImg } from './IdenticonImage.tsx/IdenticonImage';
+import { TbBook2 } from 'react-icons/tb';
 
 export const Navbar = () => {
 
@@ -52,7 +53,7 @@ export const Navbar = () => {
                 <WidgetNavbar />
                 <Button h="60%" ml={0} fontSize="12pt" fontWeight={700} bg={cmb} border="1px solid #121212" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Charts</Text></Button>
                 <Button h="60%" ml={0} fontSize="11pt" fontWeight={700} bg={cmb} border="1px solid #121212" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><GiAbstract089 color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Simulate</Text></Button>
-                <Button h="60%" ml={0} fontSize="15pt" fontWeight={700} bg={cmb} border="1px solid #121212" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><FaChartLine color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Play</Text></Button>
+                <Button h="60%" ml={0} fontSize="15pt" fontWeight={700} bg={cmb} border="1px solid #121212" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Resources</Text></Button>
             </>
             
             {/* <Button _hover={{backgroundColor: '#252A30'}} ml={7} bg={cmb} h="55%" borderRadius="3px" fontWeight={500}>Hands</Button> */}
