@@ -10,12 +10,14 @@ import { DraggableEvent } from 'react-draggable';
 import { useRecoilState } from 'recoil';
 import { frontWindowState } from '@/atoms/frontWindowAtom';
 import { useEffect, useState } from 'react';
-import { Button, Flex, Text } from '@chakra-ui/react';
-import { RxCross1, RxGear } from 'react-icons/rx';
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { RxCross1 } from 'react-icons/rx';
+import { IoReorderThree } from 'react-icons/io5';
 import { FiMinimize2 } from 'react-icons/fi';
 import { useWindowSize } from 'rooks';
 import { windowsState } from '@/atoms/windowsAtom';
 import { WindowState } from '@/types/windows';
+import { WindowSettings } from './WindowSettings/WindowSettings';
 
 interface State {
   width: number | string;
@@ -38,7 +40,8 @@ const WindowWrapper:React.FC<Props> = (props) => {
     const [frontWindow, setFrontWindow] = useRecoilState(frontWindowState);
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
-    
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({
         width: props.type.width ? props.type.width : '400px',
@@ -186,24 +189,34 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     bg={windowState.maxZIndex === frontWindow.maxZ ? '#121212' : '#2b2b2b'}
                 >   
                     <Flex w="90%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontFamily="AvenirNext-DemiBold" fontSize="11pt">{props.title}</Text>
+                        <Text fontSize="11pt" fontWeight={700}>{props.title}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2}>
-                        {windowState.maxZIndex === frontWindow.maxZ && (
-                            <Button w="10px" h="100%" p="0" color="grey" fontSize="12pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer', color: 'white'}} onClick={() => toggleMinimized(props.type.processId)}>
-                                <RxGear  />
+                        {/* {windowState.maxZIndex === frontWindow.maxZ && (
+                            <Button w="10px" h="100%" p="0" color="white" fontSize="12pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer', color: 'white'}} onClick={onOpen}>
+                                <IoReorderThree  />
                             </Button>
-                        )}
-                        <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
+                        )} */}
+                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
+                            <IoReorderThree  />
+                        </Flex>
+                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
+                            <FiMinimize2  />
+                        </Flex>
+                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
+                            <RxCross1 />
+                        </Flex>
+                        {/* <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
                             <FiMinimize2 color="white" />
                         </Button>
                         <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
                             <RxCross1 color="white" />
-                        </Button>
+                        </Button> */}
                     </Flex>
                 </Flex>
                 <Flex w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
                     {props.children}
+                    <WindowSettings isOpen={isOpen} onOpen={onOpen} onClose={onClose} currentWindow={props.type} />
                 </Flex>
             </Flex>
         </Rnd>

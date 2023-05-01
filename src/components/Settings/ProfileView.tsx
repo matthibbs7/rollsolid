@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Flex, Box, Divider, Switch } from '@chakra-ui/react';
+import { Text, Flex, Divider, Switch } from '@chakra-ui/react';
 import Footer from '../Footer/Footer';
 import { IdenticonImg } from '../Navbar/IdenticonImage.tsx/IdenticonImage';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -22,15 +22,15 @@ const ProfileView:React.FC = () => {
     return (
         <Flex direction="column" w="100%">
             <Flex justify="center" w="100%" h={['680px','680px','720px','720px']} px={4} py={4}>
-                <Flex direction="column" w={['100%', '100%', '100%', '100%']} maxW="1228px" h="660px" mt={[0,0,2,2]} px={10} bg="#121212" border="1px solid black">
+                <Flex direction="column" w={['100%', '100%', '100%', '100%']} maxW="1228px" h="660px" mt={[0,0,2,2]} px={10} bg="#121212" border="1px solid #494D51">
                     <Flex direction="row" mt={9} mr='auto' mb={5}>
                         <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Profile&nbsp;</Text>
                     </Flex>
                     <Flex align='center'>
                         {user?.email &&
-                        <Box justifyContent='center' w='62px' h='62px' mr={4} p={1} bg='#1c1c1c' border='1px solid grey' borderRadius='34px'>
+                        <Flex align='center' justify='center' w='62px' h='62px' mr={4} p={1} pb={1} bg='none' border='1px solid grey' borderRadius='34px'>
                             <IdenticonImg username={user.email.match(emailRegex)?.toString() ?? ''}  saturation='50' lightness='50' height="59px" width="59px" />
-                        </Box> 
+                        </Flex> 
                         }
                         <Text mt={5} fontFamily='AvenirNext-DemiBold' fontSize='14.5pt'>@{user?.email?.match(emailRegex)?.toString() ?? ''}</Text>
                     </Flex>

@@ -60,23 +60,23 @@ const UserLogin:React.FC = () => {
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
                 <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid black">
                     <Flex align="center" direction="row" mt={9}>
-                        <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Login to Rollsolid&nbsp;</Text>
+                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
                         
                         {/* <1Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                         <GiRollingBomb fontSize="28pt" />
                     </Flex>
-                    <Text w={['90%', '90%', '65%', '65%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
+                    <Text w={['90%', '90%', '70%', '69%']} mt={3} mb={1} color="#868686" fontSize="12pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
                     <Flex direction="column" w={['90%', '90%', '65%', '65%']} mt={5} mr="auto" ml="auto">
                         <form onSubmit={onSubmit}>
-                            <Text fontFamily="AvenirNext-Regular" fontWeight={600}>Username</Text>
+                            <Text fontWeight={600}>Username</Text>
                             
-                            <Input h="45px" mt={2} mb="17px" color="white" fontFamily="AvenirNext-DemiBold" bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
+                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={600} bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
                         
-                            <Text fontFamily="AvenirNext-Regular" fontWeight={600}>Password</Text>
+                            <Text fontWeight={600}>Password</Text>
                                 
-                            <Input h="45px" mt={2} color="white" fontFamily="AvenirNext-DemiBold" bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
+                            <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
                             
-                            <Text mt={2} fontFamily='AvenirNext-Regular' fontSize="10pt">Forget your <Text as="span" color="white" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/reset-password')}>password</Text> ?</Text>
+                            <Text mt={2} fontSize="10pt">Forget your <Text as="span" color="white" fontWeight={600} textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/reset-password')}>password</Text> ?</Text>
                             <Box h="17px">
                                 <Text color="red.300" fontSize="10pt">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                             </Box>
@@ -84,7 +84,7 @@ const UserLogin:React.FC = () => {
                             <Box w="100%" mt={5}>
                                 <GoogleSignIn />
                             </Box>
-                            <Text mt={5} fontFamily='AvenirNext-Regular' fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" color="purple.300" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
+                            <Text mt={5} fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" color="purple.300" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
                         </form>
                     </Flex>
                     {/* <Flex align="center" flexDirection="row" mt={6} borderTop="1px solid black" bg="#353535" width="100%" h="36px">

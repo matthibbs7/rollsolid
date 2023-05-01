@@ -95,7 +95,7 @@ const WidgetNavbar:React.FC = () => {
                             animate: 'visible'}}>
                             <Flex direction='row' ml={2} px={2} py={4}>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>PROBABILITY</Text>
+                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>PROBABILITY</Text>
                                     <Divider />
                                     
                                     <Flex align='center' direction='row' h='32px' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
@@ -120,7 +120,7 @@ const WidgetNavbar:React.FC = () => {
                                     
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>GRID</Text>
+                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>GRID</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiPokerHand color='#87B6D3' />
@@ -140,7 +140,7 @@ const WidgetNavbar:React.FC = () => {
                                     </Flex>
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>MISC</Text>
+                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>MISC</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addTimerWidget()}>
@@ -160,12 +160,12 @@ const WidgetNavbar:React.FC = () => {
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderBottom='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MdOutlineTimer color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Timer</Text>
+                                        <Text ml={2} color='#87B6D3' fontWeight={600}>Timer</Text>
                                     </Flex> 
                                 </Flex>
                                   
                             </Flex>
-                            <Text mt={-1} ml={5} color='#7083B3' fontFamily='AvenirNext-DemiBold'>Select a widget above to load it on your dashboard.</Text> 
+                            <Text mt={-1} ml={5} color='#7083B3' fontSize='11.5pt' fontWeight={600}>Select a widget above to load it on your dashboard.</Text> 
                             {/* <Text mt={3} mb={3} ml={5} fontSize="8pt" fontFamily="AvenirNext-Regular" color="#454545">© 2023 Rollsolid Inc. All rights reserved</Text> */}
                         </MenuList>
                     </>
