@@ -175,7 +175,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
             onResizeStop={onResizeStop}
             enableUserSelectHack
             bounds="parent"
-            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: '#1c1c1c'}}
+            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: '#171717'}}
             {...defaultStyle}
             onClick={onDragStart}
         >
@@ -187,7 +187,8 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     h="30px" 
                     p={1}
                     px={3}
-                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#121212' : '#2b2b2b'}
+                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#242424' : '#0f0f0f'}
+                    borderBottom='1px solid #2f2f2f'
                 >   
                     <Flex w="90%" _hover={{cursor: 'all-scroll'}}>   
                         <Text fontSize="11pt" fontWeight={700}>{props.title}</Text>

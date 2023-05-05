@@ -58,7 +58,7 @@ const UserLogin:React.FC = () => {
     return (
         <Flex direction="column" w="100%" mt={4}>
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
-                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid black">
+                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#0f0f0f" border="1px solid #494D51">
                     <Flex align="center" direction="row" mt={9}>
                         <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
                         
@@ -84,7 +84,7 @@ const UserLogin:React.FC = () => {
                             <Box w="100%" mt={5}>
                                 <GoogleSignIn />
                             </Box>
-                            <Text mt={5} fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" color="purple.300" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
+                            <Text mt={5} fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" color="purple.300" fontWeight={700} textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
                         </form>
                     </Flex>
                     {/* <Flex align="center" flexDirection="row" mt={6} borderTop="1px solid black" bg="#353535" width="100%" h="36px">

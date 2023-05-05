@@ -68,7 +68,7 @@ const WidgetNavbar:React.FC = () => {
             render: () => (
                 <Flex align='center' w='220px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
                     <BsInfoLg fontSize='12.5pt' color='white' />
-                    <Text ml={2} color='white' fontFamily='AvenirNext-Regular'>Notes Widget loaded</Text>
+                    <Text ml={2} color='white' >Notes Widget loaded</Text>
                 </Flex>
             ),
             duration: 1000,
@@ -99,21 +99,21 @@ const WidgetNavbar:React.FC = () => {
                                     <Flex align='center' direction='row' h='32px' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none'>
                                             <IoStatsChart color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Ranges</Text>
+                                            <Text ml={2} color='#87B6D3' >Ranges</Text>
                                         </MenuItem>
                                     </Flex>
                                     
                                     <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <IoStatsChart color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Ranges</Text>
+                                        <Text ml={2} color='#87B6D3' >Ranges</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <IoStatsChart color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Ranges</Text>
+                                        <Text ml={2} color='#87B6D3' >Ranges</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderBottom='1px solid grey' borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiSplitArrows color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>EQ</Text>
+                                        <Text ml={2} color='#87B6D3' >EQ</Text>
                                     </Flex>
                                     
                                 </Flex>
@@ -122,19 +122,19 @@ const WidgetNavbar:React.FC = () => {
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Hand Reference</Text>
+                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Hand Reference</Text>
+                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Hand Reference</Text>
+                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderBottom='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <GiCubes color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Potential Flop</Text>
+                                        <Text ml={2} color='#87B6D3' >Potential Flop</Text>
                                     </Flex>
                                 </Flex>
                                 <Flex direction='column' w='33%'>
@@ -143,18 +143,18 @@ const WidgetNavbar:React.FC = () => {
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addTimerWidget()}>
                                             <MdOutlineTimer color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Timer</Text>
+                                            <Text ml={2} color='#87B6D3' >Timer</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
                                             <FaRegStickyNote color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Notes</Text>
+                                            <Text ml={2} color='#87B6D3' >Notes</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <FaRegStickyNote color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontFamily='AvenirNext-Demibold'>Notes</Text>
+                                        <Text ml={2} color='#87B6D3' >Notes</Text>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderBottom='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MdOutlineTimer color='#87B6D3' />

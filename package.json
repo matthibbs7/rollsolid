@@ -16,6 +16,8 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/figtree": "^4.5.3",
+    "@fontsource/ibm-plex-sans": "^4.5.13",
+    "@fontsource/inter": "^4.5.15",
     "@fontsource/montserrat": "^4.5.14",
     "@fontsource/mulish": "^4.5.14",
     "@fontsource/nunito": "^4.5.12",
