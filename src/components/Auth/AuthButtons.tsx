@@ -68,7 +68,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                 <Box w="100%" mt={6} borderBottom="1px solid #1c1c1c"></Box>
                                     
                                 <Flex align="center" h="35px" mt={3} px={1} onClick={() => signOut(auth)}>
-                                    <Flex align="center" direction="row" w="100px" h="30px" mr={5} ml="auto" border="1px solid #1c1c1c" _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid grey'}}>
+                                    <Flex align="center" direction="row" w="100px" h="30px" mr={5} ml="auto" border="1px solid #1f2224" _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid grey'}}>
                                         <Text ml={2} color="white"><TbLogout /></Text>
                                         <Text h="35px" mt="12px" color="white">&nbsp; Logout</Text>
                                     </Flex>

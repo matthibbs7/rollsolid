@@ -10,7 +10,7 @@ const styles = {
     global: (props: any) => ({
         body: {
             color: mode('#F6F7F9', 'whiteAlpha.900')(props),
-            bg: mode('#202020', 'red.300')(props),
+            bg: mode('#121212', 'red.300')(props),
             fontFamily: '\'Figtree\', "Helvetica Neue", Arial, sans-serif',
         },
     }),

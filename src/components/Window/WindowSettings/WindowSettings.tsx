@@ -1,55 +1,66 @@
-import React from 'react';
-import { WindowState } from '@/types/windows';
-import { Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Flex, Checkbox, Input, Box } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Text, Flex, Input, Box, Switch, Button } from '@chakra-ui/react';
 
 interface WindowSettingsProps {
-    currentWindow: WindowState;
-    isOpen: boolean;
-    onOpen: () => void;
-    onClose: () => void;
+    windowTitle: string;
+    windowDefaultTitle: string;
+    windowColor: string;
+    setWindowTitle: (title: string) => void;
+    setWindowColor: (color: string) => void;
 }
 
-export const WindowSettings = ({ currentWindow, isOpen, onOpen, onClose }: WindowSettingsProps) => {
+export const WindowSettings = ({ 
+    windowTitle, 
+    windowDefaultTitle, 
+    windowColor, 
+    setWindowTitle, 
+    setWindowColor 
+}: WindowSettingsProps) => {
     // const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
+    const [stateSettings, setStateSettings] = useState({
+        widgetName: windowDefaultTitle,
+        handleColor: '#121212',
+        lockResize: false,
+    });
     
+    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+    };
+
     return (
-        <>
-            <Modal isOpen={isOpen} onClose={onClose} size='xl'>
-                <ModalOverlay />
-                <ModalContent p={4} bg='#171717' border='1px solid #2B2B2B' borderRadius='0px'>
-                    <ModalHeader p='2px' px={1.5} color='#C7AE7A' fontSize='10.5pt' fontWeight={700} bg='#171717' border='1px solid grey'>WINDOW SETTINGS</ModalHeader>
-                    <ModalBody mt={4} p={0}>
-                        <Flex w='100%' p={0.5} px={1.5} border='1px solid grey'>
-                            <Text color='white' fontFamily='AvenirNext-Regular' fontSize='11pt'>Type {currentWindow.type}</Text>
-                            <Checkbox ml='auto' fontSize='11pt' borderColor='grey' borderRadius='0px'colorScheme='facebook' />
-                        </Flex>
-                        <Flex align='center' w='100%' p={0.5} px={1.5} border='1px solid grey'>
-                            <Text color='white' fontFamily='AvenirNext-Regular' fontSize='11pt'>Widget name</Text>
-                            <Input w='30%' h='18px' ml='auto' borderRadius='0' _placeholder={{marginLeft: '0', padding: '0', color: '#7083b3'}} placeholder='Notes' />
-                        </Flex>
-                        <Flex w='100%' p={0.5} px={1.5} border='1px solid grey'>
-                            <Text color='white' fontFamily='AvenirNext-Regular' fontSize='11pt'>Lock resize</Text>
-                            <Checkbox ml='auto' fontSize='11pt' borderColor='grey' borderRadius='0px'colorScheme='facebook' />
-                        </Flex>
-                        <Flex w='100%' p={0.5} px={1.5} border='1px solid grey'>
-                            <Text color='white' fontFamily='AvenirNext-Regular' fontSize='11pt'>Label color</Text>
-                            <Flex align='center' ml='auto'>
-                                <Text color='#b6b6b6'>#121212</Text>
-                                <Box w='14px' h='14px' bg='red.300'>
-
-                                </Box>
-                                
-                            </Flex>
-                        </Flex>
-                        
-                    </ModalBody>
-
-                    <ModalFooter mt={-2} mb={-7} pl={0}>
-                        <Text mr='auto' color='#7083b3' fontFamily='AvenirNext-DemiBold' fontSize='11pt'>Learn more about the settings <Text as='span' color='gray.400' textDecoration='underline'>here</Text></Text>
-                        <Button mr={-9} color='#7083b3' fontFamily='AvenirNext-DemiBold' fontSize='11pt' _hover={{bg: 'none'}} onClick={onClose} variant='ghost'>Exit</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-        </>
+        <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid grey'>
+            <form>
+                <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
+                <Flex align='center' mt={2}>
+                    <Flex direction='column'>
+                        <Text>Widget Name</Text>
+                        <Text color='#868686' fontSize='10.5pt'>Title displayed on the window handle</Text>
+                    </Flex>
+                    <Input maxW='120px' maxH='26px' ml='auto' pl={2} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} _placeholder={{color: 'grey'}} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setWindowTitle(event.target.value)} placeholder={windowDefaultTitle} value={windowTitle} />
+                    {/* <Switch ml='auto' variant='boxy' /> */}
+                </Flex>
+                <Flex align='center' mt={2}>
+                    <Flex direction='column'>
+                        <Text>Handle Color</Text>
+                        <Text color='#868686' fontSize='10.5pt'>Hex code for handle color</Text>
+                    </Flex>
+                    <Flex align='center' ml='auto'>
+                        <Box w='20px' h='20px' bg={`#${windowColor}`} />
+                        <Text pos='relative' top='1px' left='24px' w='10px' color='grey'>#</Text>
+                        <Input pos='relative' maxW='84px' maxH='26px' ml={1} pt={0.5} pr={1} pl={6} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} maxLength={6} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setWindowColor(event.target.value);}} placeholder='ffffff' value={windowColor} />
+                    </Flex>
+                </Flex>
+                <Flex align='center' mt={2}>
+                    <Flex direction='column'>
+                        <Text>Lock Position</Text>
+                        <Text color='#868686' fontSize='10.5pt'>Disable resize/drag</Text>
+                    </Flex>
+                    <Switch ml='auto' variant='boxy' />
+                </Flex>
+                <Button w='84px' h='26px' mt={5} mb={1} bg='black' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} type='submit'>Save</Button>
+            </form>
+        </Flex>
     );
 };
+export default WindowSettings;

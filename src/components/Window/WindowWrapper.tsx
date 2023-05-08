@@ -10,7 +10,7 @@ import { DraggableEvent } from 'react-draggable';
 import { useRecoilState } from 'recoil';
 import { frontWindowState } from '@/atoms/frontWindowAtom';
 import { useEffect, useState } from 'react';
-import { Flex, Input, Switch, Text, useDisclosure } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { RxCross1 } from 'react-icons/rx';
 import { IoCube, IoReorderThree } from 'react-icons/io5';
 import { FiMinimize2 } from 'react-icons/fi';
@@ -40,8 +40,10 @@ const WindowWrapper:React.FC<Props> = (props) => {
     const [frontWindow, setFrontWindow] = useRecoilState(frontWindowState);
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
-    const { isOpen, onOpen, onClose } = useDisclosure();
+
     const [windowSettings, setWindowSettings] = useState(false);
+    const [windowColor, setWindowColor] = useState('242424');
+    const [windowTitle, setWindowTitle] = useState<string>('');
 
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({
@@ -187,11 +189,11 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     h="30px" 
                     p={1}
                     px={3}
-                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#242424' : '#0f0f0f'}
+                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#242424' : '#242424'}
                     borderBottom='1px solid #2f2f2f'
                 >   
                     <Flex w="90%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontSize="11pt" fontWeight={700}>{props.title}</Text>
+                        <Text fontSize="11pt" fontWeight={700}>{windowTitle ? windowTitle : props.title}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2}>
                         {/* {windowState.maxZIndex === frontWindow.maxZ && (
@@ -218,36 +220,10 @@ const WindowWrapper:React.FC<Props> = (props) => {
                 </Flex>
                 <Flex direction='column' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
                     {windowSettings ? (
-                        <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid grey'>
-                            <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
-                            <Flex align='center' mt={2}>
-                                <Flex direction='column'>
-                                    <Text>Widget Name</Text>
-                                    <Text color='#868686' fontSize='10.5pt'>Title displayed on the window handle</Text>
-                                </Flex>
-                                <Input maxW='120px' maxH='26px' ml='auto' fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' value={props.title} />
-                                {/* <Switch ml='auto' variant='boxy' /> */}
-                            </Flex>
-                            <Flex align='center' mt={2}>
-                                <Flex direction='column'>
-                                    <Text>Handle Color</Text>
-                                    <Text color='#868686' fontSize='10.5pt'>Hex code for handle color</Text>
-                                </Flex>
-                                <Input maxW='120px' maxH='26px' ml='auto' fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' value={props.title} />
-                            </Flex>
-                            <Flex align='center' mt={2}>
-                                <Flex direction='column'>
-                                    <Text>Lock Position</Text>
-                                    <Text color='#868686' fontSize='10.5pt'>Disable resize/drag</Text>
-                                </Flex>
-                                <Switch ml='auto' variant='boxy' />
-                            </Flex>
-                        </Flex>
+                        <WindowSettings windowTitle={windowTitle} windowDefaultTitle={props.title ? props.title : 'Undefined'} setWindowTitle={setWindowTitle} windowColor={windowColor} setWindowColor={setWindowColor} />
                     ) : (
                         props.children
                     )}
-                    
-                    <WindowSettings isOpen={isOpen} onOpen={onOpen} onClose={onClose} currentWindow={props.type} />
                 </Flex>
             </Flex>
         </Rnd>
