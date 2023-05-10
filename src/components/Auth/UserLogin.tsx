@@ -58,7 +58,7 @@ const UserLogin:React.FC = () => {
     return (
         <Flex direction="column" w="100%" mt={4}>
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
-                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#0f0f0f" border="1px solid #494D51">
+                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" direction="row" mt={9}>
                         <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
                         
@@ -70,11 +70,11 @@ const UserLogin:React.FC = () => {
                         <form onSubmit={onSubmit}>
                             <Text fontWeight={600}>Username</Text>
                             
-                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={600} bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
+                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={600} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
                         
                             <Text fontWeight={600}>Password</Text>
                                 
-                            <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#282828" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
+                            <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
                             
                             <Text mt={2} fontSize="10pt">Forget your <Text as="span" color="white" fontWeight={600} textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/reset-password')}>password</Text> ?</Text>
                             <Box h="17px">

@@ -31,14 +31,14 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                 <Menu>
                     {({ isOpen }) => (
                         <>
-                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} bg="#121212" border="1px solid #121212" borderRadius="0" _hover={{cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: '#1C1C1C', border: '1px solid #494D51'}} isActive={isOpen}>
+                            <MenuButton as={Button} w="-moz-fit-content" h="30px" px={0} color='#a3a3a3' bg="none" border="1px solid none" borderRadius="0" _hover={{cursor: 'pointer', color: '#D1D1D1'}} _active={{color: '#D1D1D1'}} isActive={isOpen}>
                                 <Flex textAlign="center">
-                                    <Text p={0.5} px={2} color="white" borderRadius="0px">{user.email.match(emailRegex)}&nbsp;&nbsp;</Text>
-                                    <Text as="span" mt="5px" mr={2} ml={-1} fontSize="10pt"><BsChevronDown /></Text>
+                                    <Text p={0.5} px={2}  fontSize='12px' fontWeight={400} borderRadius="0px">{user.email.match(emailRegex)}&nbsp;&nbsp;</Text>
+                                    <Text as="span" mt="4px" mr={2} ml={-2} fontSize="10px"><BsChevronDown /></Text>
                                     {/* <Button onClick={() => signOut(auth)} _hover={{backgroundColor: '#1f1f1f'}} bg={cmb} h="60%" borderRadius="0" fontWeight={500} fontSize="11pt">Profile</Button> */}
                                 </Flex>
                             </MenuButton>
-                            <MenuList w="200px" minW="0" mt={1.5} p="1px" py={0} bg="#121212" border="1px solid #494D51" borderRadius="0" motionProps={{
+                            <MenuList w="200px" minW="0" mt={1.5} p="1px" py={0} bg="#121212" border="1px solid #2F2F2F" borderRadius="0" motionProps={{
                                 transition: { duration: 0 },
                                 animate: 'visible'}}>
                                 <Flex mt={2.5} px={1} borderBottom="1px solid #1c1c1c">
@@ -88,8 +88,11 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
             // 
             ) : (
                 <>
-                    <Button h="60%" fontSize="15pt" fontWeight={600} bg={cmb} border="1px solid #121212" borderRadius="0" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/login')}><Text fontSize="11pt">Login</Text></Button>
-                    <Button h="60%" fontSize="15pt" fontWeight={600} bg={cmb} border="1px solid #121212" borderRadius="0" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/signup')}><Text fontSize="11pt">Sign Up</Text></Button>
+                    <Button h="60%" mr={2} color='#a3a3a3' fontSize="12px" fontWeight={400} bg='none' borderRadius="0" _hover={{color: '#d1d1d1'}} _active={{color: '#d1d1d1'}} onClick={() => router.push('/login')}><Text fontSize="12px">Sign In</Text></Button>
+                    <Flex align='center' justify='center' w='80px' h='60%' color='black' bg='purple.300' borderRadius='4px' _hover={{bg: 'purple.400', cursor: 'pointer'}} onClick={() => router.push('/signup')}>
+                        <Text fontSize='12px' fontWeight={400}>Try for free</Text>
+                    </Flex>
+                    {/* <Button h="60%" color='#a3a3a3' fontSize="15pt" fontWeight={600} bg='none' border="1px solid #161616" borderRadius="0" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/signup')}><Text fontSize="12px">Sign Up</Text></Button> */}
                 </>
             )
             }

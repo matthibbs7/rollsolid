@@ -29,21 +29,21 @@ export const WindowSettings = ({
     };
 
     return (
-        <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid grey'>
+        <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid #343434'>
             <form>
                 <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
                         <Text>Widget Name</Text>
-                        <Text color='#868686' fontSize='10.5pt'>Title displayed on the window handle</Text>
+                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Title displayed on the window handle</Text>
                     </Flex>
-                    <Input maxW='120px' maxH='26px' ml='auto' pl={2} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} _placeholder={{color: 'grey'}} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setWindowTitle(event.target.value)} placeholder={windowDefaultTitle} value={windowTitle} />
+                    <Input maxW='120px' maxH='26px' ml='auto' pl={2} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} _placeholder={{color: 'grey'}} maxLength={20} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setWindowTitle(event.target.value)} placeholder={windowDefaultTitle} value={windowTitle} />
                     {/* <Switch ml='auto' variant='boxy' /> */}
                 </Flex>
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
                         <Text>Handle Color</Text>
-                        <Text color='#868686' fontSize='10.5pt'>Hex code for handle color</Text>
+                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Hex code for handle color</Text>
                     </Flex>
                     <Flex align='center' ml='auto'>
                         <Box w='20px' h='20px' bg={`#${windowColor}`} />
@@ -54,7 +54,7 @@ export const WindowSettings = ({
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
                         <Text>Lock Position</Text>
-                        <Text color='#868686' fontSize='10.5pt'>Disable resize/drag</Text>
+                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Disable resize/drag</Text>
                     </Flex>
                     <Switch ml='auto' variant='boxy' />
                 </Flex>

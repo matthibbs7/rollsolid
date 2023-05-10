@@ -177,7 +177,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
             onResizeStop={onResizeStop}
             enableUserSelectHack
             bounds="parent"
-            style={{zIndex: windowState.maxZIndex, border: '1px solid #494D51', background: '#171717'}}
+            style={{zIndex: windowState.maxZIndex, border: '1px solid #2f2f2f', background: '#171717'}}
             {...defaultStyle}
             onClick={onDragStart}
         >
@@ -189,13 +189,13 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     h="30px" 
                     p={1}
                     px={3}
-                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#242424' : '#242424'}
+                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#161616' : '#161616'}
                     borderBottom='1px solid #2f2f2f'
                 >   
-                    <Flex w="90%" _hover={{cursor: 'all-scroll'}}>   
+                    <Flex w="100%" _hover={{cursor: 'all-scroll'}}>   
                         <Text fontSize="11pt" fontWeight={700}>{windowTitle ? windowTitle : props.title}</Text>
                     </Flex>  
-                    <Flex align="center" h="100%" mr={-2}>
+                    <Flex align="center" h="100%" mr={-2} color='#C2C2C2'>
                         {/* {windowState.maxZIndex === frontWindow.maxZ && (
                             <Button w="10px" h="100%" p="0" color="white" fontSize="12pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer', color: 'white'}} onClick={onOpen}>
                                 <IoReorderThree  />

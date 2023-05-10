@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "TWKEverett-Regular";
+    src: url('TWKEverett-Regular-web.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TWKEverett-Regular";
+    src: url('TWKEverett-Medium-web.woff2');
+    font-weight: 300;
+    font-style: normal;
+}

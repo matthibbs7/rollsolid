@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { Button, Flex, Text } from '@chakra-ui/react';
+import { Flex, Image, Text } from '@chakra-ui/react';
 import Footer from '@/components/Footer/Footer';
+import { ToolNavbar } from '@/components/Navbar/ToolNavbar/ToolNavbar';
 
 export default function About() {
     return (
@@ -25,12 +26,21 @@ export default function About() {
                 direction="column"
                 w="100%"
             >
+                <ToolNavbar />
                 <Flex
                     align="center"
                     direction="column"
                     h="720px"
                 >
-                    <Text
+                    <Flex w='100%'>
+                        <Flex justify='center' w='60%' h='100%' mt={5} dir='column'>
+                            <Image w='680px' h='600px' src='https://i.imgur.com/MoAVoti.png' />
+                        </Flex>
+                        <Flex align='center' w='40%' dir='column'>
+                            <Text fontFamily='TWKEverett-Regular' fontSize='40px' fontWeight={100} lineHeight='10px'>Adanced Poker Analysis</Text>
+                        </Flex>
+                    </Flex>
+                    {/* <Text
                         maxW="555px"
                         mt={5}
                         fontFamily="AvenirNext-DemiBold"
@@ -111,7 +121,7 @@ Advanced
 Subscribe Now
                             </Button>
                         </Flex>
-                    </Flex>
+                    </Flex> */}
                 </Flex>
                 <Footer />
             </Flex>

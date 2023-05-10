@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../chakra/theme';
 import Layout from '@/components/Layout/Layout';
 import '@fontsource/figtree';
+import '../../public/fonts/style.css';
 import {
     RecoilRoot,
 } from 'recoil';
