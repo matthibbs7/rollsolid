@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, Flex, Switch } from '@chakra-ui/react';
 import Footer from '../Footer/Footer';
 import { IdenticonImg } from '../Navbar/IdenticonImage.tsx/IdenticonImage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/clientApp';
 import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 /* ------------------------
         authenticated? 
@@ -16,10 +17,35 @@ render profile    TODO 404 or redirect home
 ------------------------- */
 
 const ProfileView:React.FC = () => {
-    const [user] = useAuthState(auth);
-
+    const [user, loading, error] = useAuthState(auth);
+    const router = useRouter();
     const emailRegex = /.+?(?=@)/;
-    
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/login');
+        }
+    }, [user]);
+
+    if (loading) {
+        return (
+            <Text>Loading</Text>
+        );
+    } else if (error) {
+        return (
+            <Text>Error occurred</Text>
+        );
+    } else if (!user) {
+        return (
+            <Text
+                color='red.300'
+                fontSize="16pt"
+            >
+                Not logged in
+            </Text>
+        );
+    }
+
     return (
         <Flex direction="column" w="100%">
             <Flex justify="center" w="100%" h={['680px','680px','720px','720px']} px={4} py={4}>
@@ -28,7 +54,7 @@ const ProfileView:React.FC = () => {
                         <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Profile&nbsp;</Text>
                     </Flex>
                     <Flex direction='column' w='110px' mt={-1} mb={3}>
-                        <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={600}>Account</Text>
+                        <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Account</Text>
                         {/* <Divider borderColor='#7083B3' /> */}
                     </Flex> 
                     <Flex align='center' mt={2}>
@@ -49,7 +75,7 @@ const ProfileView:React.FC = () => {
                     </Flex>
                     <Flex direction='column' w='33%'>
                         <Flex direction='column' mt={7}>
-                            <Text mb={3} color='#C7AE7A' fontSize='13.5pt' fontWeight={600}>Subscriptions</Text>
+                            <Text mb={3} color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Subscriptions</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>
@@ -62,7 +88,7 @@ const ProfileView:React.FC = () => {
                     </Flex>
                     <Flex direction='column' w='33%'>
                         <Flex direction='column' w='110px' mt={8} mb={3}>
-                            <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={600}>Site Settings</Text>
+                            <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Site Settings</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>

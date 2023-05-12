@@ -10,7 +10,7 @@ const Footer:React.FC = () => {
     const [user] = useAuthState(auth);
     
     return (
-        <Flex justify="center" minH="270px" bg="#161616" borderY="1px solid #494D51">
+        <Flex justify="center" minH="270px" bg="#161616" borderY="1px solid #2F2F2F">
             <Flex wrap="wrap" direction="row" w="100%" minW="300px" maxW='1250px'>
                 <Flex direction="column">
                     <Flex align="center" mt={9} mr={5}>
@@ -23,35 +23,35 @@ const Footer:React.FC = () => {
                         </Link>
                         
                     </Flex>
-                    <Text mt={-1} ml={4} color="#868686" fontSize="11pt" textOverflow="unset">Develop your strategy and dominate Poker today!</Text>
-                    <Text mt={2} ml={4} color="#868686" fontSize="11pt">© 2023 | All rights reserved</Text>
+                    <Text mt={-1} ml={4} color="#A3A3A3" fontSize="11pt" textOverflow="unset">Develop your strategy and dominate Poker today!</Text>
+                    <Text mt={2} ml={4} color="#A3A3A3" fontSize="11pt">© 2023 | All rights reserved</Text>
                     <Text mt={4} ml={4} fontSize="13pt" fontWeight={700}>Contact</Text>
-                    <Button w="120px" mt={2} mb="auto" ml={4} bg="none" border="1px solid #494D51" borderRadius="0" _hover={{bg: '#1c1c1c'}}>Email Us</Button>
+                    <Button w="120px" mt={2} mb="auto" ml={4} bg="none" border="1px solid #2F2F2F" borderRadius="0" _hover={{bg: '#1c1c1c'}}>Email Us</Button>
                 </Flex>
                 <Flex direction="column" mt={10} mr="10%" ml="auto">
-                    <Text color="purple.300" fontWeight={600}>Rollsolid</Text>
-                    <Text mt={2} color="white" _hover={{cursor: 'pointer'}} onClick={() => {router.push('/about');}}>About</Text>
-                    <Text color="white">Hands</Text>
-                    <Text color="white">Charts</Text>
-                    <Text color="white">Simulate</Text>
+                    <Text  color="#a3a3a3" fontSize='13px' fontWeight={500}>Rollsolid</Text>
+                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => {router.push('/about');}}>About</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Hands</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Charts</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Simulate</Text>
                 </Flex>
                 <Flex direction="column" mt={10} mr="10%">
-                    <Text color="purple.300" fontWeight={600}>Contribute</Text>
-                    <Text mt={2} color="white">Become a referee</Text>
-                    <Text color="white">Submit a suggestion</Text>
-                    <Text color="white">Want a new feature? Click here</Text>
+                    <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Contribute</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Become a referee</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Submit a suggestion</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Want a new feature? Click here</Text>
                 </Flex>
                 <Flex direction="column" mt={10} mr={5}>
-                    <Text color="purple.300" fontWeight={600}>Account</Text>
+                    <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Account</Text>
                     {user ?
                         <>
-                            <Text mt={2} color="white" _hover={{cursor: 'pointer'}} onClick={() => signOut(auth)}>Logout</Text>
-                            <Text mt={2} color="white" _hover={{cursor: 'pointer'}} onClick={() => signOut(auth)}>Profile</Text>
+                            <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => signOut(auth)}>Logout</Text>
+                            <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => signOut(auth)}>Profile</Text>
                         </>
                         :
                         <>
-                            <Text mt={2} color="white" _hover={{cursor: 'pointer'}} onClick={() => router.push('/login')}>Login</Text>
-                            <Text color="white" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Create Account</Text>
+                            <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => router.push('/login')}>Login</Text>
+                            <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Create Account</Text>
                         </>
                     }
                     

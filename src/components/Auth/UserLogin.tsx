@@ -9,7 +9,6 @@ import { FIREBASE_ERRORS } from '@/firebase/errors';
 import Footer from '../Footer/Footer';
 
 const UserLogin:React.FC = () => {
-    // const [authenticated, setAuthenticated]
     const router = useRouter();
 
     const [loginForm, setLoginForm] = useState({
@@ -42,7 +41,6 @@ const UserLogin:React.FC = () => {
     }
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        console.log('HELLO');
         event.preventDefault();
         console.log(loginForm);
         signInWithEmailAndPassword(loginForm.email, loginForm.password);
@@ -60,7 +58,7 @@ const UserLogin:React.FC = () => {
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
                 <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" direction="row" mt={9}>
-                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
+                        <Text fontFamily='TWKEverett-Regular' fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
                         
                         {/* <1Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                         <GiRollingBomb fontSize="28pt" />
@@ -68,11 +66,11 @@ const UserLogin:React.FC = () => {
                     <Text w={['90%', '90%', '70%', '69%']} mt={3} mb={1} color="#868686" fontSize="12pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
                     <Flex direction="column" w={['90%', '90%', '65%', '65%']} mt={5} mr="auto" ml="auto">
                         <form onSubmit={onSubmit}>
-                            <Text fontWeight={600}>Username</Text>
+                            <Text fontWeight={500}>Username</Text>
                             
                             <Input h="45px" mt={2} mb="17px" color="white" fontWeight={600} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
                         
-                            <Text fontWeight={600}>Password</Text>
+                            <Text fontWeight={500}>Password</Text>
                                 
                             <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
                             

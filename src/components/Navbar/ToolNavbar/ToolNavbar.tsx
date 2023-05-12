@@ -29,7 +29,7 @@ export const ToolNavbar = () => {
             borderBottom="1px solid #1D1D1D"
             bgColor={cmb}
         >
-            <Flex align='center' w='100%' h='100%' mr='150px' ml='150px'>
+            <Flex align='center' w='100%' h='100%'>
                 <Flex align='center' justify='center' w='40px' h='42%' bg='#644ED6' borderRadius='9px'>
                     <Text fontSize='11px'>New</Text>
                 </Flex>

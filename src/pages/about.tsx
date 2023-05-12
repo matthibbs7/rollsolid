@@ -32,12 +32,14 @@ export default function About() {
                     direction="column"
                     h="720px"
                 >
-                    <Flex w='100%'>
-                        <Flex justify='center' w='60%' h='100%' mt={5} dir='column'>
+                    <Flex wrap='wrap' w='100%'>
+                        <Flex justify='center' wrap='wrap' display='flex' w='60%' h='100%' mt={5} dir='column'>
                             <Image w='680px' h='600px' src='https://i.imgur.com/MoAVoti.png' />
                         </Flex>
-                        <Flex align='center' w='40%' dir='column'>
-                            <Text fontFamily='TWKEverett-Regular' fontSize='40px' fontWeight={100} lineHeight='10px'>Adanced Poker Analysis</Text>
+                        <Flex justify='center' wrap='wrap' direction='column' display='flex' w='40%' minW='510px' mt={5} textAlign='left'>
+                            <Text w='510px' fontSize='40px' fontWeight={500}>Advanced Poker Analysis</Text>
+                            <Text w='460px' mt={2} mb={3.5} color='#969696' fontSize='18px'>Customizable dashboard for advanced Poker analysis and strategy featuring Odds Ratio calculators, Ranges, EQ prediction, and more</Text>
+                            <Text color='#B693F4' fontSize='18px' _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Explore the features →</Text>
                         </Flex>
                     </Flex>
                     {/* <Text
