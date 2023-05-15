@@ -189,7 +189,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     h="30px" 
                     p={1}
                     px={3}
-                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#161616' : '#161616'}
+                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#121212' : '#121212'}
                     borderBottom='1px solid #2f2f2f'
                 >   
                     <Flex w="100%" _hover={{cursor: 'all-scroll'}}>   

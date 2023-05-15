@@ -27,7 +27,7 @@ export const Navbar = () => {
 
     return (
         <Flex
-            pos={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? 'fixed' : 'relative'}
+            pos={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' && router.pathname !== '/profile' ? 'fixed' : 'relative'}
             zIndex="1111111"
             align="center"
             direction="row"
@@ -35,9 +35,9 @@ export const Navbar = () => {
             h="45px"
             px="15px"
             borderTop="1px solid"
-            borderTopColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? '#1D1D1D' : '#2F2F2F'}
+            borderTopColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' && router.pathname !== '/profile' ? '#1D1D1D' : '#2F2F2F'}
             borderBottom="1px solid"
-            borderBottomColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? '#1D1D1D' : '#2F2F2F'}
+            borderBottomColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' && router.pathname !== '/profile' ? '#1D1D1D' : '#2F2F2F'}
             bgColor={cmb}
         >   
             <GiRollingBomb />

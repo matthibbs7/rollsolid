@@ -58,12 +58,12 @@ const UserLogin:React.FC = () => {
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
                 <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" direction="row" mt={9}>
-                        <Text fontFamily='TWKEverett-Regular' fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight='600'>Login to Rollsolid&nbsp;</Text>
+                        <Text fontFamily='TWKEverett-Regular' fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={500}>Login to Rollsolid&nbsp;</Text>
                         
                         {/* <1Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                         <GiRollingBomb fontSize="28pt" />
                     </Flex>
-                    <Text w={['90%', '90%', '70%', '69%']} mt={3} mb={1} color="#868686" fontSize="12pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
+                    <Text w={['90%', '90%', '70%', '69%']} mt={3} mb={1} color="#868686" fontSize="15px" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>
                     <Flex direction="column" w={['90%', '90%', '65%', '65%']} mt={5} mr="auto" ml="auto">
                         <form onSubmit={onSubmit}>
                             <Text fontWeight={500}>Username</Text>

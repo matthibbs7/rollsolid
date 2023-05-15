@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Box, Flex, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
 import Footer from '@/components/Footer/Footer';
 import { ToolNavbar } from '@/components/Navbar/ToolNavbar/ToolNavbar';
 import { GiRollingBomb } from 'react-icons/gi';
@@ -33,7 +33,7 @@ export default function Pricing() {
                     direction="column"
                     h="1720px"
                 >
-                    <Flex align="center" mt='100px' mr={5}>
+                    <Flex align="center" mt='60px' mr={5}>
                         <Box mr={3} ml={3}>
                             <GiRollingBomb color="white" fontSize="30px" />
                         </Box>
@@ -43,13 +43,60 @@ export default function Pricing() {
                         </Link>
                         
                     </Flex>
-                    <Text w='670px' mt={5} fontFamily='TWKEverett-Regular' fontSize='96px' fontWeight={600} lineHeight='95px' textAlign='center'>Become a Poker Legend.</Text>
-                    <Flex w='44%' h='400px' mt='100px'>
-                        <Flex direction='column' w='50%' h='400px' mr={5} bg='green.300'>
+                    <Text w='695px' mt={5} fontFamily='TWKEverett-Regular' fontSize='96px' fontWeight={600} lineHeight='95px' textAlign='center'>Become a Poker Legend.</Text>
+                    <Flex w='44%' h='400px' mt='80px'>
+                        <Flex direction='column'  w='50%' h='680px' mr={5} bg='#212121' borderRadius='10px'>
+                            <Flex w='100%' h='180px' bgImage="url('/images/bg2.png')" bgSize='cover' bgPosition='center' borderTopRadius='10px' >
 
+                            </Flex>
+                            <Flex direction='column' w='90%' h='400px' ml={5} bg='#212121' borderRadius='10px'>
+                                <Flex direction='column' w='100%' h='100%' ml={-2} px={-6} py={4}>
+                                    <Flex align='center' w='120px' h='20px'  p={2} bg='#644ED5' borderRadius={10}>
+                                        <Text fontSize='14px' fontWeight={500}>Recommended</Text>
+                                    </Flex>
+                                    <Text mt={3} ml={0.5} fontSize='28px' fontWeight={600}>Rollsolid Basic</Text>
+                                    <Text ml={1} color='#acacac' fontStyle='italic'>$4.99/mo</Text>
+                                    <Text mt={10} ml={1} color='#acacac' fontStyle='italic'>Features</Text>
+                                    <Flex justify='center' w='100%'>
+                                        <List textAlign='center'>
+                                            <ListItem>
+                                                • Customizable Dashboard
+                                            </ListItem>
+                                            <ListItem>
+                                                • 3 Workspaces
+                                            </ListItem>
+                                            <ListItem>
+                                                • All standard widgets
+                                            </ListItem>
+                                            <ListItem>
+                                                • Ranges
+                                            </ListItem>
+                                            <ListItem>
+                                                • EQ
+                                            </ListItem>
+                                            <ListItem>
+                                                • GTO Hand Play
+                                            </ListItem>
+                                        </List>
+                                    </Flex>
+                                    <Button minH='40px' mt='122px' ml={2} bg='#121212' _hover={{bg: '#181818'}}>Register Now</Button>
+                                </Flex>
+                            </Flex>
                         </Flex>
-                        <Flex direction='column' w='50%' h='400px' ml={5} bg='red.300'>
+                        <Flex direction='column'  w='50%' h='680px' ml={5} bg='#212121' borderRadius='10px'>
+                            <Flex w='100%' h='180px' bgImage="url('/images/bg1.png')" bgSize='cover' bgPosition='center' borderTopRadius='10px' >
 
+                            </Flex>
+                            <Flex direction='column' w='90%' h='400px' ml={5} bg='#212121' borderRadius='10px'>
+                                <Flex direction='column' w='100%' h='100%' ml={-2} px={-6} py={4}>
+                                    <Flex align='center' w='145px' h='20px'  p={2} bg='#AA9BFD' borderRadius={10}>
+                                        <Text color='black' fontSize='14px' fontWeight={500}>Advanced Content</Text>
+                                    </Flex>
+                                    <Text mt={3} ml={0.5} fontSize='28px' fontWeight={600}>Rollsolid Pro</Text>
+                                    <Text ml={1} color='#acacac' fontStyle='italic'>$9.99/mo</Text>
+                                </Flex>
+                            </Flex>
+                            
                         </Flex>
                     </Flex>
                 </Flex>
