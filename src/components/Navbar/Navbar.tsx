@@ -27,7 +27,7 @@ export const Navbar = () => {
 
     return (
         <Flex
-            pos={router.pathname === '/about' || router.pathname === '/support' ? 'fixed' : 'relative'}
+            pos={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? 'fixed' : 'relative'}
             zIndex="1111111"
             align="center"
             direction="row"
@@ -35,22 +35,22 @@ export const Navbar = () => {
             h="45px"
             px="15px"
             borderTop="1px solid"
-            borderTopColor={router.pathname === '/about' || router.pathname === '/support' ? '#1D1D1D' : '#2F2F2F'}
+            borderTopColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? '#1D1D1D' : '#2F2F2F'}
             borderBottom="1px solid"
-            borderBottomColor={router.pathname === '/about' || router.pathname === '/support' ? '#1D1D1D' : '#2F2F2F'}
+            borderBottomColor={router.pathname !== '/dashboard' && router.pathname !== '/' && router.pathname !== '/login' && router.pathname !== '/signup' && router.pathname !== '/reset-password' ? '#1D1D1D' : '#2F2F2F'}
             bgColor={cmb}
         >   
             <GiRollingBomb />
             <Text ml={2} color={cmt} fontFamily='TWKEverett-Regular' fontSize='14.5px' fontWeight={600} _hover={{cursor: 'pointer'}} onClick={() => router.push('/')}>Rollsolid</Text>
             <Box w="1px" h="45%" ml={5} borderLeft="1px solid " />
             <Button h="60%" ml={7} fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/about')}><SiInformatica color="#A3A3A3" />&nbsp;&nbsp;<Text color='#A3A3A3' fontSize="12px">About</Text></Button>
-            {router.pathname === '/about' || router.pathname === '/login' || router.pathname === '/signup' || router.pathname === '/reset-password'|| router.pathname === '/support'  ? (
+            {router.pathname === '/about' || router.pathname === '/login' || router.pathname === '/signup' || router.pathname === '/reset-password' || router.pathname === '/support' || router.pathname === '/pricing'  ? (
                 <>
                     {/* <Button border="1px solid #121212" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} ml={0} bg={cmb} h="60%" borderRadius="0px" fontWeight={500} fontSize="13pt"><MdOutlineWidgets color="#D3D8DE" />&nbsp;&nbsp;<Text fontSize="11pt">Widgets</Text></Button> */}
                     
                     <FeatureDropDown />
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/support')}><MdOutlineSupervisorAccount />&nbsp;&nbsp;<Text fontSize="12px">Support</Text></Button>
-                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><IoPricetagsOutline />&nbsp;&nbsp;<Text fontSize="12px">Pricing</Text></Button>
+                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/pricing')}><IoPricetagsOutline />&nbsp;&nbsp;<Text fontSize="12px">Pricing</Text></Button>
                 </>
             ) : (
                 <>

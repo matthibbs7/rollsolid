@@ -30,15 +30,15 @@ const Footer:React.FC = () => {
                 </Flex>
                 <Flex direction="column" mt={10} mr="10%" ml="auto">
                     <Text  color="#a3a3a3" fontSize='13px' fontWeight={500}>Rollsolid</Text>
-                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer'}} onClick={() => {router.push('/about');}}>About</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Hands</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Charts</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Simulate</Text>
+                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => {router.push('/about');}}>About</Text>
+                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => {router.push('/features');}}>Features</Text>
+                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => {router.push('/support');}}>Support</Text>
+                    <Text mt={2} color="#858585" fontSize='13px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => {router.push('/pricing');}}>Pricing</Text>
                 </Flex>
                 <Flex direction="column" mt={10} mr="10%">
-                    <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Contribute</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Become a referee</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Submit a suggestion</Text>
+                    <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Resources</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Documentation</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>News</Text>
                     <Text mt={2} color="#858585" fontSize='13px'>Want a new feature? Click here</Text>
                 </Flex>
                 <Flex direction="column" mt={10} mr={5}>

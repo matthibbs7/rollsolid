@@ -8,7 +8,7 @@ const FeatureDropDown:React.FC = () => {
     return (
         <Flex align="center" h="100%" ml={0}>  
             <Menu isOpen={isOpen}>
-                <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg='#161616' border="1px solid #121212" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen} onMouseEnter={onOpen} onMouseLeave={onClose}>
+                <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg='#161616' border="1px solid #161616" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen} onMouseEnter={onOpen} onMouseLeave={onClose}>
                     <Flex align='center' textAlign="center">
                         <Text fontSize='11px'><MdOutlineWidgets color='#A3A3A3' /></Text>
                         <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Features</Text>    

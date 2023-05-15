@@ -13,7 +13,7 @@ import { BsInfoLg } from 'react-icons/bs';
 const WidgetNavbar:React.FC = () => {
     // const [authenticated, setAuthenticated]
     const { colorMode } = useColorMode();
-    const cmb = colorMode === 'light' ? '#121212' : 'white';
+    const cmb = colorMode === 'light' ? '#161616' : 'white';
 
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [processState, setProcessState] = useRecoilState(processSchedulerState);
@@ -82,7 +82,7 @@ const WidgetNavbar:React.FC = () => {
             <Menu>
                 {({ isOpen }) => (
                     <>
-                        <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg={cmb} border="1px solid #121212" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen}>
+                        <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg={cmb} border="1px solid #161616" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen}>
                             <Flex align='center' textAlign="center">
                                 <Text fontSize='11px'><MdOutlineWidgets color='#A3A3A3' /></Text>
                                 <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Widgets</Text>    
