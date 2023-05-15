@@ -37,7 +37,7 @@ export default function About() {
                             <Image w='680px' h='600px' src='https://i.imgur.com/MoAVoti.png' />
                         </Flex>
                         <Flex justify='center' wrap='wrap' direction='column' display='flex' w='40%' minW='510px' mt={5} textAlign='left'>
-                            <Text w='510px' fontSize='40px' fontWeight={500}>Advanced Poker Analysis</Text>
+                            <Text w='510px' fontFamily='TWKEverett-Regular' fontSize='38px' fontWeight={500}>Advanced Poker Analysis</Text>
                             <Text w='460px' mt={2} mb={3.5} color='#969696' fontSize='18px'>Customizable dashboard for advanced Poker analysis and strategy featuring Odds Ratio calculators, Ranges, EQ prediction, and more</Text>
                             <Text color='#B693F4' fontSize='18px' _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Explore the features →</Text>
                         </Flex>

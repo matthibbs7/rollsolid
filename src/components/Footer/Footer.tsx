@@ -38,8 +38,9 @@ const Footer:React.FC = () => {
                 <Flex direction="column" mt={10} mr="10%">
                     <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Resources</Text>
                     <Text mt={2} color="#858585" fontSize='13px'>Documentation</Text>
+                    <Text mt={2} color="#858585" fontSize='13px'>Service Status</Text>
                     <Text mt={2} color="#858585" fontSize='13px'>News</Text>
-                    <Text mt={2} color="#858585" fontSize='13px'>Want a new feature? Click here</Text>
+                    
                 </Flex>
                 <Flex direction="column" mt={10} mr={5}>
                     <Text color="#a3a3a3" fontSize='13px' fontWeight={500}>Account</Text>

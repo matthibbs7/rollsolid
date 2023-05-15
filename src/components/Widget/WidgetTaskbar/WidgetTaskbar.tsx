@@ -39,13 +39,13 @@ const WidgetTaskbar:React.FC = () => {
     };
 
     return (
-        <Flex pos='absolute' zIndex="1111111" top="calc(100vh - 84px)" direction='row' w="100%" h="34px" ml={1} my={0.5}>
+        <Flex pos='absolute' zIndex="1111111" top="calc(100vh - 76px)" direction='row' w="100%" h="26px" ml={1} my={0.5}>
             {minimizedWindows.stack.map((w) => {
                 if (w.isMinimizied) {
                     return (
                         <Flex key={w.processId} align='center' m={0.5} pr={1} pl={2} bg='#434343' borderRadius={3} _hover={{bg: '#636363', cursor: 'pointer'}} onClick={() => toggleMinimized(w.processId)}>
-                            <Text fontWeight={600}>{w.type}</Text>
-                            <Text ml={2} fontSize="9pt" _hover={{color: 'red'}}><RxCross1 color="white" /></Text>
+                            <Text fontSize='12.5px' fontWeight={600}>{w.type}</Text>
+                            <Text ml={2} fontSize="8pt" _hover={{color: 'red'}}><RxCross1 color="white" /></Text>
                         </Flex>
                     ); 
                 } 

@@ -143,13 +143,13 @@ const WidgetNavbar:React.FC = () => {
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addTimerWidget()}>
                                             <MdOutlineTimer color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' >Timer</Text>
+                                            <Text ml={2} color='#87B6D3' fontWeight={600} >Timer</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
                                             <FaRegStickyNote color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' >Notes</Text>
+                                            <Text ml={2} color='#87B6D3' fontWeight={600} >Notes</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
@@ -163,7 +163,7 @@ const WidgetNavbar:React.FC = () => {
                                 </Flex>
                                   
                             </Flex>
-                            <Text mt={-1} ml={5} color='#7083B3' fontSize='11.5pt' fontWeight={600}>Select a widget above to load it on your dashboard.</Text> 
+                            <Text mt={-1} ml={4} color='#7083B3' fontSize='14px' fontWeight={500}>Select a widget above to load it on your dashboard.</Text> 
                         </MenuList>
                     </>
                 )}

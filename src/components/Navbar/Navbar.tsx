@@ -57,13 +57,13 @@ export const Navbar = () => {
                     <WidgetNavbar />
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><FaChartLine />&nbsp;&nbsp;<Text fontSize="12px">Charts</Text></Button>
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><GiAbstract089 />&nbsp;&nbsp;<Text fontSize="12px">Simulate</Text></Button>
-                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Resources</Text></Button>
+                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Theory</Text></Button>
                 </>
             )}
             
             {user?.email &&
                 <Tooltip mt={1.5} mr={2} fontWeight={700} bg='#434343' label='Status: Connected' placement='bottom'>
-                    <Box mr="2px" ml="auto" p={0.4} bg='none' border='1.5px solid #644ED6' borderRadius='14px' _hover={{bg: 'none'}}>
+                    <Box mr="2px" ml="auto" p={0.4} bg='none' border='1.5px solid none' borderRadius='14px' _hover={{bg: 'none'}}>
                         <IdenticonImg saturation='50' lightness='50' height="22px" width="22px" username={user.email.match(emailRegex)?.toString()!} />
                     </Box> 
                 </Tooltip> 

@@ -9,6 +9,7 @@ import { getWindowComponent } from '@/util/getWindowComponent';
 import WindowWrapper from '@/components/Window/WindowWrapper';
 import { getWindowTypeProps } from '@/util/get-window-type-props';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
+import { WorkspaceNavbar } from '@/components/Workspace/WorkspaceNavbar/WorkspaceNavbar';
 
 export default function Home() {
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
@@ -74,6 +75,7 @@ export default function Home() {
                     direction="column"
                     h="100%"
                 >
+                    <WorkspaceNavbar />
                     <>
                         {minimizedWindows.stack.length === 0 && (
                             <Flex mt={10} ml={10}>
