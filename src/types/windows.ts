@@ -2,7 +2,7 @@
 export type WindowType = 'notes' | 'chart' | 'timer' | 'test';
 
 export interface WindowState {
-    widgetName?: string;
+    widgetName?: string; // default type title -> can be overridden in settings
     processId: number;
     type: WindowType;
     x: number;
@@ -11,6 +11,7 @@ export interface WindowState {
     width: number | string; // px val
     height: number | string;
     isMinimizied: boolean;
-    settingsOpen?: boolean;
-    handleColor?: string;
+    settingsOpen: boolean;
+    handleColor: string; //TODO # default #121212 -> overridden
+    lockPosition?: boolean; //TODO 
 }

@@ -62,7 +62,7 @@ export const Navbar = () => {
             )}
             
             {user?.email &&
-                <Tooltip mt={1.5} mr={2} fontWeight={700} bg='#434343' label='Status: Connected' placement='bottom'>
+                <Tooltip mt={0} mr={0} fontSize='12px' fontWeight={500} bg='black' border='0.5px solid #404040' label='You' placement='left'>
                     <Box mr="2px" ml="auto" p={0.4} bg='none' border='1.5px solid none' borderRadius='14px' _hover={{bg: 'none'}}>
                         <IdenticonImg saturation='50' lightness='50' height="22px" width="22px" username={user.email.match(emailRegex)?.toString()!} />
                     </Box> 

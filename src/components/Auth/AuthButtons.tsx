@@ -7,6 +7,7 @@ import { auth } from '@/firebase/clientApp';
 import { BsChevronDown } from 'react-icons/bs';
 import { TbLogout } from 'react-icons/tb';
 import { FiChevronRight } from 'react-icons/fi';
+import { MdAccountBox, MdSettingsApplications } from 'react-icons/md';
 
 type AuthButtonsProps = {
     user: any;
@@ -35,8 +36,9 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                 transition: { duration: 0 },
                                 animate: 'visible'}}>
                                 <Flex mt={2.5} px={1} borderBottom="1px solid #1c1c1c">
-                                    <Flex align='center' mb={2.5} ml={3} p={0.25} pr={2}>
-                                        <Text color="#C7AE7A" fontFamily='Inter' fontSize='10.5pt' fontWeight={500}>&nbsp; Account</Text>
+                                    <Flex align='center' mb={2.5} ml={3} p={0.25} pr={2} bg='none' borderRadius={10}>
+                                        <MdAccountBox color='#B693F4' fontSize='13px' />
+                                        <Text color='purple.300' fontFamily='Inter' fontSize='13px' fontWeight={600}>&nbsp; Account</Text>
                                     </Flex>
                                 </Flex>
                                 <Flex w="100%">
@@ -50,24 +52,25 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                 {/* <Box width="100%" borderBottom="1px solid #1c1c1c"></Box> */}
                                     
                                 <Flex mt="0px" p={2} px={1} borderY="1px solid #1c1c1c" >
-                                    <Flex align='center' ml={3} my={1} p={0.25} pr={2}>
-                                        {/* <Text ml={2} color="#C7AE7A"><MdSettingsApplications /></Text> */}
-                                        <Text color="#C7AE7A" fontFamily='Inter' fontSize='10.5pt' fontWeight={500}>&nbsp; Settings</Text>
+                                    <Flex align='center' ml={3} my={1} p={0.25} pr={2} bg='none' borderRadius={10}>
+                                        {/* <Text ml={2} color="#C7AE7A"></Text> */}
+                                        <MdSettingsApplications color='#B693F4' fontSize='13px' />
+                                        <Text color="#B693F4" fontFamily='Inter' fontSize='13px' fontWeight={600}>&nbsp; Settings</Text>
                                     </Flex>
                                 </Flex>
-                                <MenuItem w="165px" h="30px" mt="-1px" ml="30px" pl="2px" color='#a3a3a3' fontSize='14px' bg="#121212" borderTop="1px solid #1c1c1c" borderRight='1px solid #121212' borderBottom='1px solid #121212' borderLeft="1px solid #1c1c1c" _hover={{bg: '#1C1C1C', border: '1px solid #161616'}} onMouseEnter={() => setIsHovering(4)} onMouseLeave={() => setIsHovering(0)}>{isHovering === 4 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 4 && <Text>&nbsp;&nbsp;</Text>}Theme</MenuItem>
+                                <MenuItem w="165px" h="30px" mt="-1px" ml="30px" pl="2px" color='#a3a3a3' fontSize='14px' bg="#121212" borderTop="1px solid #1c1c1c" borderRight='1px solid #121212' borderBottom='1px solid #1c1c1c' borderLeft="1px solid #1c1c1c" _hover={{bg: '#1C1C1C', border: '1px solid #161616'}} onMouseEnter={() => setIsHovering(4)} onMouseLeave={() => setIsHovering(0)}>{isHovering === 4 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 4 && <Text>&nbsp;&nbsp;</Text>}Theme</MenuItem>
                                 <MenuItem w="165px" h="30px" ml="30px" pl="2px" color='#a3a3a3' fontSize='14px' bg="#121212" borderTop='1px solid #121212' borderRight='1px solid #121212' borderBottom="1px solid #1c1c1c" borderLeft="1px solid #1c1c1c" _hover={{bg: '#1C1C1C', border: '1px solid #161616'}} onMouseEnter={() => setIsHovering(5)} onMouseLeave={() => setIsHovering(0)}>{isHovering === 5 ? <FiChevronRight /> : <Text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>}{isHovering === 5 && <Text>&nbsp;&nbsp;</Text>}Language</MenuItem>
                                     
                                 <Box w="100%" mt={6} borderBottom="1px solid #1c1c1c"></Box>
                                     
                                 <Flex align="center" h="35px" mt={3} px={1} onClick={() => signOut(auth)}>
-                                    <Flex align="center" direction="row" w="100px" h="30px" mr={5} ml="auto" border="1px solid #1f2224" _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid #161616'}}>
+                                    <Flex align="center" direction="row" w="100px" h="30px" mr={5} ml="auto" border="1px solid #1f2224" _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid #323232'}}>
                                         <Text ml={2} color="#a3a3a3"><TbLogout /></Text>
                                         <Text h="35px" mt="12px" color="#a3a3a3" fontSize='14px'>&nbsp; Logout</Text>
                                     </Flex>
                                 </Flex>
-                                <Box mt={1} mb={4} px={3}>
-                                    <span style={{fontSize: '11px'}}>
+                                <Box mt={2} mb={2} px={3}>
+                                    <span style={{fontSize: '8.5px'}}>
                                         <Text as="span" color="#d1d1d1">© 2023 Rollsolid, Inc. All rights reserved</Text>
                                         {/* <Kbd bg="black">↑</Kbd> <Text as="span" fontFamily="AvenirNext-Regular">or</Text> <Kbd bg="black">↓</Kbd>
                                             <Text as="span" fontFamily="AvenirNext-Regular">&nbsp;&nbsp;to navigate menu items</Text> */}

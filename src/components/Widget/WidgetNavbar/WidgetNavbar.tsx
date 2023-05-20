@@ -1,9 +1,7 @@
 import React from 'react';
 import { Button, Text, Flex, useColorMode, Menu, MenuButton, MenuItem, MenuList, Divider, useToast } from '@chakra-ui/react';
 import { MdOutlineTimer, MdOutlineWidgets } from 'react-icons/md';
-import { IoStatsChart } from 'react-icons/io5';
 import { FaRegStickyNote } from 'react-icons/fa';
-import { GiCubes, GiPokerHand, GiSplitArrows } from 'react-icons/gi';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -32,6 +30,8 @@ const WidgetNavbar:React.FC = () => {
             width: '400px',
             height: '400px',
             isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
         };
         // update processMatrix increase previousId
         setProcessState((prevState: typeof processState) => ({
@@ -55,6 +55,8 @@ const WidgetNavbar:React.FC = () => {
             width: '400px',
             height: '400px',
             isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
         };
         setProcessState((prevState: typeof processState) => ({
             ...prevState,
@@ -93,72 +95,90 @@ const WidgetNavbar:React.FC = () => {
                             animate: 'visible'}}>
                             <Flex direction='row' ml={2} px={2} py={4}>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>PROBABILITY</Text>
+                                    <Text mb={4} ml={0} pl={2} py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Probability</Text>
                                     <Divider />
                                     
-                                    <Flex align='center' direction='row' h='32px' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <MenuItem h='100%' p={0} bg='none'>
-                                            <IoStatsChart color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' >Ranges</Text>
+                                    <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
                                         </MenuItem>
                                     </Flex>
                                     
                                     <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <IoStatsChart color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Ranges</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <IoStatsChart color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Ranges</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderBottom='1px solid grey' borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <GiSplitArrows color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >EQ</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>GRID</Text>
+                                    <Text mb={4} ml={0} pl={2} py={0.5}  color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Performance</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem> 
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <GiPokerHand color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Hand Reference</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderBottom='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <GiCubes color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Potential Flop</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} color='#C7AE7A' fontFamily='Inter' fontSize='11pt' fontWeight={700} lineHeight="25px" border='1px solid grey'>MISC</Text>
+                                    <Text mb={4} ml={0} pl={2}  py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Misc</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addTimerWidget()}>
-                                            <MdOutlineTimer color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' fontWeight={600} >Timer</Text>
+                                            <MdOutlineTimer fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Timer</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
-                                            <FaRegStickyNote color='#87B6D3' />
-                                            <Text ml={2} color='#87B6D3' fontWeight={600} >Notes</Text>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
                                         </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <FaRegStickyNote color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' >Notes</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex>
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderBottom='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
-                                        <MdOutlineTimer color='#87B6D3' />
-                                        <Text ml={2} color='#87B6D3' fontWeight={600}>Timer</Text>
+                                        <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
+                                            <FaRegStickyNote fontSize='14px' color='#87B6D3' />
+                                            <Text ml={2} color='#87B6D3' fontSize='14px' fontWeight={600} >Notes</Text>
+                                        </MenuItem>
                                     </Flex> 
                                 </Flex>
                                   

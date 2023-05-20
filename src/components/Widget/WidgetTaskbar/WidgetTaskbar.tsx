@@ -43,8 +43,8 @@ const WidgetTaskbar:React.FC = () => {
             {minimizedWindows.stack.map((w) => {
                 if (w.isMinimizied) {
                     return (
-                        <Flex key={w.processId} align='center' m={0.5} pr={1} pl={2} bg='#434343' borderRadius={3} _hover={{bg: '#636363', cursor: 'pointer'}} onClick={() => toggleMinimized(w.processId)}>
-                            <Text fontSize='12.5px' fontWeight={600}>{w.type}</Text>
+                        <Flex key={w.processId} align='center' m={0.5} pr={1} pl={2} bg={`#${w.handleColor}`} border='1px solid #434343' borderRadius={3} _hover={{bg: '#222222', cursor: 'pointer'}} onClick={() => toggleMinimized(w.processId)}>
+                            <Text fontSize='12.5px' fontWeight={600}>{w.widgetName ? w.widgetName.toLowerCase() : w.type.toLowerCase()}</Text>
                             <Text ml={2} fontSize="8pt" _hover={{color: 'red'}}><RxCross1 color="white" /></Text>
                         </Flex>
                     ); 

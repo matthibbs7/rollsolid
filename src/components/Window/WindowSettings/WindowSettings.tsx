@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, Flex, Input, Box, Switch, Button } from '@chakra-ui/react';
+import { WindowState } from '@/types/windows';
+import { windowsState } from '@/atoms/windowsAtom';
+import { useRecoilState } from 'recoil';
 
 interface WindowSettingsProps {
+    pId: number;
     windowTitle: string;
     windowDefaultTitle: string;
     windowColor: string;
@@ -9,28 +13,48 @@ interface WindowSettingsProps {
     setWindowColor: (color: string) => void;
 }
 
-export const WindowSettings = ({ 
+export const WindowSettings = ({
+    pId, 
     windowTitle, 
     windowDefaultTitle, 
     windowColor, 
     setWindowTitle, 
-    setWindowColor 
+    setWindowColor,
 }: WindowSettingsProps) => {
-    // const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
-    const [stateSettings, setStateSettings] = useState({
-        widgetName: windowDefaultTitle,
-        handleColor: '#121212',
-        lockResize: false,
-    });
+    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
+    // persisted memory after 'save' clicked
     
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+        // check if name is different
+        const specificWindowState = minimizedWindows.stack.filter((w: WindowState) => w.processId === pId)[0];
+
+        if (windowTitle === specificWindowState.widgetName && windowColor === specificWindowState.handleColor) {
+            // TODO feedback to user -> same name as error
+            return;
+        }
+        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+            if (w.processId === pId) {
+                return {
+                    ...w,
+                    widgetName: windowTitle,
+                    handleColor: windowColor,
+                };
+            } else {
+                return w;
+            }
+        });
+
+        setMinimizedWindows((prevState) => ({
+            ...prevState,
+            stack: newMinimizedStack,
+        }));
+
     };
 
     return (
         <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid #343434'>
-            <form>
+            <form onSubmit={onSubmit}>
                 <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
@@ -46,9 +70,9 @@ export const WindowSettings = ({
                         <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Hex code for handle color</Text>
                     </Flex>
                     <Flex align='center' ml='auto'>
-                        <Box w='20px' h='20px' bg={`#${windowColor}`} />
+                        <Box w='24px' h='24px' mr={-0.5} bg={`#${windowColor}`} border='1px solid #494D51' _hover={{cusor: 'pointer'}} />
                         <Text pos='relative' top='1px' left='24px' w='10px' color='grey'>#</Text>
-                        <Input pos='relative' maxW='84px' maxH='26px' ml={1} pt={0.5} pr={1} pl={6} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} maxLength={6} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setWindowColor(event.target.value);}} placeholder='ffffff' value={windowColor} />
+                        <Input pos='relative' maxW='84px' maxH='26px' ml={1} pt={0.5} pr={1} pl={6} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} disabled maxLength={6} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setWindowColor(event.target.value);}} placeholder='ffffff' value={windowColor} />
                     </Flex>
                 </Flex>
                 <Flex align='center' mt={2}>

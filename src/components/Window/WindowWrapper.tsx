@@ -41,9 +41,9 @@ const WindowWrapper:React.FC<Props> = (props) => {
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
-    const [windowSettings, setWindowSettings] = useState(false);
-    const [windowColor, setWindowColor] = useState('242424');
-    const [windowTitle, setWindowTitle] = useState<string>('');
+    const [windowColor, setWindowColor] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].handleColor);
+    // voodoo magic
+    const [windowTitle, setWindowTitle] = useState<string>(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName ? minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! : props.title!);
 
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({
@@ -153,6 +153,26 @@ const WindowWrapper:React.FC<Props> = (props) => {
         }));
     };
 
+    // open or not
+    const toggleWindowSettings = (pId: number) => {
+
+        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+            if (w.processId === pId) {
+                return {
+                    ...w,
+                    settingsOpen: !w.settingsOpen,
+                };
+            } else {
+                return w;
+            }
+        });
+
+        setMinimizedWindows((prevState) => ({
+            ...prevState,
+            stack: newMinimizedStack,
+        }));
+    };
+
     const closeWindow = (pId: number) => {
         const newMinimizedStack = minimizedWindows.stack.filter((w: WindowState) =>
             w.processId !== pId
@@ -189,20 +209,15 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     h="30px" 
                     p={1}
                     px={3}
-                    bg={windowState.maxZIndex === frontWindow.maxZ ? '#121212' : '#121212'}
+                    bg={`#${windowColor}`}
                     borderBottom='1px solid #2f2f2f'
                 >   
                     <Flex w="100%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontSize="11pt" fontWeight={600}>{windowTitle ? windowTitle : props.title}</Text>
+                        <Text fontSize="11pt" fontWeight={600}>{windowTitle}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2} color='#C2C2C2'>
-                        {/* {windowState.maxZIndex === frontWindow.maxZ && (
-                            <Button w="10px" h="100%" p="0" color="white" fontSize="12pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer', color: 'white'}} onClick={onOpen}>
-                                <IoReorderThree  />
-                            </Button>
-                        )} */}
-                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => setWindowSettings(!windowSettings)}>
-                            {windowSettings ? <IoCube /> : <IoReorderThree  />}
+                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => {toggleWindowSettings(props.type.processId); props.type.settingsOpen && windowTitle !== props.type.widgetName && windowTitle !== props.title ? setWindowTitle(props.type.widgetName ? props.type.widgetName : props.title!) : null; props.type.settingsOpen && props.type.handleColor !== windowColor ? setWindowColor(props.type.handleColor) : null;}}>
+                            {props.type.settingsOpen ? <IoCube /> : <IoReorderThree  />}
                         </Flex>
                         <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
                             <FiMinimize2  />
@@ -210,17 +225,11 @@ const WindowWrapper:React.FC<Props> = (props) => {
                         <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
                             <RxCross1 />
                         </Flex>
-                        {/* <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
-                            <FiMinimize2 color="white" />
-                        </Button>
-                        <Button w="10px" h="100%" p="0" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
-                            <RxCross1 color="white" />
-                        </Button> */}
                     </Flex>
                 </Flex>
                 <Flex direction='column' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
-                    {windowSettings ? (
-                        <WindowSettings windowTitle={windowTitle} windowDefaultTitle={props.title ? props.title : 'Undefined'} setWindowTitle={setWindowTitle} windowColor={windowColor} setWindowColor={setWindowColor} />
+                    {props.type.settingsOpen ? (
+                        <WindowSettings pId={props.type.processId} windowTitle={windowTitle} windowDefaultTitle={props.title ? props.title : 'Undefined'} setWindowTitle={setWindowTitle} windowColor={windowColor} setWindowColor={setWindowColor} />
                     ) : (
                         props.children
                     )}
