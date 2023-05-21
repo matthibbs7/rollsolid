@@ -1,11 +1,12 @@
 import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Input } from '@chakra-ui/react';
 import React, { useRef, useState } from 'react';
-type WorkspaceAddModalProps = {
+
+type ResourcesModalProps = {
     isOpen: boolean;
     handleClose: () => void;
 };
 
-const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClose }) => {
+const ResourcesModal:React.FC<ResourcesModalProps> = ({ isOpen, handleClose }) => {
     const [companyName, setCompanyName] = useState('');
     const [charsRemaining, setCharsRemaining] = useState(21);
     const selectFileRef = useRef<HTMLInputElement>(null);
@@ -80,4 +81,4 @@ const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClos
         </>
     );
 };
-export default WorkspaceAddModal;
+export default ResourcesModal;

@@ -90,12 +90,12 @@ const WidgetNavbar:React.FC = () => {
                                 <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Widgets</Text>    
                             </Flex>
                         </MenuButton>
-                        <MenuList w="600px" minW="0" h="236px" mt={1.5} p="1px" py={0} bg="#121212" border="1px solid #494D51" borderRadius="0" motionProps={{
+                        <MenuList w="600px" minW="0" h="236px" mt={1.5} p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="0" motionProps={{
                             transition: { duration: 0 },
                             animate: 'visible'}}>
                             <Flex direction='row' ml={2} px={2} py={4}>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Probability</Text>
+                                    <Text mb={4} ml={0} pl={2} py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13px' fontWeight={500} fontStyle='italic' border='1px solid grey'>Probability</Text>
                                     <Divider />
                                     
                                     <Flex align='center' direction='row' px={2} py={1} borderLeft='1px solid grey' borderRadius={0} _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
@@ -126,7 +126,7 @@ const WidgetNavbar:React.FC = () => {
                                     
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2} py={0.5}  color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Performance</Text>
+                                    <Text mb={4} ml={0} pl={2} py={0.5}  color='#C7AE7A' fontFamily='Inter' fontSize='13px' fontWeight={500} fontStyle='italic' border='1px solid grey'>Performance</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addNotesWidget()}>
@@ -154,7 +154,7 @@ const WidgetNavbar:React.FC = () => {
                                     </Flex>
                                 </Flex>
                                 <Flex direction='column' w='33%'>
-                                    <Text mb={4} ml={0} pl={2}  py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13.5px' fontWeight={600} border='1px solid grey'>Misc</Text>
+                                    <Text mb={4} ml={0} pl={2}  py={0.5} color='#C7AE7A' fontFamily='Inter' fontSize='13px' fontWeight={500} fontStyle='italic' border='1px solid grey'>Misc</Text>
                                     <Divider />
                                     <Flex align='center' direction='row' p={1} px={2} borderRight='1px solid grey' borderLeft='1px solid grey' _hover={{bg: '#1c1c1c', cursor: 'pointer', color: '#8784D8'}}>
                                         <MenuItem h='100%' p={0} bg='none' onClick={() => addTimerWidget()}>

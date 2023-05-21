@@ -57,7 +57,7 @@ export const Navbar = () => {
                     <WidgetNavbar />
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><FaChartLine />&nbsp;&nbsp;<Text fontSize="12px">Charts</Text></Button>
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><GiAbstract089 />&nbsp;&nbsp;<Text fontSize="12px">Simulate</Text></Button>
-                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Theory</Text></Button>
+                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="12px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Resources</Text></Button>
                 </>
             )}
             
