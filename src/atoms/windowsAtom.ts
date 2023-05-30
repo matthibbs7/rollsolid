@@ -7,6 +7,7 @@ export interface WindowsState {
 }
 
 // Auth Modal, default state
+// stack of stacks for workspaces feature
 const defaultWindowsState: WindowsState = {
     stack: [],
 };

@@ -74,8 +74,8 @@ const ProfileView:React.FC = () => {
                         <Text color='#868686'>{user?.email}</Text>
                     </Flex>
                     <Flex direction='column' w='33%'>
-                        <Flex direction='column' mt={7}>
-                            <Text mb={3} color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Subscriptions</Text>
+                        <Flex justify='center' direction='column' h='28px' mt={7} p={2} bg='#d69540' borderRadius={5}>
+                            <Text mb={3} color='black' fontSize='12pt' fontWeight={500}>Subscriptions</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>
@@ -88,13 +88,13 @@ const ProfileView:React.FC = () => {
                     </Flex>
                     <Flex direction='column' w='33%'>
                         <Flex direction='column' w='110px' mt={8} mb={3}>
-                            <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Site Settings</Text>
+                            <Text color='#F8D585' fontSize='13px' fontWeight={400}>Site Settings</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>
                             <Flex direction='column'>
                                 <Text>Notifications</Text>
-                                <Text color='#868686'>Adjust toast popups for dashboards</Text>
+                                <Text color='#F8D585'>Adjust toast popups for dashboards</Text>
                             </Flex>
                             <Switch ml='auto' variant='boxy' />
                         </Flex>
