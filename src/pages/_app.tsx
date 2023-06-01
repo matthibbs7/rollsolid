@@ -5,6 +5,7 @@ import theme from '../chakra/theme';
 import Layout from '@/components/Layout/Layout';
 import '@fontsource/figtree';
 import '../../public/fonts/style.css';
+import '../styles/global.css';
 import {
     RecoilRoot,
 } from 'recoil';

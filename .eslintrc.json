@@ -24,6 +24,15 @@
         "unused-imports"
     ],
     "rules": {
+        "react/no-unknown-property": [
+            2,
+            {
+              "ignore": [
+                "jsx",
+                "global"
+              ]
+            }
+          ],
         "react/jsx-tag-spacing": ["error", {
             "closingSlash": "never",
             "beforeSelfClosing": "always",
