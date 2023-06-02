@@ -1,7 +1,7 @@
 import { Button, Divider, Flex, Input, Text } from '@chakra-ui/react';
 import React from 'react';
 
-const Timer:React.FC = () => {
+const Timer = () => {
     return (
         <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid #343434'>
             <Flex direction="column" w="100%" h="100%">

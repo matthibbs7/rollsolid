@@ -13,5 +13,6 @@ export interface WindowState {
     isMinimizied: boolean;
     settingsOpen: boolean;
     handleColor: string; //TODO # default #121212 -> overridden
-    lockPosition?: boolean; //TODO 
+    lockPosition?: boolean; //TODO
+    textContent?: string; 
 }

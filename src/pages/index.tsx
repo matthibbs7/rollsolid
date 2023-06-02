@@ -79,12 +79,12 @@ export default function Home() {
                     <>
                         {minimizedWindows.stack.length === 0 && (
                             <Flex mt={10} ml={10}>
-                                <Text fontWeight={600}>Empty :(</Text>
+                                <Text fontWeight={600}>Empty (add a widget above)</Text>
                             </Flex>
                         )}
                         {minimizedWindows.stack.map((w) => {
                             if (!w.isMinimizied) {
-                                const windowComponent = getWindowComponent(w.type);
+                                const windowComponent = getWindowComponent(w.type, w.processId);
                                 const windowProps = getWindowTypeProps(w.type);
                                 return (
                                     <WindowWrapper {...windowProps} x={w.x} y={w.y} type={w} key={w.processId} processId={w.processId.toString()}>

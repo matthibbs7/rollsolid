@@ -8,6 +8,39 @@ h1 {
     font-size: 2.125rem;
 }
 
+ol {
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+li {
+    display: flex;
+    margin-bottom: .5em;
+    margin-left: 2em;
+}
+
+ol li:before {
+    display: flex;
+    content: counter(item)".";
+    counter-increment: item;
+    width: 2em;
+    margin-left: -2em;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: circle;
+}
+
+ul li:before {
+    display: flex;
+    content: "•";
+    width: 2em;
+    margin-left: -2em;
+}
+
 ::selection {
     background: #333333;
     /* color: black; */
