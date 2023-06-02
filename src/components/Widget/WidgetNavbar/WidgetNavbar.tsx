@@ -93,7 +93,7 @@ const WidgetNavbar:React.FC = () => {
                             transition: { duration: 0 },
                             animate: 'visible'}}>
                             <Flex direction='column' w='100%' h='100%' ml={2} py={0}>
-                                <MenuItem w='44%' h='48px' mt={2} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
+                                <MenuItem w='44%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
                                     <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
                                     <Flex direction='column' ml={3}>
                                         <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
