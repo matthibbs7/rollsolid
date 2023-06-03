@@ -227,7 +227,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
                         </Flex>
                     </Flex>
                 </Flex>
-                <Flex direction='column' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
+                <Flex direction='column' overflowY='scroll' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>
                     {props.type.settingsOpen ? (
                         <WindowSettings pId={props.type.processId} windowTitle={windowTitle} windowDefaultTitle={props.title ? props.title : 'Undefined'} setWindowTitle={setWindowTitle} windowColor={windowColor} setWindowColor={setWindowColor} />
                     ) : (

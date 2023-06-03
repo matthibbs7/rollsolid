@@ -9,8 +9,8 @@ const styles = {
     },
     global: (props: any) => ({
         body: {
-            color: mode('#F6F7F9', 'whiteAlpha.900')(props),
-            bg: mode('#0E0E0E', 'red.300')(props),
+            color: mode('#F6F7F9', '#F6F7F9')(props),
+            bg: mode('#0E0E0E', '#0E0E0E')(props),
             fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
         },
     }),

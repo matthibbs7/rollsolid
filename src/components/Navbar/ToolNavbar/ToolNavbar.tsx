@@ -10,8 +10,8 @@ export const ToolNavbar = () => {
 
     const { colorMode } = useColorMode();
     const router = useRouter();
-    const cmb = colorMode === 'light' ? '#161616' : 'white';
-    const cmt = colorMode === 'light' ? '#F6F7F9' : '#2F343C';
+    const cmb = colorMode === 'light' ? '#161616' : '#161616';
+    const cmt = colorMode === 'light' ? '#F6F7F9' : '#F6F7F9';
     const emailRegex = /.+?(?=@)/;
     const [user] = useAuthState(auth);
 

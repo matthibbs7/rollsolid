@@ -10,6 +10,10 @@ export const getWindowTypeProps = (type: WindowType) => {
         return {
             title: 'Notes'
         };
+    case 'timeseries':
+        return {
+            title: 'Timeseries'
+        };
     default:
         return {};
     }

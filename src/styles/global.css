@@ -42,7 +42,9 @@ ul li:before {
 }
 
 ::selection {
-    background: #333333;
+    background: #A99BFC;
+    color: black;
+    /* background: #333333; */
     /* color: black; */
 }
 

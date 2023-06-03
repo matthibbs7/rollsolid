@@ -14,7 +14,7 @@ const EditorBar = ({ editor }: EditorBarProps) =>  {
     }
 
     return (
-        <Flex align='center' w='100%' h='34px' pl={1} bg='black' border='1px solid #434343' borderBottom='1px solid black'>
+        <Flex align='center' w='100%' h='34px' pl={1} bg='#121212' border='1px solid #434343' borderBottom='1px solid black'>
             <Button className={editor.isActive('bold') ? 'is-active' : ''} minW='28px' h='22px' px='2px' bg='none' borderRadius='0' _hover={{bg: '#131313'}} disabled={!editor.can().chain().focus().toggleBold().run()} onClick={() => editor.chain().focus().toggleBold().run()}><BiBold fontSize='18px' /></Button>
             <Button className={editor.isActive('italic') ? 'is-active' : ''} w='10px' minW='28px' h='22px' px='2px' bg='none' borderRadius='0' _hover={{bg: '#131313'}} disabled={!editor.can().chain().focus().toggleItalic().run()} onClick={() => editor.chain().focus().toggleItalic().run()}><BiItalic fontSize='18px' /></Button>
             <Button className={editor.isActive('strike') ? 'is-active' : ''} w='10px' minW='28px' h='22px' px='2px' bg='none' borderRadius='0' _hover={{bg: '#131313'}} disabled={!editor.can().chain().focus().toggleStrike().run()} onClick={() => editor.chain().focus().toggleStrike().run()}><BiStrikethrough fontSize='18px' /></Button>

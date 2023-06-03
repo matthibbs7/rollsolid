@@ -63,12 +63,12 @@ const Notes = ({ processId}: NotesProps) =>  {
     });
     return (
         <>
-            <Flex direction='column' w='100%' h='10%' maxH='34px'>
-                <Flex overflowX='scroll' overflowY='hidden' w='100%' h='100%' bg='black'>
+            <Flex direction='column' w='100%' h='10%' maxH='34px' mt={1}>
+                <Flex overflowX='scroll' overflowY='hidden' w='100%' h='100%' bg='#121212'>
                     <EditorBar editor={editor} />
                 </Flex>
             </Flex>
-            <Flex direction='column' w='100%' h='74%' maxH='74%' mb='100px' p={5} bg='black' border='1px solid #424242'>
+            <Flex direction='column' w='100%' h='90%' maxH='90%' mb={4} p={5} bg='#121212' border='1px solid #424242'>
                 
                 <Flex w='100%' h='95%'>
                     <EditorContent spellCheck='false' className='editor-field' style={{minWidth: '100%', resize: 'none', height: '100%', minHeight: '100%', maxHeight: '100%', overflowY: 'scroll'}} editor={editor} />
