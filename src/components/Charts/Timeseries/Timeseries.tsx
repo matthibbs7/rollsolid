@@ -1,4 +1,4 @@
-import { Button, Divider, Flex, Input, Text } from '@chakra-ui/react';
+import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import {
     ResponsiveContainer,
@@ -74,7 +74,7 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
 
     return (
         <Flex direction='column' w='100%' h='100%'>
-            <Flex direction='column' w='100%' h='70%' mt={1} mb={2} pt={4} pr={3} bg='#121212' border='1px solid #343434'>
+            <Flex direction='column' w='100%' h='73%' mt={1} mb={0} pt={4} pr={3} bg='#121212' border='1px solid #343434' borderBottom='1px solid #121212'>
                 {
                     data && data.length >= 1 ? (
                         <ResponsiveContainer width="100%" height='100%'>
@@ -110,18 +110,18 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
                 }
                 
             </Flex>
-            <Flex direction='column' overflow='scroll' h='32%' maxH='112px' mt='auto' mb={3} p={1} px={3} bg='#121212' border='1px solid #343434'>
+            <Flex direction='column' overflow='scroll' h='24%' maxH='88px' mb={1} p={1} px={3} bg='#121212' border='1px solid #343434'>
                 <Flex direction="column" w="100%" h="100%">
-                    <Text fontFamily="AvenirNext-Regular" fontSize="11pt">Enter stack amount for each hand:</Text>
-                    <Divider />
+                    {/* <Text mt={0.5} fontFamily="AvenirNext-Regular" fontSize="11pt">Enter stack amount for each hand:</Text>
+                    <Divider /> */}
                     <Flex mt={1.5}>
-                        <Input w="50%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
+                        <Input w="50%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
                     
                     </Flex>
                     <Flex mt={2.5}>
-                        <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#343434' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>Add</Button>
-                        <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#343434' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleRemoveData} type='submit'>Remove</Button>
-                        <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#343434' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleClearData} type='submit'>Clear</Button>
+                        <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>Add</Button>
+                        <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleRemoveData} type='submit'>Remove</Button>
+                        <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleClearData} type='submit'>Clear</Button>
                     </Flex>
                 </Flex>
             </Flex>
