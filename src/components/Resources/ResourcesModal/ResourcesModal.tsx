@@ -26,20 +26,29 @@ const ResourcesModal:React.FC<ResourcesModalProps> = ({ isOpen, handleClose }) =
                     <Box pr={3} pl={3}> 
                         <Divider borderColor='#2f2f2f' />
                         <ModalCloseButton _focus={{boxShadow: 'none'}} />
-                        <ModalBody flexDir="column" display="flex" p="10px 0px">
-                            <Flex align='center' justify='center' w='55px' mt={1} mb={2} bg='#644ED5' borderRadius={10}><Text  fontSize='12.5px' fontWeight={500}>Name</Text></Flex>
-                            <Text mb={-5} color='#A3A3A3' fontSize={11}>Workspace names cannot be changed</Text>
-                            <Text pos='relative' top='28px' left='10px' w='20px' color='gray.400'>c/</Text>
-                            <Text mt={1} color={charsRemaining === 0 ? 'red' : '#A3A3A3'} fontSize='11px'>{charsRemaining} Characters remaining</Text>
-                            
-                            <Flex align="center" direction="row">
-                                <Flex align='center' justify='center' w='90px' mt={6} mb={2} bg='#644ED5' borderRadius={10}><Text  fontSize='12.5px' fontWeight={500}>Brand Color</Text></Flex>
-                                <Flex w="20px" h="20px" mt={4} ml={2} style={{backgroundColor: `#${brandColor}`}}></Flex>
+                        <ModalBody justifyContent='center' flexDir="column" display="flex" p="10px 0px" px={10} py={5}>
+                            <Flex columnGap={8}>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
                             </Flex>
-                            <Text mb={-5} color="#A3A3A3" fontSize={11}>Enter hex code</Text>
-                            <Text pos='relative' top='28px' left='10px' w='10px' color='gray.400'>#</Text>
-                            
-                            <Text pt={1} color='red' fontSize='9pt'>{error}</Text>
+                            <Flex columnGap={8} mt={6}>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
+                                <Flex w='180px' h='120px' bg='#232323'>
+
+                                </Flex>
+                            </Flex>
                         </ModalBody>
                     </Box>
                     <ModalFooter h='64px' mt={5} bg='#121212' borderBottomRadius="8px">
