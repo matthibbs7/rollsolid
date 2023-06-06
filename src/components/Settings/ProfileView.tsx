@@ -66,10 +66,6 @@ const ProfileView:React.FC = () => {
                         <Text mt={6} fontFamily='AvenirNext-DemiBold' fontSize='14.5pt'>@{user?.email?.match(emailRegex)?.toString() ?? ''}</Text>
                     </Flex>
                     <Flex direction='column' h="35px" mt={4} ml={-1} px={1} onClick={() => signOut(auth)}>
-                        {/* <Flex align="center" direction="row" w="100px" h="30px" mr={5} border="1px solid #1c1c1c" _hover={{bg: '#1c1c1c', cursor: 'pointer', border: '1px solid grey'}}>
-                            <Text ml={2} color="white"><TbLogout /></Text>
-                            <Text h="35px" mt="12px" color="white">&nbsp; Logout</Text>
-                        </Flex> */}
                         <Text fontSize='13px' fontWeight={400}>Email</Text>
                         <Text color='#868686'>{user?.email}</Text>
                     </Flex>

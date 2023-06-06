@@ -1,20 +1,11 @@
 import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 type ResourcesModalProps = {
     isOpen: boolean;
     handleClose: () => void;
 };
 
 const ResourcesModal:React.FC<ResourcesModalProps> = ({ isOpen, handleClose }) => {
-    const [companyName, setCompanyName] = useState('');
-    const [charsRemaining, setCharsRemaining] = useState(21);
-    const selectFileRef = useRef<HTMLInputElement>(null);
-    const [brandColor, setBrandColor] = useState('444444');
-    const [brandRemaining, setBrandRemaining] = useState(6);
-    
-    const [companyLink, setCompanyLink] = useState('');
-    
-    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     return (
