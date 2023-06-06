@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Flex, Text, Tooltip, useColorMode } from '@chakra-ui/react';
 import { GiRollingBomb, GiAbstract089 } from 'react-icons/gi';
 import AuthButtons from '../Auth/AuthButtons';
@@ -15,15 +15,17 @@ import { IoPricetagsOutline } from 'react-icons/io5';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import FeatureDropDown from './FeatureDropDown/FeatureDropDown';
 import ChartsDropDown from '../Charts/ChartsDropDown/ChartsDropDown';
+import ResourcesModal from '../Resources/ResourcesModal/ResourcesModal';
 
 export const Navbar = () => {
-
     const { colorMode } = useColorMode();
     const router = useRouter();
     const cmb = colorMode === 'light' ? '#161616' : '#161616';
     const cmt = colorMode === 'light' ? '#F6F7F9' : '#F6F7F9C';
     const emailRegex = /.+?(?=@)/;
     const [user] = useAuthState(auth);
+
+    const [open, setOpen] = useState(false);
 
     return (
         <Flex
@@ -58,7 +60,7 @@ export const Navbar = () => {
                     <ChartsDropDown />
                     {/* <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><FaChartLine />&nbsp;&nbsp;<Text fontSize="12px">Charts</Text></Button> */}
                     <Button h="60%" ml={0} color='#A3A3A3' fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><GiAbstract089 />&nbsp;&nbsp;<Text fontSize="12px">Simulate</Text></Button>
-                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="12px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Resources</Text></Button>
+                    <Button h="60%" ml={0} color='#A3A3A3' fontSize="12px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => setOpen(true)}><TbBook2 />&nbsp;&nbsp;<Text fontSize="12px">Resources</Text></Button>
                 </>
             )}
             
@@ -69,7 +71,7 @@ export const Navbar = () => {
                     </Box> 
                 </Tooltip> 
             }
-
+            <ResourcesModal isOpen={open} handleClose={() => setOpen(false)} />
             <AuthButtons user={user} />
         </Flex>
     );
