@@ -54,7 +54,7 @@ const ProfileView:React.FC = () => {
                         <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Profile&nbsp;</Text>
                     </Flex>
                     <Flex direction='column' w='110px' mt={-1} mb={3}>
-                        <Text color='#C7AE7A' fontSize='13.5pt' fontWeight={500}>Account</Text>
+                        <Text color='#F8D585' fontSize='13px' fontWeight={400}>Account</Text>
                         {/* <Divider borderColor='#7083B3' /> */}
                     </Flex> 
                     <Flex align='center' mt={2}>
@@ -70,17 +70,17 @@ const ProfileView:React.FC = () => {
                             <Text ml={2} color="white"><TbLogout /></Text>
                             <Text h="35px" mt="12px" color="white">&nbsp; Logout</Text>
                         </Flex> */}
-                        <Text>Email</Text>
+                        <Text fontSize='13px' fontWeight={400}>Email</Text>
                         <Text color='#868686'>{user?.email}</Text>
                     </Flex>
                     <Flex direction='column' w='33%'>
-                        <Flex justify='center' direction='column' h='28px' mt={7} p={2} bg='#d69540' borderRadius={5}>
-                            <Text mb={3} color='black' fontSize='12pt' fontWeight={500}>Subscriptions</Text>
+                        <Flex justify='center' direction='column' h='28px' mt={7} borderRadius={5}>
+                            <Text color='#F8D585' fontSize='13px' fontWeight={400}>Subscriptions</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>
                             <Flex direction='column'>
-                                <Text>Active</Text>
+                                <Text color='white' fontSize='13px' fontWeight={400}>Active</Text>
                                 <Text color='#868686'>Expires April 2023</Text>
                             </Flex>
                             {/* <Switch ml='auto' /> */}
@@ -93,23 +93,23 @@ const ProfileView:React.FC = () => {
                         </Flex> 
                         <Flex align='center'>
                             <Flex direction='column'>
-                                <Text>Notifications</Text>
-                                <Text color='#F8D585'>Adjust toast popups for dashboards</Text>
+                                <Text fontSize='13px' fontWeight={400}>Notifications</Text>
+                                <Text color='#868686' fontSize='13px' fontWeight={400} >Adjust toast popups for dashboards</Text>
                             </Flex>
                             <Switch ml='auto' variant='boxy' />
                         </Flex>
                         <Flex align='center'>
                             <Flex direction='column'>
-                                <Text>Language</Text>
-                                <Text color='#868686'>Feature description languages</Text>
+                                <Text fontSize='13px' fontWeight={400}>Language</Text>
+                                <Text color='#868686' fontSize='13px' fontWeight={400}>Feature description languages</Text>
                                 
                             </Flex>
                             <Switch ml='auto' variant='boxy' />
                         </Flex>
                         <Flex align='center'>
                             <Flex direction='column'>
-                                <Text>Color Theme</Text>
-                                <Text color='#868686'>Toggle Dark Mode (default)</Text>
+                                <Text fontSize='13px' fontWeight={400}>Color Theme</Text>
+                                <Text color='#868686' fontSize='13px' fontWeight={400}>Toggle Dark Mode (default)</Text>
                                 
                             </Flex>
                             <Switch ml='auto' variant='boxy' />
