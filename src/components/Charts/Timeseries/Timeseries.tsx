@@ -112,8 +112,6 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
             </Flex>
             <Flex direction='column' overflow='scroll' h='24%' maxH='88px' mb={1} p={1} px={3} bg='#121212' border='1px solid #343434'>
                 <Flex direction="column" w="100%" h="100%">
-                    {/* <Text mt={0.5} fontFamily="AvenirNext-Regular" fontSize="11pt">Enter stack amount for each hand:</Text>
-                    <Divider /> */}
                     <Flex mt={1.5}>
                         <Input w="50%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
                     
