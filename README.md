@@ -1,7 +1,5 @@
 # Rollsolid
-
-<img src="https://imgur.com/NVRBFfH.png" width="544" height="200">
-
+<img src="https://i.imgur.com/rlYzLpe.png" />
 * [Live Production: https://rollsolid.com](https://rollsolid.com)
 
 Rollsolid is a flexible dashboard tool that can be used alongside Poker games to assist in applications of advanced Poker theory and strategy.
@@ -26,7 +24,16 @@ TODO
 
 ## Widgets
 
-TODO
+
+
+### Timeseries
+
+![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDdmZmJjNTBkYzBjY2YxM2QyOGZmODNmZjU0MDNiMDNjZDNlOWZmOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GPk8qRQt8DWSvoiZMV/giphy.gif)
+
+### Notes (Rich Text Editor)
+
+![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjBmOTllZmM1YzVlNTBjZjAxODUxYTM1MTRiZTk2YTYwNmMxMTU0MCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GSLrv9yqul12epMmxb/giphy.gif)
+
 
 ## Roadmap
 
