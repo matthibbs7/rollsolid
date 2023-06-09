@@ -1,5 +1,5 @@
 
-export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'test';
+export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test';
 
 export interface WindowState {
     widgetName?: string; // default type title -> can be overridden in settings
@@ -15,5 +15,5 @@ export interface WindowState {
     handleColor: string; //TODO # default #121212 -> overridden
     lockPosition?: boolean; //TODO
     textContent?: string;
-    chartData?: Array<{id: string, amount: number, hand: number}>;
+    chartData?: Array<{id: string, amount: number, hand: string}>;
 }

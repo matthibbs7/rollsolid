@@ -1,28 +1,45 @@
 import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import {
+    PieChart,
+    Pie, 
+    Cell, 
+    Legend,
     ResponsiveContainer,
-    Scatter,
-    ScatterChart,
-    XAxis,
-    YAxis,
-    Tooltip,
-    CartesianGrid
+    Tooltip
 } from 'recharts';
-import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 import { v4 as uuid } from 'uuid';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
+import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 
-interface TimeseriesProps {
+interface PieChartComponentProps {
     processId: number;
 }
 
-const Timeseries = ({ processId }: TimeseriesProps) => {
+const COLORS = ['#9560E2', '#4DC0B5', '#F6993F', '#F66D9B', '#3490DC', '#6574CD', '#F7CC66', '#38C071', '#F6786F'];
+
+const renderLegend = (props: any) => {
+    const { payload } = props;
+    console.log(payload, 'PAYLOAD');
+    return (
+        <Flex wrap='wrap' w='100%'>
+            {
+                payload.map((entry: any, index: any) => (
+                    <Flex key={`${index}`} justify='center' ml={2} my={1.5} px={3} bg={COLORS[index % COLORS.length]} borderRadius={5}>
+                        <Text color='black' fontSize='9pt'>{entry.payload.hand}</Text>
+                    </Flex>
+                ))
+            }
+        </Flex>
+    );
+};
+
+const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     // const [data, setData] = useState([]);
     const [newDataVal, setNewDataVal] = useState<number>(0);
-
+    const [newName, setNewName] = useState<string>('');
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
     const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].chartData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].chartData : []);
@@ -48,13 +65,15 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
     const handleAddData = () => {
         if (newDataVal !== undefined) {
             if (data) {
+                if (data.length === 9) return;
+                console.log(newName);
                 setData([
                     ...data,
-                    { id: uuid(), amount: newDataVal, hand: `${data.length + 1}`}
+                    { id: uuid(), amount: newDataVal, hand: newName !== '' ? newName : `${data.length + 1}`}
                 ]);
             } else {
                 setData([
-                    { id: uuid(), amount: newDataVal, hand: '1'}
+                    { id: uuid(), amount: newDataVal, hand: newName ? newName : '1'}
                 ]);
             }
         }
@@ -77,34 +96,37 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
             <Flex direction='column' w='100%' h='73%' mt={1} mb={0} pt={4} pr={3} bg='#121212' border='1px solid #343434' borderBottom='1px solid #121212'>
                 {
                     data && data.length >= 1 ? (
-                        <ResponsiveContainer width="100%" height='100%'>
-                            <ScatterChart>
-                                <XAxis
-                                    // dataKey="time"
-                                    domain={['dataMin', 'dataMax']}
-                                    name="Hand"
-                                    // tickFormatter={(num: any) => 'test'}
-                                    type="number"
-                                    dataKey='hand'
-                                    scale='linear'
-                                />
-                                <YAxis scale='linear' dataKey="amount" name="Amount" domain={[0, 'dataMax']} />
-                                <Scatter
-                                    fill="#A99BFC"
+                        <ResponsiveContainer width="99%" height='99%'>
+                            <PieChart >
+                                <Pie
                                     data={data}
-                                    line={{ stroke: '#A99BFC' }}
-                                    lineType="joint"
-                                    lineJointType="monotoneX"
-                                    name="Values"
-                                />
+                                    color="#000000"
+                                    dataKey="amount"
+                                    nameKey="hand"
+                                    cx="50%"
+                                    cy="50%"
+                                    outerRadius={'80%'}
+                                    innerRadius={'50%'}
+                                    fill="#8884d8"
+                                    
+                                >
+                                    {data.map((entry, index) => (
+                                        <Cell
+                                            onClick={() => console.log(index)}
+                                            key={`${index}`}
+                                            fill={COLORS[index % COLORS.length]}
+                                            stroke="#666666"
+                                        />
+                                    ))}
+                                </Pie>
                                 <Tooltip content={<CustomTooltip />} />
-                                <CartesianGrid vertical={false} opacity={0.15} strokeDasharray="3 3" />
-                            </ScatterChart>
+                                <Legend content={renderLegend} />
+                            </PieChart>
                         </ResponsiveContainer>
                     ) : (
                         <Flex direction='column' w='100%' h='100%' px={5}>
-                            <Text fontSize='14pt'>Empty Chart</Text>
-                            <Text mt={1.5} color='#a3a3a3'>Begin by adding datapoints below</Text>
+                            <Text fontSize='12pt'>Empty Pie Chart</Text>
+                            <Text mt={1.5} color='#a3a3a3' fontSize='10.5pt'>Begin by adding datapoints below.</Text>
                         </Flex>
                     )
                 }
@@ -113,8 +135,8 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
             <Flex direction='column' overflow='scroll' h='24%' maxH='88px' mb={1} p={1} px={3} bg='#121212' border='1px solid #343434'>
                 <Flex direction="column" w="100%" h="100%">
                     <Flex mt={1.5}>
-                        <Input w="50%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
-                    
+                        <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" />
+                        <Input w="22%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
                     </Flex>
                     <Flex mt={2.5}>
                         <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>Add</Button>
@@ -126,4 +148,4 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
         </Flex>
     );
 };
-export default Timeseries;
+export default PieChartComponent;

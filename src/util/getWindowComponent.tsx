@@ -4,6 +4,7 @@ import { Text } from '@chakra-ui/react';
 import Timer from '@/components/Modules/Timer/Timer';
 import Notes from '@/components/Modules/Notes/Notes';
 import Timeseries from '@/components/Charts/Timeseries/Timeseries';
+import PieChartComponent from '@/components/Charts/Pie/Pie';
 
 export const getWindowComponent = (type: WindowType, processId: number) => {
 
@@ -20,6 +21,8 @@ export const getWindowComponent = (type: WindowType, processId: number) => {
         return <Timer />;
     case 'timeseries':
         return <Timeseries processId={processId} />;
+    case 'pie':
+        return <PieChartComponent processId={processId} />;
     default:
         return (
             <Text>Default ?</Text>

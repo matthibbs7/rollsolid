@@ -14,6 +14,10 @@ export const getWindowTypeProps = (type: WindowType) => {
         return {
             title: 'Timeseries'
         };
+    case 'pie':
+        return {
+            title: 'Pie Chart'
+        };
     default:
         return {};
     }
