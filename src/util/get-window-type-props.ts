@@ -18,6 +18,11 @@ export const getWindowTypeProps = (type: WindowType) => {
         return {
             title: 'Pie Chart'
         };
+    case 'reference': {
+        return {
+            title: 'Hand Reference'
+        };
+    }
     default:
         return {};
     }

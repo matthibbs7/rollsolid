@@ -162,7 +162,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
             <Flex direction='column' overflow='scroll' h='24%' maxH='88px' mb={1} p={1} px={3} bg='#121212' border='1px solid #343434'>
                 <Flex direction="column" w="100%" h="100%">
                     <Flex mt={1.5}>
-                        <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" value={newName} />
+                        <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} _placeholder={{color: '#4B4B4B'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" value={newName} />
                         <Input w="22%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
                     </Flex>
                     <Flex mt={2.5}>

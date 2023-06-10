@@ -1,5 +1,5 @@
 
-export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test';
+export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test' | 'reference';
 
 export interface WindowState {
     widgetName?: string; // default type title -> can be overridden in settings

@@ -5,6 +5,7 @@ import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
+import { GiCardPick } from 'react-icons/gi';
 
 const WidgetNavbar:React.FC = () => {
     // const [authenticated, setAuthenticated]
@@ -77,6 +78,41 @@ const WidgetNavbar:React.FC = () => {
         });
     };
 
+    const addHandReferenceWidget = () => {
+        const newPid = processState.previousId + 1;
+        const notesWindowState: WindowState = {
+            processId: newPid,
+            type: 'reference',
+            x: newPid % 2 == 0 ? 65 : 45,
+            y: newPid % 2 == 0 ? 65 : 45,
+            z: 0,
+            width: '400px',
+            height: '400px',
+            isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
+        };
+        setProcessState((prevState: typeof processState) => ({
+            ...prevState,
+            previousId: newPid,
+        }));
+        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+            ...prevState,
+            stack: [...prevState.stack, notesWindowState],
+        }));
+        toast({
+            render: () => (
+                <Flex align='center' w='280px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                    <GiCardPick fontSize='11pt' color='white' />
+                    <Text ml={2} color='white' fontSize='10.5pt' >Hand Reference Widget loaded</Text>
+                </Flex>
+            ),
+            duration: 1000,
+            position: 'top',
+            isClosable: true,
+        });
+    };
+
     return (
         <Flex align="center" h="100%" ml={0}>  
             <Menu>
@@ -91,33 +127,65 @@ const WidgetNavbar:React.FC = () => {
                         <MenuList w="600px" minW="0" h="224px" mt={1.5} ml="0px" p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
                             transition: { duration: 0 },
                             animate: 'visible'}}>
-                            <Flex direction='column' w='100%' h='100%' ml={2} py={0}>
-                                <MenuItem w='44%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
-                                    <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
-                                    <Flex direction='column' ml={3}>
-                                        <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
-                                        <Text color='#a3a3a3' fontSize='11px'>Document your opponents behavior</Text>
+                            <Flex>
+                                <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
+                                    <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
+                                        <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Document your opponents behavior</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
+                                        <MdOutlineWidgets fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>EQ Calculator</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Estimate GTO per hand</Text>
+                                        </Flex>
                                     </Flex>
-                                </MenuItem>
-                                <Flex align='center' w='44%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                    <MdOutlineWidgets fontSize='28px' color='#A3A3A3' />
-                                    <Flex direction='column' ml={3}>
-                                        <Text color='#d1d1d1' fontSize='12px'>EQ Calculator</Text>
-                                        <Text color='#a3a3a3' fontSize='11px'>Estimate GTO per hand</Text>
+                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
+                                        <MdAddChart fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Ranges</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>100+ scenario specific range charts</Text>
+                                        </Flex>
+                                    </Flex>
+                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
+                                        <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Betting Odds</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
+                                        </Flex>
                                     </Flex>
                                 </Flex>
-                                <Flex align='center' w='44%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                    <MdAddChart fontSize='28px' color='#A3A3A3' />
-                                    <Flex direction='column' ml={3}>
-                                        <Text color='#d1d1d1' fontSize='12px'>Ranges</Text>
-                                        <Text color='#a3a3a3' fontSize='11px'>100+ scenario specific range charts</Text>
+                                <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
+                                    <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
+                                        <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Document your opponents behavior</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>
+                                        <GiCardPick fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Hand Reference</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Evaluate Poker Hands ranked</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
+                                        <MdAddChart fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Ranges</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>100+ scenario specific range charts</Text>
+                                        </Flex>
                                     </Flex>
-                                </Flex>
-                                <Flex align='center' w='44%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                    <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
-                                    <Flex direction='column' ml={3}>
-                                        <Text color='#d1d1d1' fontSize='12px'>Betting Odds</Text>
-                                        <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
+                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
+                                        <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Betting Odds</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
+                                        </Flex>
                                     </Flex>
                                 </Flex>
                             </Flex>

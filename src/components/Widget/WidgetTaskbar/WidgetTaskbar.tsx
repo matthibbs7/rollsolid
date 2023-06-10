@@ -39,7 +39,7 @@ const WidgetTaskbar:React.FC = () => {
     };
 
     return (
-        <Flex pos='absolute' zIndex="1111111" top="calc(100vh - 76px)" direction='row' w="100%" h="26px" ml={1} my={0.5}>
+        <Flex pos='absolute' zIndex="1111111" top="calc(100vh - 80px)" direction='row' w="100%" h="30px" ml={1} my={0.5}>
             {minimizedWindows.stack.map((w) => {
                 if (w.isMinimizied) {
                     return (

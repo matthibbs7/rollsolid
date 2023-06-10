@@ -96,18 +96,18 @@ const ChartsDropDown:React.FC = () => {
                                 <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Charts</Text>    
                             </Flex>
                         </MenuButton>
-                        <MenuList w="600px" minW="0" h="224px" mt={1.5} p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
+                        <MenuList w="360px" minW="0" h="124px" mt={1.5} p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
                             transition: { duration: 0 },
                             animate: 'visible'}}>
                             <Flex direction='column' w='100%' h='100%' ml={2} py={0}>
-                                <MenuItem w='44%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addTimeseriesWidget()}>
+                                <MenuItem w='68%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addTimeseriesWidget()}>
                                     <MdTimeline color='#a3a3a3' fontSize='28px' />
                                     <Flex direction='column' ml={3}>
                                         <Text color='#d1d1d1' fontSize='12px'>Timseries</Text>
                                         <Text color='#a3a3a3' fontSize='11px'>Analyze stack trends over time</Text>
                                     </Flex>
                                 </MenuItem>
-                                <MenuItem w='44%' h='48px' px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addPieWidget()}>
+                                <MenuItem w='68%' h='48px' px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addPieWidget()}>
                                     <FiPieChart color='#a3a3a3' fontSize='24px' />
                                     <Flex direction='column' ml={3}>
                                         <Text color='#d1d1d1' fontSize='12px'>Pie</Text>
