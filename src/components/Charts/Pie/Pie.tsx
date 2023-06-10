@@ -37,7 +37,9 @@ const renderLegend = (props: any) => {
 };
 
 const PieChartComponent = ({ processId }: PieChartComponentProps) => {
-    // const [data, setData] = useState([]);
+    const [toggleExistingSelection, setToggleExistingSelection] = useState(false);
+    const [editIndex, setEditIndex] = useState(0);
+    
     const [newDataVal, setNewDataVal] = useState<number>(0);
     const [newName, setNewName] = useState<string>('');
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
@@ -63,7 +65,8 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     }, [data]);
 
     const handleAddData = () => {
-        if (newDataVal !== undefined) {
+
+        if (newDataVal !== undefined && !toggleExistingSelection) {
             if (data) {
                 if (data.length === 9) return;
                 console.log(newName);
@@ -76,6 +79,23 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                     { id: uuid(), amount: newDataVal, hand: newName ? newName : '1'}
                 ]);
             }
+            setNewDataVal(0);
+            setNewName('');
+        }
+
+        if (newDataVal !== undefined && toggleExistingSelection) {
+            if (data) {
+                if (data.length === 1) {
+                    setData([{id: data[0].id, amount: newDataVal, hand: newName ? newName : '1'}]);
+                } else {
+                    const dataClone = [...data];
+                    dataClone[editIndex] = {id: data[editIndex].id, amount: newDataVal, hand: newName ? newName : '1'};
+                    setData(dataClone);
+                }
+                setToggleExistingSelection(false);
+                setNewDataVal(0);
+                setNewName('');
+            }
         }
         return;
     };
@@ -85,8 +105,15 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     };
 
     const handleRemoveData = () => {
-        if (data) { 
-            setData(data.slice(0, -1));
+        if (data) {
+            if (!toggleExistingSelection) {
+                setData(data.slice(0, -1));
+                return;
+            } 
+            setData(data.filter((value, i) => i !== editIndex));
+            setToggleExistingSelection(false);
+            setNewDataVal(0);
+            setNewName('');
         }
         return;
     };
@@ -112,7 +139,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                                 >
                                     {data.map((entry, index) => (
                                         <Cell
-                                            onClick={() => console.log(index)}
+                                            onClick={() => {console.log(entry);setToggleExistingSelection(true);setNewName(entry.hand);setNewDataVal(entry.amount);setEditIndex(index);}}
                                             key={`${index}`}
                                             fill={COLORS[index % COLORS.length]}
                                             stroke="#666666"
@@ -126,7 +153,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                     ) : (
                         <Flex direction='column' w='100%' h='100%' px={5}>
                             <Text fontSize='12pt'>Empty Pie Chart</Text>
-                            <Text mt={1.5} color='#a3a3a3' fontSize='10.5pt'>Begin by adding datapoints below.</Text>
+                            <Text mt={1.5} color='#a3a3a3' fontSize='10.5pt'>Begin by adding datapoints below. Edit existing values by clicking on the corresponding piece of the Pie.</Text>
                         </Flex>
                     )
                 }
@@ -135,13 +162,14 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
             <Flex direction='column' overflow='scroll' h='24%' maxH='88px' mb={1} p={1} px={3} bg='#121212' border='1px solid #343434'>
                 <Flex direction="column" w="100%" h="100%">
                     <Flex mt={1.5}>
-                        <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" />
+                        <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" value={newName} />
                         <Input w="22%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
                     </Flex>
                     <Flex mt={2.5}>
-                        <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>Add</Button>
+                        <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>{toggleExistingSelection ? 'Edit' : 'Add'}</Button>
                         <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleRemoveData} type='submit'>Remove</Button>
                         <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleClearData} type='submit'>Clear</Button>
+                        {toggleExistingSelection && <Button w='84px' h='24px' minH='24px' maxH='24px' mb={3}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={() => {setToggleExistingSelection(false);setNewDataVal(0); setNewName('');}} type='submit'>Cancel</Button>}
                     </Flex>
                 </Flex>
             </Flex>

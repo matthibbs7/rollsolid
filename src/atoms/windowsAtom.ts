@@ -34,7 +34,7 @@ const defaultWindowsState: WindowsState = {
         isMinimizied: false,
         settingsOpen: false,
         handleColor: '121212',
-        chartData: [{id: '1', amount: 250, hand: 1}, {id: '2', amount: 269, hand: 2}, {id: '3', amount: 100, hand: 3}, {id: '4', amount: 165, hand: 4}, {id: '5', amount: 180, hand: 5}, {id: '6', amount: 80, hand: 6}]
+        chartData: [{id: '1', amount: 250, hand: '1'}, {id: '2', amount: 269, hand: '2'}, {id: '3', amount: 100, hand: '3'}, {id: '4', amount: 165, hand: '4'}, {id: '5', amount: 180, hand: '5'}, {id: '6', amount: 80, hand: '6'}]
     }],
 };
 
