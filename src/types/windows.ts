@@ -15,5 +15,5 @@ export interface WindowState {
     handleColor: string; //TODO # default #121212 -> overridden
     lockPosition?: boolean; //TODO
     textContent?: string;
-    chartData?: Array<{id: string, amount: number, hand: string}>;
+    chartData?: Array<{id: string, amount: number, hand: number}>;
 }

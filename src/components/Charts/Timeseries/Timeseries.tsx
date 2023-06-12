@@ -50,11 +50,12 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
             if (data) {
                 setData([
                     ...data,
-                    { id: uuid(), amount: newDataVal, hand: `${data.length + 1}`}
+                    { id: uuid(), amount: newDataVal, hand: data.length + 1}
                 ]);
+                console.log('DATA', data);
             } else {
                 setData([
-                    { id: uuid(), amount: newDataVal, hand: '1'}
+                    { id: uuid(), amount: newDataVal, hand: 1}
                 ]);
             }
         }
@@ -83,10 +84,11 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
                                     // dataKey="time"
                                     domain={['dataMin', 'dataMax']}
                                     name="Hand"
-                                    // tickFormatter={(num: any) => 'test'}
+                                    // tickFormatter={(num: any) => Number(num)}
                                     type="number"
                                     dataKey='hand'
                                     scale='linear'
+                                    interval={0}
                                 />
                                 <YAxis scale='linear' dataKey="amount" name="Amount" domain={[0, 'dataMax']} />
                                 <Scatter
