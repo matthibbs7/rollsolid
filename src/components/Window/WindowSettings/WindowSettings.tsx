@@ -3,6 +3,7 @@ import { Text, Flex, Input, Box, Switch, Button } from '@chakra-ui/react';
 import { WindowState } from '@/types/windows';
 import { windowsState } from '@/atoms/windowsAtom';
 import { useRecoilState } from 'recoil';
+import { workspaceState } from '@/atoms/workspaceAtom';
 
 interface WindowSettingsProps {
     pId: number;
@@ -21,19 +22,34 @@ export const WindowSettings = ({
     setWindowTitle, 
     setWindowColor,
 }: WindowSettingsProps) => {
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     // persisted memory after 'save' clicked
     
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         // check if name is different
-        const specificWindowState = minimizedWindows.stack.filter((w: WindowState) => w.processId === pId)[0];
+        // const specificWindowState = minimizedWindows.stack.filter((w: WindowState) => w.processId === pId)[0];
+
+        const specificWindowState = workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === pId)[0];
 
         if (windowTitle === specificWindowState.widgetName && windowColor === specificWindowState.handleColor) {
             // TODO feedback to user -> same name as error
             return;
         }
-        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        //     if (w.processId === pId) {
+        //         return {
+        //             ...w,
+        //             widgetName: windowTitle,
+        //             handleColor: windowColor,
+        //         };
+        //     } else {
+        //         return w;
+        //     }
+        // });
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === pId) {
                 return {
                     ...w,
@@ -45,9 +61,16 @@ export const WindowSettings = ({
             }
         });
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
 
     };

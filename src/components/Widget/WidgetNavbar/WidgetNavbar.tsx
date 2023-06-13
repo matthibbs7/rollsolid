@@ -6,42 +6,44 @@ import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { GiCardPick } from 'react-icons/gi';
+import { workspaceState } from '@/atoms/workspaceAtom';
 
 const WidgetNavbar:React.FC = () => {
     // const [authenticated, setAuthenticated]
     const { colorMode } = useColorMode();
     const cmb = colorMode === 'light' ? '#161616' : '#161616';
 
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [processState, setProcessState] = useRecoilState(processSchedulerState);
 
     const toast = useToast();
 
-    const addTimerWidget = () => {
-        // const timerWindow = getWindowComponent('timer');
-        const newPid = processState.previousId + 1;
-        const timerWindowState: WindowState = {
-            processId: newPid,
-            type: 'timer',
-            x: newPid % 2 == 0 ? 65 : 45,
-            y: newPid % 2 == 0 ? 65 : 45,
-            z: 0,
-            width: '400px',
-            height: '400px',
-            isMinimizied: false,
-            settingsOpen: false,
-            handleColor: '121212',
-        };
-        // update processMatrix increase previousId
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
-        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
-            ...prevState,
-            stack: [...prevState.stack, timerWindowState],
-        }));
-    };
+    // const addTimerWidget = () => {
+    //     // const timerWindow = getWindowComponent('timer');
+    //     const newPid = processState.previousId + 1;
+    //     const timerWindowState: WindowState = {
+    //         processId: newPid,
+    //         type: 'timer',
+    //         x: newPid % 2 == 0 ? 65 : 45,
+    //         y: newPid % 2 == 0 ? 65 : 45,
+    //         z: 0,
+    //         width: '400px',
+    //         height: '400px',
+    //         isMinimizied: false,
+    //         settingsOpen: false,
+    //         handleColor: '121212',
+    //     };
+    //     // update processMatrix increase previousId
+    //     setProcessState((prevState: typeof processState) => ({
+    //         ...prevState,
+    //         previousId: newPid,
+    //     }));
+    //     setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+    //         ...prevState,
+    //         stack: [...prevState.stack, timerWindowState],
+    //     }));
+    // };
 
     const addNotesWidget = () => {
         const newPid = processState.previousId + 1;
@@ -61,10 +63,18 @@ const WidgetNavbar:React.FC = () => {
             ...prevState,
             previousId: newPid,
         }));
-        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        //     ...prevState,
+        //     stack: [...prevState.stack, notesWindowState],
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, notesWindowState]}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: [...prevState.stack, notesWindowState],
+            active: newActive,
         }));
+
         toast({
             render: () => (
                 <Flex align='center' w='220px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
@@ -96,10 +106,18 @@ const WidgetNavbar:React.FC = () => {
             ...prevState,
             previousId: newPid,
         }));
-        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        //     ...prevState,
+        //     stack: [...prevState.stack, notesWindowState],
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, notesWindowState]}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: [...prevState.stack, notesWindowState],
+            active: newActive,
         }));
+
         toast({
             render: () => (
                 <Flex align='center' w='280px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
@@ -124,7 +142,7 @@ const WidgetNavbar:React.FC = () => {
                                 <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Widgets</Text>    
                             </Flex>
                         </MenuButton>
-                        <MenuList w="600px" minW="0" h="224px" mt={1.5} ml="0px" p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
+                        <MenuList w="620px" minW="0" h="224px" mt={1.5} ml="0px" p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
                             transition: { duration: 0 },
                             animate: 'visible'}}>
                             <Flex>

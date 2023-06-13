@@ -13,6 +13,7 @@ import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
 import { CustomTooltip } from './CustomTooltip/CustomTooltip';
+import { workspaceState } from '@/atoms/workspaceAtom';
 
 interface PieChartComponentProps {
     processId: number;
@@ -42,12 +43,26 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     
     const [newDataVal, setNewDataVal] = useState<number>(0);
     const [newName, setNewName] = useState<string>('');
+    
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
-    const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
+    // const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
+    const [data, setData] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
 
     useEffect(() => {
-        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        //     if (w.processId === processId) {
+        //         return {
+        //             ...w,
+        //             pieData: data,
+        //         };
+        //     } else {
+        //         return w;
+        //     }
+        // });
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === processId) {
                 return {
                     ...w,
@@ -58,9 +73,16 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
             }
         });
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
     }, [data]);
 

@@ -5,13 +5,16 @@ import { windowsState } from '@/atoms/windowsAtom';
 import { useRecoilState } from 'recoil';
 import { WindowState } from '@/types/windows';
 import WidgetTaskbar from '@/components/Widget/WidgetTaskbar/WidgetTaskbar';
-import { getWindowComponent } from '@/util/getWindowComponent';
-import WindowWrapper from '@/components/Window/WindowWrapper';
-import { getWindowTypeProps } from '@/util/get-window-type-props';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { WorkspaceNavbar } from '@/components/Workspace/WorkspaceNavbar/WorkspaceNavbar';
+import { workspaceState } from '@/atoms/workspaceAtom';
+import { getWindowComponent } from '@/util/getWindowComponent';
+import { getWindowTypeProps } from '@/util/get-window-type-props';
+import WindowWrapper from '@/components/Window/WindowWrapper';
 
 export default function Home() {
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
+
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [processState, setProcessState] = useRecoilState(processSchedulerState);
 
@@ -77,12 +80,28 @@ export default function Home() {
                 >
                     <WorkspaceNavbar />
                     <>
-                        {minimizedWindows.stack.length === 0 && (
+                        {/* {minimizedWindows.stack.length === 0 && (
                             <Flex mt={10} ml={10}>
                                 <Text fontWeight={600}>Empty (add a widget above)</Text>
                             </Flex>
+                        )} */}
+                        {workspaces.active.workspace_stack.stack.length === 0 && (
+                            <Flex mt={10} ml={10}>
+                                <Text fontWeight={600}>Empty (add a widget above)</Text>
+                            </Flex>   
                         )}
-                        {minimizedWindows.stack.map((w) => {
+                        {/* {minimizedWindows.stack.map((w) => {
+                            if (!w.isMinimizied) {
+                                const windowComponent = getWindowComponent(w.type, w.processId);
+                                const windowProps = getWindowTypeProps(w.type);
+                                return (
+                                    <WindowWrapper {...windowProps} x={w.x} y={w.y} type={w} key={w.processId} processId={w.processId.toString()}>
+                                        {windowComponent}
+                                    </WindowWrapper>
+                                );
+                            }
+                        })} */}
+                        {workspaces.active.workspace_stack.stack.map((w) => {
                             if (!w.isMinimizied) {
                                 const windowComponent = getWindowComponent(w.type, w.processId);
                                 const windowProps = getWindowTypeProps(w.type);

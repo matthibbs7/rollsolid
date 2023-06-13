@@ -1,4 +1,5 @@
 import { windowsState } from '@/atoms/windowsAtom';
+import { workspaceState } from '@/atoms/workspaceAtom';
 import { WindowState } from '@/types/windows';
 import { Flex } from '@chakra-ui/react';
 import { Color } from '@tiptap/extension-color';
@@ -16,13 +17,25 @@ interface NotesProps {
 
 const Notes = ({ processId}: NotesProps) =>  {
 
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
-    const [notesContent, setNotesContent] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent : '<p>Edit this text...</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>');
+    // const [notesContent, setNotesContent] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent : '<p>Edit this text...</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>');
+    const [notesContent, setNotesContent] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].textContent ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].textContent : '<p>Edit this text...</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>');
 
     useEffect(() => {
-        console.log('test');
-        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        //     if (w.processId === processId) {
+        //         return {
+        //             ...w,
+        //             textContent: notesContent,
+        //         };
+        //     } else {
+        //         return w;
+        //     }
+        // });
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === processId) {
                 return {
                     ...w,
@@ -33,10 +46,18 @@ const Notes = ({ processId}: NotesProps) =>  {
             }
         });
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
+        
     }, [notesContent]);
     
     const editor = useEditor({

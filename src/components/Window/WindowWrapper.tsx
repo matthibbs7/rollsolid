@@ -18,6 +18,7 @@ import { useWindowSize } from 'rooks';
 import { windowsState } from '@/atoms/windowsAtom';
 import { WindowState } from '@/types/windows';
 import { WindowSettings } from './WindowSettings/WindowSettings';
+import { workspaceState } from '@/atoms/workspaceAtom';
 
 interface State {
   width: number | string;
@@ -39,11 +40,16 @@ interface Props extends RndProps {
 const WindowWrapper:React.FC<Props> = (props) => {
     const [frontWindow, setFrontWindow] = useRecoilState(frontWindowState);
     const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
+    
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
-    const [windowColor, setWindowColor] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].handleColor);
+    // const [windowColor, setWindowColor] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].handleColor);
+    const [windowColor, setWindowColor] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].handleColor);
+    
     // voodoo magic
-    const [windowTitle, setWindowTitle] = useState<string>(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName ? minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! : props.title!);
+    // const [windowTitle, setWindowTitle] = useState<string>(minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName ? minimizedWindows.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! : props.title!);
+    const [windowTitle, setWindowTitle] = useState<string>(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! : props.title!);
 
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({
@@ -132,7 +138,22 @@ const WindowWrapper:React.FC<Props> = (props) => {
     // save x y position
     const toggleMinimized = (pId: number) => {
 
-        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        //     if (w.processId === pId) {
+        //         return {
+        //             ...w,
+        //             isMinimizied: !w.isMinimizied,
+        //             x: windowState.x,
+        //             y: windowState.y,
+        //             width: windowState.width,
+        //             height: windowState.height,
+        //         };
+        //     } else {
+        //         return w;
+        //     }
+        // });
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === pId) {
                 return {
                     ...w,
@@ -147,16 +168,34 @@ const WindowWrapper:React.FC<Props> = (props) => {
             }
         });
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
     };
 
     // open or not
     const toggleWindowSettings = (pId: number) => {
 
-        const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
+        //     if (w.processId === pId) {
+        //         return {
+        //             ...w,
+        //             settingsOpen: !w.settingsOpen,
+        //         };
+        //     } else {
+        //         return w;
+        //     }
+        // });
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === pId) {
                 return {
                     ...w,
@@ -167,20 +206,38 @@ const WindowWrapper:React.FC<Props> = (props) => {
             }
         });
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
     };
 
     const closeWindow = (pId: number) => {
-        const newMinimizedStack = minimizedWindows.stack.filter((w: WindowState) =>
+        // const newMinimizedStack = minimizedWindows.stack.filter((w: WindowState) =>
+        //     w.processId !== pId
+        // );
+
+        const newActiveStack = workspaces.active.workspace_stack.stack.filter((w: WindowState) =>
             w.processId !== pId
         );
 
-        setMinimizedWindows((prevState) => ({
+        // setMinimizedWindows((prevState) => ({
+        //     ...prevState,
+        //     stack: newMinimizedStack,
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: newMinimizedStack,
+            active: newActive,
         }));
     };
 

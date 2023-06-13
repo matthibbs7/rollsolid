@@ -7,9 +7,11 @@ import { windowsState } from '@/atoms/windowsAtom';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { FaChartLine } from 'react-icons/fa';
 import { FiPieChart } from 'react-icons/fi';
+import { workspaceState } from '@/atoms/workspaceAtom';
 const ChartsDropDown:React.FC = () => {
     const cmb = '#161616';
  
+    const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [processState, setProcessState] = useRecoilState(processSchedulerState);
 
@@ -33,9 +35,16 @@ const ChartsDropDown:React.FC = () => {
             ...prevState,
             previousId: newPid,
         }));
-        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        //     ...prevState,
+        //     stack: [...prevState.stack, timeseriesWindowState],
+        // }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, timeseriesWindowState]}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: [...prevState.stack, timeseriesWindowState],
+            active: newActive,
         }));
         toast({
             render: () => (
@@ -68,9 +77,15 @@ const ChartsDropDown:React.FC = () => {
             ...prevState,
             previousId: newPid,
         }));
-        setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
+        //     ...prevState,
+        //     stack: [...prevState.stack, pieWindowState],
+        // }));
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, pieWindowState]}};
+
+        setWorkspaces((prevState) => ({
             ...prevState,
-            stack: [...prevState.stack, pieWindowState],
+            active: newActive,
         }));
         toast({
             render: () => (
