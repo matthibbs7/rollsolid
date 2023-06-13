@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, Flex, useColorMode, Menu, MenuButton, MenuItem, MenuList, useToast } from '@chakra-ui/react';
-import { MdAddChart, MdLibraryBooks, MdOutlineWidgets, MdStackedLineChart } from 'react-icons/md';
+import { MdAddChart, MdLibraryBooks, MdOutlineGradient, MdOutlineWidgets, MdStackedLineChart } from 'react-icons/md';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -159,13 +159,21 @@ const WidgetNavbar:React.FC = () => {
                                     </Flex>
                                 </Flex>
                                 <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
-                                    <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
+                                    <MenuItem w='100%' h='48px' mt={3}  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>
+                                        <MdOutlineGradient fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Ranking Calculator</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Score hands against 1000s of simulations</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
                                         <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
                                         <Flex direction='column' ml={3}>
                                             <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
                                             <Text color='#a3a3a3' fontSize='11px'>Document your opponents behavior</Text>
                                         </Flex>
                                     </MenuItem>
+                                    
                                     <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>
                                         <GiCardPick fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
@@ -173,13 +181,7 @@ const WidgetNavbar:React.FC = () => {
                                             <Text color='#a3a3a3' fontSize='11px'>Evaluate Poker Hands ranked</Text>
                                         </Flex>
                                     </MenuItem>
-                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                        <MdAddChart fontSize='28px' color='#A3A3A3' />
-                                        <Flex direction='column' ml={3}>
-                                            <Text color='#d1d1d1' fontSize='12px'>Ranges</Text>
-                                            <Text color='#a3a3a3' fontSize='11px'>100+ scenario specific range charts</Text>
-                                        </Flex>
-                                    </Flex>
+                                    
                                     <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
                                         <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>

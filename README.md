@@ -1,5 +1,6 @@
 # Rollsolid
 <img src="https://i.imgur.com/rlYzLpe.png" />
+
 * [Live Production: https://rollsolid.com](https://rollsolid.com)
 
 Rollsolid is a flexible dashboard tool that can be used alongside Poker games to assist in applications of advanced Poker theory and strategy.

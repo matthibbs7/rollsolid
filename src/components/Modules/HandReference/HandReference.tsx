@@ -77,7 +77,7 @@ const HandReference = () => {
                     <PlayCard suit='heart' value='J' fontSize='20cqw' />
                     <PlayCard suit='spade' value='K' fontSize='20cqw' />
                 </Flex>
-                <Text mt={-3} mb={3} color='#A3A3A3' fontSize='4cqw'>Two cards of the same rank</Text>
+                <Text mt={-3} mb={3} color='#A3A3A3' fontSize='4cqw'>Two pairs of two cards of the same rank</Text>
                 <Text fontSize='4cqw' fontWeight={600}>Pair</Text>
                 <Flex mt={-4}>
                     <PlayCard suit='club' value='9' fontSize='20cqw' />
@@ -86,6 +86,7 @@ const HandReference = () => {
                     <PlayCard suit='heart' value='2' fontSize='20cqw' />
                     <PlayCard suit='spade' value='8' fontSize='20cqw' />
                 </Flex>
+                <Text mt={-3} mb={3} color='#A3A3A3' fontSize='4cqw'>Two cards of the same rank</Text>
                 <Text fontSize='4cqw' fontWeight={600}>High Card</Text>
                 <Flex mt={-4}>
                     <PlayCard suit='club' value='A' fontSize='20cqw' />
@@ -94,6 +95,7 @@ const HandReference = () => {
                     <PlayCard suit='heart' value='2' fontSize='20cqw' />
                     <PlayCard suit='spade' value='5' fontSize='20cqw' />
                 </Flex>
+                <Text mt={-3} color='#A3A3A3' fontSize='4cqw'>Made of any 5 cards not matching above criteria</Text>
                 
             </Flex>
         </Flex>

@@ -8,7 +8,7 @@ import {
     ResponsiveContainer,
     Tooltip
 } from 'recharts';
-// import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -44,14 +44,14 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     const [newName, setNewName] = useState<string>('');
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
-    const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].chartData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].chartData : []);
+    const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
 
     useEffect(() => {
         const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
             if (w.processId === processId) {
                 return {
                     ...w,
-                    chartData: data,
+                    pieData: data,
                 };
             } else {
                 return w;
@@ -70,14 +70,14 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
             if (data) {
                 if (data.length === 9) return;
                 console.log(newName);
-                // setData([
-                //     ...data,
-                //     { id: uuid(), amount: newDataVal, hand: newName !== '' ? newName : `${data.length + 1}`}
-                // ]);
+                setData([
+                    ...data,
+                    { id: uuid(), amount: newDataVal, hand: newName !== '' ? newName : `${data.length + 1}`}
+                ]);
             } else {
-                // setData([
-                //     { id: uuid(), amount: newDataVal, hand: newName ? newName : '1'}
-                // ]);
+                setData([
+                    { id: uuid(), amount: newDataVal, hand: newName ? newName : '1'}
+                ]);
             }
             setNewDataVal(0);
             setNewName('');
@@ -86,11 +86,11 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
         if (newDataVal !== undefined && toggleExistingSelection) {
             if (data) {
                 if (data.length === 1) {
-                    // setData([{id: data[0].id, amount: newDataVal, hand: newName ? newName : '1'}]);
+                    setData([{id: data[0].id, amount: newDataVal, hand: newName ? newName : '1'}]);
                 } else {
                     const dataClone = [...data];
-                    // dataClone[editIndex] = {id: data[editIndex].id, amount: newDataVal, hand: newName ? newName : '1'};
-                    // setData(dataClone);
+                    dataClone[editIndex] = {id: data[editIndex].id, amount: newDataVal, hand: newName ? newName : '1'};
+                    setData(dataClone);
                 }
                 setToggleExistingSelection(false);
                 setNewDataVal(0);
@@ -139,7 +139,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                                 >
                                     {data.map((entry, index) => (
                                         <Cell
-                                            // onClick={() => {console.log(entry);setToggleExistingSelection(true);setNewName(entry.hand);setNewDataVal(entry.amount);setEditIndex(index);}}
+                                            onClick={() => {setToggleExistingSelection(true);setNewName(entry.hand);setNewDataVal(entry.amount);setEditIndex(index);}}
                                             key={`${index}`}
                                             fill={COLORS[index % COLORS.length]}
                                             stroke="#666666"

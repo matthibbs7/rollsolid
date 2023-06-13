@@ -1,5 +1,5 @@
 
-export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test' | 'reference';
+export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test' | 'reference' | 'hand';
 
 export interface WindowState {
     widgetName?: string; // default type title -> can be overridden in settings
@@ -16,4 +16,5 @@ export interface WindowState {
     lockPosition?: boolean; //TODO
     textContent?: string;
     chartData?: Array<{id: string, amount: number, hand: number}>;
+    pieData?: Array<{id: string, amount: number, hand: string}>;
 }
