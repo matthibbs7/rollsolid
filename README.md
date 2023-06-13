@@ -7,7 +7,7 @@ Rollsolid is a flexible dashboard tool that can be used alongside Poker games to
 
 * Features various widgets which can be dragged, resized, minimized, edited, and loaded onto workspace dashboards
 * Existing widgets include a Monte Carlo Simulation tool for Ranges, Pot Odd ratio calculators, decision training, a rich text editor, etc
-* Pro version of the software is available with more advanced features and workspace allocations.
+* Dynamic workspaces to expand your existing workspaces and create new workspaces with different utilities
 * Customizable settings for widgets
 * Resource hub and documentation
 
@@ -31,10 +31,17 @@ TODO
 
 ![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDdmZmJjNTBkYzBjY2YxM2QyOGZmODNmZjU0MDNiMDNjZDNlOWZmOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GPk8qRQt8DWSvoiZMV/giphy.gif)
 
+### Pie Chart
+
+![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2E4OTU5ZTM0ZTE4Yzg1ZDYyNGU5YWUwYTUxODU3NzA4MGM1ODY4MyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/JyolRpffkuaahPP1i8/giphy.gif)
+
 ### Notes (Rich Text Editor)
 
 ![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjBmOTllZmM1YzVlNTBjZjAxODUxYTM1MTRiZTk2YTYwNmMxMTU0MCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/GSLrv9yqul12epMmxb/giphy.gif)
 
+### Hand Reference
+
+<img width='480px' src="https://i.imgur.com/ABv7bKR.png" />
 
 ## Roadmap
 
