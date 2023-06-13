@@ -6,7 +6,7 @@
 Rollsolid is a flexible dashboard tool that can be used alongside Poker games to assist in applications of advanced Poker theory and strategy.
 
 * Features various widgets which can be dragged, resized, minimized, edited, and loaded onto workspaces
-* Existing widgets include a Monte Carlo Simulation tool for Ranges, Pot Odd ratio calculators, a rich text editor, etc
+* Existing widgets include a Monte Carlo Simulation tool for Ranges, Pot Odd calculators, a rich text editor, etc
 * Dynamic workspaces to expand your existing workspaces with new utilities
 * Check out **[rs-api](https://github.com/Rollsolid/rs-api)** to view the **Rollsolid Backend API**
 * Customizable settings for widgets
