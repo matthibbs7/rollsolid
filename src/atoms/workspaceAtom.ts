@@ -2,13 +2,13 @@ import { atom } from 'recoil';
 import { WindowsState } from './windowsAtom';
 
 export interface WorkspaceState {
-    workspaces: Array<{id: number, name: string, workspace_stack: WindowsState}>;
-    active: {id: number, name: string, workspace_stack: WindowsState};
+    workspaces: Array<{id: string, name: string, workspace_stack: WindowsState}>;
+    active: {id: string, name: string, workspace_stack: WindowsState};
 }
 
 // stack of stacks for workspaces feature
 const defaultWorkspaceState: WorkspaceState = {
-    workspaces: [{id: 1, name: 'PokerStars Online3', workspace_stack: {stack: [{
+    workspaces: [{id: '1', name: 'PokerStars Online3', workspace_stack: {stack: [{
         widgetName: 'Demo Widget', // default type title -> can be overridden in settings
         processId: -1,
         type: 'notes',
@@ -34,11 +34,11 @@ const defaultWorkspaceState: WorkspaceState = {
         settingsOpen: false,
         handleColor: '121212',
         chartData: [{id: '1', amount: 250, hand: 1}, {id: '2', amount: 269, hand: 2}, {id: '3', amount: 100, hand: 3}, {id: '4', amount: 165, hand: 4}, {id: '5', amount: 180, hand: 5}, {id: '6', amount: 80, hand: 6}]
-    }]}}, {id: 2, name: 'Workspace 2', workspace_stack: {stack: []}}
-    , {id: 3, name: 'Workspace 3', workspace_stack: {stack: []}}
+    }]}}, {id: '2', name: 'Workspace 2', workspace_stack: {stack: []}}
+    , {id: '3', name: 'Workspace 3', workspace_stack: {stack: []}}
     ],
     active: {
-        id: 1,
+        id: '1',
         name: 'PokerStars Online3',
         workspace_stack: {stack: [{
             widgetName: 'Demo Widget', // default type title -> can be overridden in settings

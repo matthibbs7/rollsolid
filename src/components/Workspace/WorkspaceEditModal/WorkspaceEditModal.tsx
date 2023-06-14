@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 
-type WorkspaceAddModalProps = {
+type WorkspaceEditModalProps = {
     isOpen: boolean;
     handleClose: () => void;
 };
 
-const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClose }) => {
+const WorkspaceEditModal:React.FC<WorkspaceEditModalProps> = ({ isOpen, handleClose }) => {
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     
     const [companyName, setCompanyName] = useState(`Workspace ${workspaces.workspaces.length + 1}`);
@@ -51,17 +51,23 @@ const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClos
             <Modal isOpen={isOpen} onClose={handleClose}>
                 {/* <ModalOverlay /> */}
                 <ModalContent bg='#181818' border='1px solid #2F2F2F' borderRadius='8px'>
-                    <ModalHeader flexDir='column' display="flex" p={3} color='white' fontSize={15} fontWeight={600}><Flex align='center'><Text>Add New Workspace</Text></Flex></ModalHeader>
+                    <ModalHeader flexDir='column' display="flex" p={3} color='white' fontSize={15} fontWeight={600}><Flex align='center'><Text>Edit your Workspaces</Text></Flex></ModalHeader>
                     <Box pr={3} pl={3}> 
                         <Divider borderColor='#2f2f2f' />
                         <ModalCloseButton _focus={{boxShadow: 'none'}} />
                         <ModalBody flexDir="column" display="flex" p="10px 0px">
-                            <Flex align='center' justify='center' w='55px' mt={1} mb={2} bg='#644ED5' borderRadius={10}><Text  fontSize='12.5px' fontWeight={500}>Name</Text></Flex>
+                            <Flex align='center' justify='center' w='185px' mt={1} mb={2} bg='none' borderRadius={10}><Text  fontSize='12.5px' fontWeight={500}>Select a Workspace below</Text></Flex>
                             <Text mb={-5} color='#A3A3A3' fontSize={11}>Workspace names cannot be changed</Text>
-                            <Text pos='relative' top='28px' left='10px' w='20px' color='gray.400'>c/</Text>
-                            <Input pos='relative' pl='12px' bg='#121212' border='none' borderRadius="0px" _active={{border: 'none'}} _focus={{border: 'none', boxShadow: 'none'}} _placeholder={{color: '#333333'}} onChange={handleChange} placeholder={`Workspace ${workspaces.workspaces.length + 1}`} size='sm' value={companyName}  />
-                            <Text mt={1} color={charsRemaining === 0 ? 'red.300' : '#A3A3A3'} fontSize='11px'>{charsRemaining} Characters remaining</Text>
-                            
+                            <Flex direction='column' overflowY='scroll' h='140px' mt={10} bg='#121212' border='1px solid #333333'>
+                                {workspaces.workspaces.map((w) => {
+                                    return (
+                                        <Text key={w.id} pl={3} py='4px' color='#a3a3a3' fontSize='14px' bg={w.id === workspaces.active.id ? '#090909' : '#121212'} borderBottom='1px solid black' _hover={{bg: '#090909', cursor: 'pointer'}}>{w.name}</Text>
+                                    );
+                                })
+
+                                }
+                            </Flex>
+                        
                             <Flex align="center" direction="row">
                                 <Flex align='center' justify='center' w='90px' mt={6} mb={2} bg='#644ED5' borderRadius={10}><Text  fontSize='12.5px' fontWeight={500}>Brand Color</Text></Flex>
                                 <Flex w="20px" h="20px" mt={4} ml={2} style={{backgroundColor: `#${brandColor}`}}></Flex>
@@ -83,11 +89,12 @@ const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClos
                         </ModalBody>
                     </Box>
                     <ModalFooter h='64px' mt={5} bg='#121212' borderBottomRadius="8px">
-                        <Button w='146px' h='34px' px={4} py={0.5} fontSize='13.5px' fontWeight={500} bg='#0E0E0E' border='1px solid #242424' borderRadius='0' _hover={{bg: '#181818'}} isLoading={loading} onClick={handleCreateCommunity}>Create Workspace</Button>
+                        <Button h='33px' mr={3} px={2} py={0.5} color='black' fontSize='13.5px' bg='red.400' borderRadius={0}>Delete</Button>
+                        <Button w='146px' h='34px' px={4} py={0.5} fontSize='13.5px' fontWeight={500} bg='#0E0E0E' border='1px solid #242424' borderRadius='0' _hover={{bg: '#181818'}} isLoading={loading} onClick={handleCreateCommunity}>Save Changes</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
         </>
     );
 };
-export default WorkspaceAddModal;
+export default WorkspaceEditModal;

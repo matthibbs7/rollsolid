@@ -7,6 +7,7 @@ import { windowsState } from '@/atoms/windowsAtom';
 import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { GiCardPick } from 'react-icons/gi';
 import { workspaceState } from '@/atoms/workspaceAtom';
+import { TbCards } from 'react-icons/tb';
 
 const WidgetNavbar:React.FC = () => {
     // const [authenticated, setAuthenticated]
@@ -136,22 +137,22 @@ const WidgetNavbar:React.FC = () => {
             <Menu>
                 {({ isOpen }) => (
                     <>
-                        <MenuButton as={Button} w="-moz-fit-content" h="60%" px={3} bg={cmb} border="1px solid #161616" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen}>
+                        <MenuButton as={Button} w="-moz-fit-content" minW='93px' h="60%" px={3} bg={cmb} border="1px solid #161616" borderRadius="0" _hover={{bg: 'none', cursor: 'pointer', border: '1px solid #494D51'}} _active={{bg: 'none', border: '1px solid #494D51'}} isActive={isOpen}>
                             <Flex align='center' textAlign="center">
                                 <Text fontSize='11px'><MdOutlineWidgets color='#A3A3A3' /></Text>
                                 <Text pt={0.5} pl={2.5} color='#A3A3A3' fontSize='12px' fontWeight={400} borderRadius="0px">Widgets</Text>    
                             </Flex>
                         </MenuButton>
-                        <MenuList w="620px" minW="0" h="224px" mt={1.5} ml="0px" p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
+                        <MenuList w="580px" minW="0" h="224px" mt={1.5} ml="0px" p="1px" py={0} bg="#161616" border="1px solid #494D51" borderRadius="6px" motionProps={{
                             transition: { duration: 0 },
                             animate: 'visible'}}>
                             <Flex>
                                 <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
                                     <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
-                                        <MdLibraryBooks color='#a3a3a3' fontSize='28px' />
+                                        <TbCards color='#a3a3a3' fontSize='28px' />
                                         <Flex direction='column' ml={3}>
-                                            <Text color='#d1d1d1' fontSize='12px'>Notes</Text>
-                                            <Text color='#a3a3a3' fontSize='11px'>Document your opponents behavior</Text>
+                                            <Text color='#d1d1d1' fontSize='12px'>Post Flop Analysis</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Analyze mid-game hand quality</Text>
                                         </Flex>
                                     </MenuItem>
                                     <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
@@ -176,7 +177,7 @@ const WidgetNavbar:React.FC = () => {
                                         </Flex>
                                     </Flex>
                                 </Flex>
-                                <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
+                                <Flex direction='column' w='50%' h='100%' mr={2} py={0}>
                                     <MenuItem w='100%' h='48px' mt={3}  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>
                                         <MdOutlineGradient fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
