@@ -1,7 +1,7 @@
 import { Flex, Text, Box } from '@chakra-ui/react';
 import { BiEdit } from 'react-icons/bi';
 import { VscDiffAdded } from 'react-icons/vsc';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import WorkspaceAddModal from '../WorkspaceAddModal/WorkspaceAddModal';
 import { workspaceState } from '@/atoms/workspaceAtom';
 import { useRecoilState } from 'recoil';
@@ -14,6 +14,10 @@ export const WorkspaceNavbar = () => {
 
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [activeId, setActiveId] = useState(workspaces.active.id);
+
+    useEffect(() => {
+        setActiveId(workspaces.active.id);
+    }, [workspaces.active.id]);
 
     const transferWorkspace = (selectedId: any) => {
         // update current active id in workspaces

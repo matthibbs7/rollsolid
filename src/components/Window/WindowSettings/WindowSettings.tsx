@@ -37,17 +37,6 @@ export const WindowSettings = ({
             // TODO feedback to user -> same name as error
             return;
         }
-        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
-        //     if (w.processId === pId) {
-        //         return {
-        //             ...w,
-        //             widgetName: windowTitle,
-        //             handleColor: windowColor,
-        //         };
-        //     } else {
-        //         return w;
-        //     }
-        // });
 
         const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === pId) {
@@ -60,11 +49,6 @@ export const WindowSettings = ({
                 return w;
             }
         });
-
-        // setMinimizedWindows((prevState) => ({
-        //     ...prevState,
-        //     stack: newMinimizedStack,
-        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
 

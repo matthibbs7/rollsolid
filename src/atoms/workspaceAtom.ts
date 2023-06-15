@@ -8,7 +8,7 @@ export interface WorkspaceState {
 
 // stack of stacks for workspaces feature
 const defaultWorkspaceState: WorkspaceState = {
-    workspaces: [{id: '1', name: 'PokerStars Online3', workspace_stack: {stack: [{
+    workspaces: [{id: '1', name: 'Poker Workspace', workspace_stack: {stack: [{
         widgetName: 'Demo Widget', // default type title -> can be overridden in settings
         processId: -1,
         type: 'notes',
@@ -39,7 +39,7 @@ const defaultWorkspaceState: WorkspaceState = {
     ],
     active: {
         id: '1',
-        name: 'PokerStars Online3',
+        name: 'Poker Workspace',
         workspace_stack: {stack: [{
             widgetName: 'Demo Widget', // default type title -> can be overridden in settings
             processId: -1,
