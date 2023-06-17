@@ -35,9 +35,9 @@ const UserResetPassword:React.FC = () => {
     
     return (
         <Flex justify="center" w="100%">
-            <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="430px" mt={[1,1,5,5]} bg="#0f0f0f" border="1px solid #2F2F2F">
+            <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="430px" mt={[1,1,5,5]} bg="#121212" border="1px solid #2F2F2F">
                 <Flex align="center" direction="row" mt={8}>
-                    <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Reset Password&nbsp;</Text>
+                    <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={600}>Reset Password&nbsp;</Text>
                     <GiRollingBomb fontSize="28pt" />
                 </Flex>
                 <Text w={['90%', '90%', '75%', '75%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Enter a valid e-mail to receive instructions on how to reset your password</Text>

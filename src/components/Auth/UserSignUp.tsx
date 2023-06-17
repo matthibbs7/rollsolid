@@ -64,9 +64,9 @@ const UserSignUp:React.FC = () => {
     return (
         <Flex direction="column" w="100%" mt={4}>
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
-                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#0f0f0f" border="1px solid #2F2F2F">
+                <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" mt={5}>
-                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Create an Account&nbsp;</Text>
+                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={600}>Create an Account&nbsp;</Text>
                         <GiRollingBomb fontSize="28pt" />
                     </Flex>
                     <Text w={['90%', '90%', '65%', '65%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>

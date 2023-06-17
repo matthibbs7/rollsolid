@@ -10,7 +10,7 @@ import { DraggableEvent } from 'react-draggable';
 import { useRecoilState } from 'recoil';
 import { frontWindowState } from '@/atoms/frontWindowAtom';
 import { useEffect, useState } from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text, Tooltip } from '@chakra-ui/react';
 import { RxCross1 } from 'react-icons/rx';
 import { IoCube, IoReorderThree } from 'react-icons/io5';
 import { FiMinimize2 } from 'react-icons/fi';
@@ -55,6 +55,29 @@ const WindowWrapper:React.FC<Props> = (props) => {
         y: props.y ? props.y : 0,
         maxZIndex: 0
     });
+
+    useEffect(() => {
+        const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
+            if (w.processId === Number(props.processId)) {
+                return {
+                    ...w,
+                    x: windowState.x,
+                    y: windowState.y,
+                    width: windowState.width,
+                    height: windowState.height,
+                };
+            } else {
+                return w;
+            }
+        });
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
+
+        setWorkspaces((prevState) => ({
+            ...prevState,
+            active: newActive,
+        }));
+    }, [windowState]);
     
     // default 200 x 200 minimum size
     const defaultStyle = {
@@ -225,15 +248,21 @@ const WindowWrapper:React.FC<Props> = (props) => {
                         <Text fontSize="11pt" fontWeight={600}>{windowTitle}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2} color='#C2C2C2'>
-                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => {toggleWindowSettings(props.type.processId); props.type.settingsOpen && windowTitle !== props.type.widgetName && windowTitle !== props.title ? setWindowTitle(props.type.widgetName ? props.type.widgetName : props.title!) : null; props.type.settingsOpen && props.type.handleColor !== windowColor ? setWindowColor(props.type.handleColor) : null;}}>
-                            {props.type.settingsOpen ? <IoCube /> : <IoReorderThree  />}
-                        </Flex>
-                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
-                            <FiMinimize2  />
-                        </Flex>
-                        <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
-                            <RxCross1 />
-                        </Flex>
+                        <Tooltip fontSize='11px' bg='black' label={props.type.settingsOpen ? 'Widget Content' : 'Widget Settings'} openDelay={1200} placement='top'>
+                            <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => {toggleWindowSettings(props.type.processId); props.type.settingsOpen && windowTitle !== props.type.widgetName && windowTitle !== props.title ? setWindowTitle(props.type.widgetName ? props.type.widgetName : props.title!) : null; props.type.settingsOpen && props.type.handleColor !== windowColor ? setWindowColor(props.type.handleColor) : null;}}>
+                                {props.type.settingsOpen ? <IoCube /> : <IoReorderThree  />}
+                            </Flex>
+                        </Tooltip>
+                        <Tooltip fontSize='11px' bg='black' label='Minimize Widget' openDelay={1200} placement='top'>
+                            <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: '#383838', cursor: 'pointer'}} onClick={() => toggleMinimized(props.type.processId)}>
+                                <FiMinimize2  />
+                            </Flex>
+                        </Tooltip>
+                        <Tooltip fontSize='11px' bg='black' label='Close Widget' openDelay={1200} placement='top'>
+                            <Flex align='center' w="25px" h="100%" p="5px" fontSize="11pt" bg='none' borderRadius='0' _hover={{bg: 'red.400', cursor: 'pointer'}} onClick={() => closeWindow(props.type.processId)}>
+                                <RxCross1 />
+                            </Flex>
+                        </Tooltip>
                     </Flex>
                 </Flex>
                 <Flex direction='column' overflowY='scroll' w="100%" h="100%" px={3} py={1.5} fontFamily="AvenirNext-Regular" _hover={{cursor: 'default'}}>

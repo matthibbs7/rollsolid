@@ -20,21 +20,21 @@ const ResourcesModal:React.FC<ResourcesModalProps> = ({ isOpen, handleClose }) =
                         <ModalBody justifyContent='center' flexDir="column" display="flex" mb={5} p="10px 0px" pt={2} pb={10} px={5}>
                             <Text mt={2} mb={5} color='#acacac' fontSize='12px'>Additional resources to bring your Poker skills to the next level!</Text>
                             <Flex columnGap={4}>
-                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #434343' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818'}}>
+                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #121212' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818', border: '1px solid gray'}}>
                                     <Text mb={3} fontSize='11.5px' fontWeight={600}>The Poker Bank</Text>
                                     <Image src='https://i.imgur.com/UDTFhxo.png' />
                                 </Flex>
-                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #434343' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818'}}>
+                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #121212' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818', border: '1px solid gray'}}>
                                     <Text mb={3} fontSize='11.5px' fontWeight={600}>Poker-AI Forums</Text>
                                     <Image src='https://i.imgur.com/vlrvvpu.png' />
                                 </Flex>
-                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #434343' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818'}}>
+                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #121212' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818', border: '1px solid gray'}}>
                                     <Text mb={3} fontSize='11.5px' fontWeight={600}>Poker AI Tutorial</Text>
                                     <Image src='https://i.imgur.com/fAXXE8g.png' />
                                 </Flex>
                             </Flex>
                             <Flex columnGap={4} mt={4}>
-                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #434343' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818'}}>
+                                <Flex direction='column' w='180px' h='140px' px={3.5} py={2} bg='#121212' border='1px solid #121212' borderRadius={5} _hover={{cursor: 'pointer', bg: '#181818', border: '1px solid gray'}}>
                                     <Text mb={3} fontSize='11.5px' fontWeight={600}>Two Plus Two Forums</Text>
                                     <Image src='https://i.imgur.com/JrUFbyU.png' />
                                 </Flex>

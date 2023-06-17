@@ -157,7 +157,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                                     outerRadius={'80%'}
                                     innerRadius={'50%'}
                                     fill="#8884d8"
-                                    
+                                    // label
                                 >
                                     {data.map((entry, index) => (
                                         <Cell
