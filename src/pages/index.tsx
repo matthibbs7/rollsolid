@@ -14,7 +14,7 @@ import WindowWrapper from '@/components/Window/WindowWrapper';
 
 export default function Home() {
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
-
+    
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [processState, setProcessState] = useRecoilState(processSchedulerState);
 

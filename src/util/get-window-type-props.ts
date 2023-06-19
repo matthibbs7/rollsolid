@@ -22,7 +22,27 @@ export const getWindowTypeProps = (type: WindowType) => {
         return {
             title: 'Hand Reference'
         };
-    }
+    };
+    case 'implied odds': {
+        return {
+            title: 'Implied Odds'
+        };
+    };
+    case 'pot odds': {
+        return {
+            title: 'Pot Odds'
+        };
+    };
+    case 'hand ranking': {
+        return {
+            title: 'Ranking Calculator'
+        };
+    };
+    case 'post flop analysis': {
+        return {
+            title: 'Post Flop Analysis'
+        };
+    };
     default:
         return {};
     }

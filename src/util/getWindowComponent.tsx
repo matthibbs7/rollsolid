@@ -6,6 +6,8 @@ import Notes from '@/components/Modules/Notes/Notes';
 import Timeseries from '@/components/Charts/Timeseries/Timeseries';
 import PieChartComponent from '@/components/Charts/Pie/Pie';
 import HandReference from '@/components/Modules/HandReference/HandReference';
+import ImpliedOdds from '@/components/Modules/ImpliedOdds/ImpliedOdds';
+import PostFlopAnalysis from '@/components/Modules/PostFlopAnalysis/PostFlopAnalysis';
 
 export const getWindowComponent = (type: WindowType, processId: number) => {
 
@@ -26,6 +28,10 @@ export const getWindowComponent = (type: WindowType, processId: number) => {
         return <PieChartComponent processId={processId} />;
     case 'reference':
         return <HandReference />;
+    case 'implied odds':
+        return <ImpliedOdds processId={processId} />;
+    case 'post flop analysis':
+        return <PostFlopAnalysis processId={processId} />;
     default:
         return (
             <Text>Default ?</Text>

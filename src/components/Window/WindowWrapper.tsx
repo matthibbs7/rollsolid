@@ -244,8 +244,8 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     bg={`#${windowColor}`}
                     borderBottom='1px solid #2f2f2f'
                 >   
-                    <Flex w="100%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontSize="11pt" fontWeight={600}>{windowTitle}</Text>
+                    <Flex overflowX='scroll' w="100%" _hover={{cursor: 'all-scroll'}}>   
+                        <Text fontSize="11pt" fontWeight={600} whiteSpace='nowrap'>{windowTitle}</Text>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2} color='#C2C2C2'>
                         <Tooltip fontSize='11px' bg='black' label={props.type.settingsOpen ? 'Widget Content' : 'Widget Settings'} openDelay={1200} placement='top'>

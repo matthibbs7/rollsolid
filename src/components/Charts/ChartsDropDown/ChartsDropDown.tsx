@@ -48,9 +48,9 @@ const ChartsDropDown:React.FC = () => {
         }));
         toast({
             render: () => (
-                <Flex align='center' w='242px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                <Flex align='center' w='190px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
                     <MdTimeline fontSize='12.5pt' color='white' />
-                    <Text ml={2} color='white' >Timeseries Chart loaded</Text>
+                    <Text ml={2} color='white' fontSize='12px' >Timeseries Chart loaded</Text>
                 </Flex>
             ),
             duration: 1000,
@@ -89,9 +89,9 @@ const ChartsDropDown:React.FC = () => {
         }));
         toast({
             render: () => (
-                <Flex align='center' w='242px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                <Flex align='center' w='150px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
                     <FiPieChart fontSize='12.5pt' color='white' />
-                    <Text ml={2} color='white' >Pie Chart loaded</Text>
+                    <Text ml={2} color='white' fontSize='12px' >Pie Chart loaded</Text>
                 </Flex>
             ),
             duration: 1000,

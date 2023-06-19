@@ -8,6 +8,7 @@ import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { GiCardPick } from 'react-icons/gi';
 import { workspaceState } from '@/atoms/workspaceAtom';
 import { TbCards } from 'react-icons/tb';
+import { AiOutlineMergeCells } from 'react-icons/ai';
 
 const WidgetNavbar:React.FC = () => {
     // const [authenticated, setAuthenticated]
@@ -20,31 +21,83 @@ const WidgetNavbar:React.FC = () => {
 
     const toast = useToast();
 
-    // const addTimerWidget = () => {
-    //     // const timerWindow = getWindowComponent('timer');
-    //     const newPid = processState.previousId + 1;
-    //     const timerWindowState: WindowState = {
-    //         processId: newPid,
-    //         type: 'timer',
-    //         x: newPid % 2 == 0 ? 65 : 45,
-    //         y: newPid % 2 == 0 ? 65 : 45,
-    //         z: 0,
-    //         width: '400px',
-    //         height: '400px',
-    //         isMinimizied: false,
-    //         settingsOpen: false,
-    //         handleColor: '121212',
-    //     };
-    //     // update processMatrix increase previousId
-    //     setProcessState((prevState: typeof processState) => ({
-    //         ...prevState,
-    //         previousId: newPid,
-    //     }));
-    //     setMinimizedWindows((prevState: typeof minimizedWindows) => ({
-    //         ...prevState,
-    //         stack: [...prevState.stack, timerWindowState],
-    //     }));
-    // };
+    const addPostFlopAnalysisWidget = () => {
+        const newPid = processState.previousId + 1;
+        const postFlopAnalysisWindowState: WindowState = {
+            processId: newPid,
+            type: 'post flop analysis',
+            x: newPid % 2 == 0 ? 65 : 45,
+            y: newPid % 2 == 0 ? 65 : 45,
+            z: 0,
+            width: '400px',
+            height: '400px',
+            isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
+        };
+        setProcessState((prevState: typeof processState) => ({
+            ...prevState,
+            previousId: newPid,
+        }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, postFlopAnalysisWindowState]}};
+
+        setWorkspaces((prevState) => ({
+            ...prevState,
+            active: newActive,
+        }));
+
+        toast({
+            render: () => (
+                <Flex align='center' w='240px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                    <TbCards fontSize='11pt' color='white' />
+                    <Text ml={2} color='white' fontSize='12px' >Post Flop Analysis Widget loaded</Text>
+                </Flex>
+            ),
+            duration: 1000,
+            position: 'top',
+            isClosable: true,
+        });
+    };
+
+    const addImpliedOddsWidget = () => {
+        const newPid = processState.previousId + 1;
+        const impliedOddsWindowState: WindowState = {
+            processId: newPid,
+            type: 'implied odds',
+            x: newPid % 2 == 0 ? 65 : 45,
+            y: newPid % 2 == 0 ? 65 : 45,
+            z: 0,
+            width: '400px',
+            height: '400px',
+            isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
+        };
+        setProcessState((prevState: typeof processState) => ({
+            ...prevState,
+            previousId: newPid,
+        }));
+
+        const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, impliedOddsWindowState]}};
+
+        setWorkspaces((prevState) => ({
+            ...prevState,
+            active: newActive,
+        }));
+
+        toast({
+            render: () => (
+                <Flex align='center' w='220px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                    <AiOutlineMergeCells fontSize='11pt' color='white' />
+                    <Text ml={2} color='white' fontSize='12px' >Implied Odds Widget loaded</Text>
+                </Flex>
+            ),
+            duration: 1000,
+            position: 'top',
+            isClosable: true,
+        });
+    };
 
     const addNotesWidget = () => {
         const newPid = processState.previousId + 1;
@@ -78,9 +131,9 @@ const WidgetNavbar:React.FC = () => {
 
         toast({
             render: () => (
-                <Flex align='center' w='220px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
+                <Flex align='center' w='170px' mt="62px" p={1.5} px={3} color='white' bg='#121212' border='1px solid #494D51' borderRadius="0px">
                     <MdLibraryBooks fontSize='11pt' color='white' />
-                    <Text ml={2} color='white' >Notes Widget loaded</Text>
+                    <Text ml={2} color='white' fontSize='12px' >Notes Widget loaded</Text>
                 </Flex>
             ),
             duration: 1000,
@@ -148,7 +201,7 @@ const WidgetNavbar:React.FC = () => {
                             animate: 'visible'}}>
                             <Flex>
                                 <Flex direction='column' w='50%' h='100%' ml={2} py={0}>
-                                    <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addNotesWidget()}>
+                                    <MenuItem w='100%' h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addPostFlopAnalysisWidget()}>
                                         <TbCards color='#a3a3a3' fontSize='28px' />
                                         <Flex direction='column' ml={3}>
                                             <Text color='#d1d1d1' fontSize='12px'>Post Flop Analysis</Text>
@@ -156,12 +209,19 @@ const WidgetNavbar:React.FC = () => {
                                         </Flex>
                                     </MenuItem>
                                     <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                        <MdOutlineWidgets fontSize='28px' color='#A3A3A3' />
+                                        <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
-                                            <Text color='#d1d1d1' fontSize='12px'>EQ Calculator</Text>
-                                            <Text color='#a3a3a3' fontSize='11px'>Estimate GTO per hand</Text>
+                                            <Text color='#d1d1d1' fontSize='12px'>Betting Odds</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
                                         </Flex>
                                     </Flex>
+                                    <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addImpliedOddsWidget()}>
+                                        <AiOutlineMergeCells fontSize='28px' color='#A3A3A3' />
+                                        <Flex direction='column' ml={3}>
+                                            <Text color='#d1d1d1' fontSize='12px'>Implied Odds</Text>
+                                            <Text color='#a3a3a3' fontSize='11px'>Estimate GTO per hand</Text>
+                                        </Flex>
+                                    </MenuItem>
                                     <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
                                         <MdAddChart fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
@@ -169,13 +229,7 @@ const WidgetNavbar:React.FC = () => {
                                             <Text color='#a3a3a3' fontSize='11px'>100+ scenario specific range charts</Text>
                                         </Flex>
                                     </Flex>
-                                    <Flex align='center' w='100%' h='48px' px={3} color='#A3A3A3' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                        <MdStackedLineChart fontSize='28px' color='#A3A3A3' />
-                                        <Flex direction='column' ml={3}>
-                                            <Text color='#d1d1d1' fontSize='12px'>Betting Odds</Text>
-                                            <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
-                                        </Flex>
-                                    </Flex>
+                                    
                                 </Flex>
                                 <Flex direction='column' w='50%' h='100%' mr={2} py={0}>
                                     <MenuItem w='100%' h='48px' mt={3}  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import { Button, Text, Flex, useColorMode, Box, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Button, Text, Flex, useColorMode, Box, Menu, MenuButton, MenuList, MenuItem, Divider } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { BsChevronDown } from 'react-icons/bs';
 import { MdAccountBox, MdLanguage, MdLockPerson, MdLogout } from 'react-icons/md';
@@ -30,7 +30,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                     <Text as="span" mt="4px" mr={2} ml={-2} fontSize="10px"><BsChevronDown /></Text>
                                 </Flex>
                             </MenuButton>
-                            <MenuList w="240px" minW="0" h='250px' mt={1.5} px={2} py={0} bg="#161616" border="1px solid #494D51" borderRadius='6px' motionProps={{
+                            <MenuList w="240px" minW="0" h='260px' mt={1.5} px={2} py={0} bg="#161616" border="1px solid #494D51" borderRadius='6px' motionProps={{
                                 transition: { duration: 0 },
                                 animate: 'visible'}}>
                                 <MenuItem h='48px' mt={3} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => router.push('/profile')}>
@@ -54,7 +54,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                         <Text color='#a3a3a3' fontSize='11px'>Configure user settings</Text>
                                     </Flex>
                                 </MenuItem>
-                                
+                                <Divider mt={2} mb={2} />
                                 <MenuItem h='48px' mt={0} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => signOut(auth)}>
                                     <MdLogout color='#a3a3a3' fontSize='28px' />
                                     <Flex direction='column' ml={3}>
@@ -62,6 +62,7 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                         <Text color='#a3a3a3' fontSize='11px'>Sign out of Rollsolid</Text>
                                     </Flex>
                                 </MenuItem>
+                               
                                 <Box mt={2} mb={2} px={3}>
                                     <span style={{fontSize: '8.5px'}}>
                                         <Text as="span" color="#d1d1d1">© 2023 Rollsolid, Inc. All rights reserved</Text>
