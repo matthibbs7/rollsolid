@@ -30,7 +30,7 @@ interface State {
 interface Props extends RndProps {
   processId: string;
   type: WindowState;
-  moduleSize?: {width: string, height: string, minWidth: string, minHeight: string};
+  moduleSize?: {minWidth: string, minHeight: string};
   title?: string;
   x?: number;
   y?: number;

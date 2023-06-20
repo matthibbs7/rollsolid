@@ -8,8 +8,8 @@ export const CustomTooltip = ({ active, payload }: any) => {
     if (active) {
         return (
             <Flex className="custom-tooltip" direction='column'>
-                <Text>Stack Size: {value.value}</Text>
-                <Text>Hand: #{time.value}</Text>
+                <Text fontSize='10.5pt'>Stack Size: {value.value}</Text>
+                <Text fontSize='10.5pt'>Hand: #{time.value}</Text>
             </Flex>
         );
     }

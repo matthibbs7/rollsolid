@@ -40,10 +40,13 @@ export const getWindowTypeProps = (type: WindowType) => {
     };
     case 'post flop analysis': {
         return {
-            title: 'Post Flop Analysis'
+            title: 'Post Flop Analysis',
+            moduleSize: {minWidth: '240px', minHeight: '300px'}
         };
     };
     default:
-        return {};
+        return {
+            title: 'Not Found'
+        };
     }
 };

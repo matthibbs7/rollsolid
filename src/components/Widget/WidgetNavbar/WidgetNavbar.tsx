@@ -30,7 +30,7 @@ const WidgetNavbar:React.FC = () => {
             y: newPid % 2 == 0 ? 65 : 45,
             z: 0,
             width: '400px',
-            height: '400px',
+            height: '470px',
             isMinimizied: false,
             settingsOpen: false,
             handleColor: '121212',
