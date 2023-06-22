@@ -22,7 +22,7 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
 
     const getPostFlopAnalysis = async () => {
         console.log(HOST_PREFIX, 'host');
-        const request = await fetch(`${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
+        const request = await fetch(`https://${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
             method: 'GET',
         });
         const data = request.json();
