@@ -8,7 +8,7 @@ interface PieChartComponentProps {
     processId: number;
 }
 
-const HOST_PREFIX = process.env.HOST_PREFIX;
+const HOST_PREFIX = process.env.NEXT_PUBLIC_HOST_PREFIX;
 
 const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
     const [activeNumber, setActiveNumber] = useState(1);
@@ -21,6 +21,7 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
     const [estimate, setEstimate] = useState('');
 
     const getPostFlopAnalysis = async () => {
+        console.log(HOST_PREFIX, 'host');
         const request = await fetch(`${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
             method: 'GET',
         });
