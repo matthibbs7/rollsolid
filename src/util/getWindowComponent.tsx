@@ -1,6 +1,6 @@
 import React from 'react';
 import { WindowType } from '@/types/windows';
-import { Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Timer from '@/components/Modules/Timer/Timer';
 import Notes from '@/components/Modules/Notes/Notes';
 import Timeseries from '@/components/Charts/Timeseries/Timeseries';
@@ -19,7 +19,11 @@ export const getWindowComponent = (type: WindowType, processId: number) => {
             </Text>
         );
     case 'notes':
-        return <Notes processId={processId} />;
+        return (
+            <Flex direction='column' overflowY='scroll' h='100%' mb={0}>
+                <Notes processId={processId} />
+            </Flex>
+        );
     case 'timer':
         return <Timer />;
     case 'timeseries':

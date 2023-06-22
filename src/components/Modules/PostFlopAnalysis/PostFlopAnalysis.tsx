@@ -2,6 +2,7 @@ import { Divider, Flex, Tab, Text, TabList, TabPanel, TabPanels, Tabs, Input, Bu
 import React, { useState } from 'react';
 import PlayerNumber from './PlayerNumber';
 import { GuardSpinner } from 'react-spinners-kit';
+import PlayCard from '@/components/PlayCard/PlayCard';
 
 interface PieChartComponentProps {
     processId: number;
@@ -49,8 +50,8 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
             <Flex direction="column" w="100%" h="100%">
                 <Tabs colorScheme='purple' variant='soft-rounded'>
                     <TabList mt={1.5}>
-                        <Tab h='20px' color='#454545' fontSize='14.5px'>classic</Tab>
-                        <Tab h='20px' color='#454545' fontSize='14.5px' _selected={{bg: '#E9D8FD', color: '#553C9A'}}>shorthand</Tab>
+                        <Tab h='20px' color='#454545' fontSize='14.5px' _selected={{bg: '#A99BFC', color: 'black'}}>classic</Tab>
+                        <Tab h='20px' color='#454545' fontSize='14.5px' _selected={{bg: '#A99BFC', color: 'black'}}>shorthand</Tab>
                     </TabList>
                     <Divider mt={3} borderColor='#434343' />
                     <TabPanels>
@@ -58,9 +59,21 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
                             <p>one!</p>
                         </TabPanel>
                         <TabPanel>
-                            <Text fontSize='14.5px' fontWeight={600}>Your Hand</Text>
-                            <Text color='#a3a3a3' fontSize='12.5px'>Enter hand with sh notation</Text>
-                            <Input w="70%" minW='150px' h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} _placeholder={{color: '#4B4B4B'}} maxLength={5} name='hand' onChange={onChange} placeholder="Ex: kh,as" required />
+                            <Flex>
+                                <Flex direction='column'>
+                                    <Text fontSize='14.5px' fontWeight={600}>Your Hand</Text>
+                                    <Text color='#a3a3a3' fontSize='12.5px'>Enter hand with sh notation</Text>
+                                    <Input w="70%" minW='150px' h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} _placeholder={{color: '#4B4B4B'}} maxLength={5} name='hand' onChange={onChange} placeholder="Ex: kh,as" required />
+                                </Flex>
+                                <Flex mt={-1} ml={3}>
+                                    {analysisForm.hand.length > 1 &&
+                                        <PlayCard suit={analysisForm.hand[1] as ('spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd')} value={analysisForm.hand[0] as ('a' | 'q' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'A' | 'K' | 'k' | 'Q' | 'J' | 'j' | 't')} fontSize='46pt' />
+                                    }
+                                    {analysisForm.hand.length > 4 &&
+                                         <PlayCard suit={analysisForm.hand[4] as ('s' | 'h' | 'spade' | 'club' | 'c' | 'heart' | 'diamond' | 'd')} value={analysisForm.hand[3] as ('A' | 'a' | 'K' | 'k' | 'Q' | 'q' | 'J' | 'j' | '10' | 't' | '9' | '8' | '7' | '6' | '5' | '4' | '3' | '2')} fontSize='46pt' />
+                                    }
+                                </Flex>
+                            </Flex>
                             <Text mt={4} fontSize='14.5px' fontWeight={600}>Simulations</Text>
                             <Text color='#a3a3a3' fontSize='12.5px'># of monte carlo simulations</Text>
                             <Input w="70%" minW='150px' h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} _placeholder={{color: '#4B4B4B'}} name='sims' onChange={onChange} placeholder="Ex: 300" required />

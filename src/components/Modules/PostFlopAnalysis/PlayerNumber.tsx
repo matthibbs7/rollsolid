@@ -11,7 +11,7 @@ interface PlayerNumberComponentProps {
 const PlayerNumber: any = ({ ml, number, activeNumber, setActiveNumber }: PlayerNumberComponentProps) => {
     
     return (
-        <Box ml={ml} bg={number === activeNumber ? '#E9D8FD' : '#222222'} _hover={{cursor: 'pointer', bg: number === activeNumber ? '#E9D8FD' : '#434343'}} onClick={() => setActiveNumber(number)}>
+        <Box ml={ml} bg={number === activeNumber ? '#A99BFC' : '#222222'} _hover={{cursor: 'pointer', bg: number === activeNumber ? '#E9D8FD' : '#434343'}} onClick={() => setActiveNumber(number)}>
             <Text align='center' w='24px' color={number === activeNumber ? 'black' : 'white'}>{number}</Text>
         </Box>
     );

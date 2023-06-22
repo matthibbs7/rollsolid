@@ -46,22 +46,11 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
-
+    const [errorText, setErrorText] = useState('');
     // const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
     const [data, setData] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
 
     useEffect(() => {
-        // const newMinimizedStack = minimizedWindows.stack.map((w: WindowState) => {
-        //     if (w.processId === processId) {
-        //         return {
-        //             ...w,
-        //             pieData: data,
-        //         };
-        //     } else {
-        //         return w;
-        //     }
-        // });
-
         const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {
             if (w.processId === processId) {
                 return {
@@ -73,11 +62,6 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
             }
         });
 
-        // setMinimizedWindows((prevState) => ({
-        //     ...prevState,
-        //     stack: newMinimizedStack,
-        // }));
-
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: newActiveStack}};
 
         setWorkspaces((prevState) => ({
@@ -87,8 +71,12 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     }, [data]);
 
     const handleAddData = () => {
-
+        setErrorText('');
         if (newDataVal !== undefined && !toggleExistingSelection) {
+            if (newDataVal === 0) {
+                setErrorText('Stack size cannot be initialized as zero');
+                return;
+            };
             if (data) {
                 if (data.length === 9) return;
                 console.log(newName);
@@ -123,10 +111,12 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     };
 
     const handleClearData = () => {
+        setErrorText('');
         setData([]);
     };
 
     const handleRemoveData = () => {
+        setErrorText('');
         if (data) {
             if (!toggleExistingSelection) {
                 setData(data.slice(0, -1));
@@ -186,6 +176,7 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
                     <Flex mt={1.5}>
                         <Input w="40%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} _placeholder={{color: '#4B4B4B'}} onChange={(event) => setNewName(event.target.value)} placeholder="Name" value={newName} />
                         <Input w="22%" h="28px" fontSize='9.5pt' border="1px solid #353535" borderRadius="0" _focus={{boxShadow: 'none', border: '1px solid gray'}} onChange={(event) => setNewDataVal(Number(event.target.value) ? Number(event.target.value) : 0)} placeholder="Ex: 250" value={newDataVal} />
+                        {errorText.length > 1 && <Text ml={2} color='red.300' fontSize='7pt'>{errorText}</Text>}
                     </Flex>
                     <Flex mt={2.5}>
                         <Button w='84px' h='24px' minH='24px' maxH='24px'  mb={3} fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={handleAddData}>{toggleExistingSelection ? 'Edit' : 'Add'}</Button>

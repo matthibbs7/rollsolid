@@ -3,25 +3,30 @@ import { Text } from '@chakra-ui/react';
 
 interface PlayCardProps {
     fontSize: string;
-    suit: 'spade' | 'club' | 'heart' | 'diamond';
-    value: 'A' | 'K' | 'Q' | 'J' | '10' | '9' | '8' | '7' | '6' | '5' | '4' | '3' | '2';
+    suit: 'spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd';
+    value: 'A' | 'a' | 'K' | 'k' | 'Q' | 'q' | 'J' | 'j' | '10' | 't' | '9' | '8' | '7' | '6' | '5' | '4' | '3' | '2';
 }
 
 const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
 
     const getCardFace = (s: string, v: string) => {
 
-        if (s === 'spade') {
+        if (s === 'spade' || s === 's') {
             switch (v) {
             case 'A':
+            case 'a':
                 return '🂡';
             case 'K':
+            case 'k':
                 return '🂮';
             case 'Q':
+            case 'q':
                 return '🂭';  
             case 'J':
+            case 'j':
                 return '🂫';   
             case '10':
+            case 't':
                 return '🂪';
             case '9':
                 return '🂩';
@@ -43,17 +48,22 @@ const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
                 return '';
             }
             
-        } else if (s === 'heart') {
+        } else if (s === 'heart' || s === 'h') {
             switch (v) {
             case 'A':
+            case 'a':
                 return '🂱';
             case 'K':
+            case 'k':
                 return '🂾';
             case 'Q':
+            case 'q':
                 return '🂽';  
             case 'J':
+            case 'j':
                 return '🂻';   
             case '10':
+            case 't':
                 return '🂺';
             case '9':
                 return '🂹';
@@ -75,17 +85,22 @@ const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
                 return '';
             }
             
-        } else if (s === 'diamond') {
+        } else if (s === 'diamond' || s === 'd') {
             switch (v) {
             case 'A':
+            case 'a':
                 return '🃁';
             case 'K':
+            case 'k':
                 return '🃎';
             case 'Q':
+            case 'q':
                 return '🃍';  
             case 'J':
+            case 'j':
                 return '🃋';   
             case '10':
+            case 't':
                 return '🃊';
             case '9':
                 return '🃉';
@@ -110,14 +125,19 @@ const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
         } else {
             switch (v) {
             case 'A':
+            case 'a':
                 return '🃑';
             case 'K':
+            case 'k':
                 return '🃞';
             case 'Q':
+            case 'q':
                 return '🃝';  
             case 'J':
+            case 'j':
                 return '🃛';   
             case '10':
+            case 't':
                 return '🃚';
             case '9':
                 return '🃙';
