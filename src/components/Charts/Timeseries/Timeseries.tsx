@@ -104,8 +104,8 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
                         </ResponsiveContainer>
                     ) : (
                         <Flex direction='column' w='100%' h='100%' px={5}>
-                            <Text fontSize='14pt'>Empty Chart</Text>
-                            <Text mt={1.5} color='#a3a3a3'>Begin by adding datapoints below</Text>
+                            <Text fontSize='12pt'>Empty Chart</Text>
+                            <Text mt={1.5} color='#a3a3a3' fontSize='10.5pt'>Begin by adding datapoints below</Text>
                         </Flex>
                     )
                 }

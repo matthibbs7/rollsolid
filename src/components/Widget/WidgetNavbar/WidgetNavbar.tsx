@@ -215,7 +215,7 @@ const WidgetNavbar:React.FC = () => {
                                             <Text color='#a3a3a3' fontSize='11px'>Calculator for estimating pot odds</Text>
                                         </Flex>
                                     </Flex>
-                                    <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addImpliedOddsWidget()}>
+                                    <MenuItem w='100%' h='48px'  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
                                         <AiOutlineMergeCells fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
                                             <Text color='#d1d1d1' fontSize='12px'>Implied Odds</Text>
@@ -232,7 +232,7 @@ const WidgetNavbar:React.FC = () => {
                                     
                                 </Flex>
                                 <Flex direction='column' w='50%' h='100%' mr={2} py={0}>
-                                    <MenuItem w='100%' h='48px' mt={3}  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => addHandReferenceWidget()}>
+                                    <MenuItem w='100%' h='48px' mt={3}  px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
                                         <MdOutlineGradient fontSize='28px' color='#A3A3A3' />
                                         <Flex direction='column' ml={3}>
                                             <Text color='#d1d1d1' fontSize='12px'>Ranking Calculator</Text>
