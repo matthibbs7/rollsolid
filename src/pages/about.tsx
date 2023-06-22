@@ -30,17 +30,17 @@ export default function About() {
                 <Flex
                     align="center"
                     direction="column"
-                    h="720px"
+                    h="100%"
                 >
-                    <Flex wrap='wrap' w='100%'>
-                        <Flex justify='center' wrap='wrap' display='flex' w='60%' h='100%' mt='100px' dir='column'>
-                            <Image w='680px' h='480px' src='https://i.imgur.com/cy2cu4e.png' />
+                    <Flex justify='center' wrap='wrap' direction='row' w='100%'>
+                        <Flex justify='space-around' display='flex' mt='80px' mr={8}>
+                            <Image maxW='680px' h='460px' src='https://i.imgur.com/cy2cu4e.png' />
                         </Flex>
-                        <Flex justify='center' wrap='wrap' direction='column' display='flex' w='40%' minW='510px' mt={5} textAlign='left'>
-                            <Text w='510px' fontFamily='TWKEverett-Regular' fontSize='38px' fontWeight={500}>Advanced Poker Analysis</Text>
-                            <Text w='510px' color='#999999' fontFamily='TWKEverett-Regular' fontSize='34px' fontWeight={500}>Supercharge your gameplay</Text>
-                            <Text w='460px' mt={3} mb={3.5} color='#969696' fontSize='17px'>Rollsolid is a Data-based customizable dashboard for applications of advanced Texas Holdem Poker theory</Text>
-                            <Text w='460px' mt={3} mb={3.5} color='#969696' fontSize='16.5px'>Inside, you will find widgets for Hand/flop scenario estimations using Monte Carlo simulations, Odds Ratio calculators, Ranges, Timeseries analysis and many more.</Text>
+                        <Flex direction='column' display='flex' maxW='510px' h='500px' mt='120px' ml={8} pr={4}>
+                            <Text fontFamily='TWKEverett-Regular' fontSize='38px' fontWeight={500}>Advanced Poker Analysis</Text>
+                            <Text color='#999999' fontFamily='TWKEverett-Regular' fontSize='34px' fontWeight={500}>Supercharge your gameplay</Text>
+                            <Text mt={3} mb={3.5} color='#969696' fontSize='17px'>Rollsolid is a Data-based customizable dashboard for applications of advanced Texas Holdem Poker theory</Text>
+                            <Text mt={3} mb={3.5} color='#969696' fontSize='16.5px'>Inside, you will find widgets for Hand/flop scenario estimations using Monte Carlo simulations, Odds Ratio calculators, Ranges, Timeseries analysis and many more.</Text>
                             <Text mt={1} color='#B693F4' fontSize='18px' _hover={{cursor: 'pointer', textDecoration: 'underline'}}>Explore the features →</Text>
                         </Flex>
                     </Flex>
