@@ -11,7 +11,6 @@ import { TbCards } from 'react-icons/tb';
 import { AiOutlineMergeCells } from 'react-icons/ai';
 
 const WidgetNavbar:React.FC = () => {
-    // const [authenticated, setAuthenticated]
     const { colorMode } = useColorMode();
     const cmb = colorMode === 'light' ? '#161616' : '#161616';
 
@@ -117,10 +116,6 @@ const WidgetNavbar:React.FC = () => {
             ...prevState,
             previousId: newPid,
         }));
-        // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
-        //     ...prevState,
-        //     stack: [...prevState.stack, notesWindowState],
-        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, notesWindowState]}};
 
