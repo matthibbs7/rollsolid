@@ -30,11 +30,11 @@ export const ToolNavbar = () => {
             bgColor={cmb}
         >
             <Flex align='center' w='100%' h='100%'>
-                <Flex align='center' justify='center' w='40px' h='42%' bg='#644ED6' borderRadius='9px'>
-                    <Text fontSize='11px'>New</Text>
+                <Flex align='center' justify='center' w='84px' h='42%' bg='#644ED6' borderRadius='9px'>
+                    <Text fontSize='11px'>Coming Soon</Text>
                 </Flex>
-                <Text ml={3} color='#D1D1D1' fontSize='12px'>Stripe payment support</Text>
-                <Text ml='auto' color='#D1D1D1' fontSize='12px' _hover={{cursor: 'pointer', textDecor: 'underline'}}>Learn more</Text>
+                <Text ml={3} color='#D1D1D1' fontSize='12px' fontWeight={600}>Rollsolid Pro version</Text>
+                <Text ml='auto' color='#D1D1D1' fontSize='12px' _hover={{cursor: 'pointer', textDecor: 'underline'}} onClick={() => router.push('/pricing')}>Learn more</Text>
             </Flex>
         </Flex>
     );

@@ -48,7 +48,7 @@ const ProfileView:React.FC = () => {
 
     return (
         <Flex direction="column" w="100%">
-            <Flex justify="center" w="100%" h={['680px','680px','720px','720px']} px={4} py={4}>
+            <Flex justify="center" w="100%" h={['680px','680px','720px','720px']} mb={4} px={4} py={4}>
                 <Flex direction="column" w={['100%', '100%', '100%', '100%']} maxW="1228px" h="660px" mt={[0,0,2,2]} px={10} bg="#121212" border="1px solid #494D51">
                     <Flex direction="row" mt={9} mr='auto' mb={5}>
                         <Text fontFamily="AvenirNext-DemiBold" fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={700}>Profile&nbsp;</Text>
