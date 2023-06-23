@@ -52,6 +52,10 @@ export default function Home() {
         >
             <Head>
                 <title>Rollsolid</title>
+                <meta 
+                    httpEquiv="Content-Security-Policy" 
+                    content="upgrade-insecure-requests" 
+                />
                 <meta
                     name="description"
                     content="Advanced Poker strategy and analysis"

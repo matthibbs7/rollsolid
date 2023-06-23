@@ -24,6 +24,7 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
         console.log(HOST_PREFIX, 'host');
         const request = await fetch(`http://${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
             method: 'GET',
+            referrerPolicy: 'unsafe-url' 
         });
         const data = request.json();
         return data;
