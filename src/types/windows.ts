@@ -1,5 +1,5 @@
 
-export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test' | 'reference' | 'hand' | 'implied odds' | 'pot odds' | 'hand ranking' | 'post flop analysis';
+export type WindowType = 'notes' | 'chart' | 'timer' | 'timeseries' | 'pie' | 'test' | 'reference' | 'hand' | 'implied odds' | 'pot odds' | 'hand ranking' | 'pre flop analysis';
 
 export interface WindowState {
     widgetName?: string; // default type title -> can be overridden in settings

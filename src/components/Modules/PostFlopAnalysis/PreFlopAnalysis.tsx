@@ -4,13 +4,13 @@ import PlayerNumber from './PlayerNumber';
 import { GuardSpinner } from 'react-spinners-kit';
 import PlayCard from '@/components/PlayCard/PlayCard';
 
-interface PieChartComponentProps {
+interface PreFlopComponentProps {
     processId: number;
 }
 
 const HOST_PREFIX = process.env.NEXT_PUBLIC_HOST_PREFIX;
 
-const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
+const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
     const [activeNumber, setActiveNumber] = useState(1);
     const [loading, setLoading] = useState(false);
     const [analysisForm, setAnalysisForm] = useState({
@@ -20,11 +20,9 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
 
     const [estimate, setEstimate] = useState('');
 
-    const getPostFlopAnalysis = async () => {
-        console.log(HOST_PREFIX, 'host');
+    const getPreFlopAnalysis = async () => {
         const request = await fetch(`http://${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
             method: 'GET',
-            referrerPolicy: 'unsafe-url' 
         });
         const data = request.json();
         return data;
@@ -33,7 +31,7 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
     const onSubmit = () => {
         setLoading(true);
     
-        getPostFlopAnalysis()
+        getPreFlopAnalysis()
             .then((response) => {
                 setEstimate(response.win_rate);
             })
@@ -113,4 +111,4 @@ const PostFlopAnalysis = ({ processId }: PieChartComponentProps) => {
         </Flex>
     );
 };
-export default PostFlopAnalysis;
+export default PreFlopAnalysis;

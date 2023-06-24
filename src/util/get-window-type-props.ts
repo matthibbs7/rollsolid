@@ -30,7 +30,7 @@ export const getWindowTypeProps = (type: WindowType) => {
     };
     case 'pot odds': {
         return {
-            title: 'Pot Odds'
+            title: 'Betting Odds'
         };
     };
     case 'hand ranking': {
@@ -38,9 +38,9 @@ export const getWindowTypeProps = (type: WindowType) => {
             title: 'Ranking Calculator'
         };
     };
-    case 'post flop analysis': {
+    case 'pre flop analysis': {
         return {
-            title: 'Post Flop Analysis',
+            title: 'Pre-Flop Analysis',
             moduleSize: {minWidth: '240px', minHeight: '300px'}
         };
     };

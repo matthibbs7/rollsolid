@@ -7,7 +7,8 @@ import Timeseries from '@/components/Charts/Timeseries/Timeseries';
 import PieChartComponent from '@/components/Charts/Pie/Pie';
 import HandReference from '@/components/Modules/HandReference/HandReference';
 import ImpliedOdds from '@/components/Modules/ImpliedOdds/ImpliedOdds';
-import PostFlopAnalysis from '@/components/Modules/PostFlopAnalysis/PostFlopAnalysis';
+import PostFlopAnalysis from '@/components/Modules/PostFlopAnalysis/PreFlopAnalysis';
+import BettingOdds from '@/components/Modules/BettingOdds/BettingOdds';
 
 export const getWindowComponent = (type: WindowType, processId: number) => {
 
@@ -32,9 +33,11 @@ export const getWindowComponent = (type: WindowType, processId: number) => {
         return <PieChartComponent processId={processId} />;
     case 'reference':
         return <HandReference />;
+    case 'pot odds':
+        return <BettingOdds processId={processId} />;
     case 'implied odds':
         return <ImpliedOdds processId={processId} />;
-    case 'post flop analysis':
+    case 'pre flop analysis':
         return <PostFlopAnalysis processId={processId} />;
     default:
         return (

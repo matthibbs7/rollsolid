@@ -1,5 +1,5 @@
 # Rollsolid
-<img src="https://i.imgur.com/rlYzLpe.png" />
+<img src="https://i.imgur.com/rlYzLpe.png" width="44%" height="30%" />
 
 **Live Production: [https://rollsolid.com](https://rollsolid.com)**
 

@@ -13,11 +13,13 @@ import { useEffect, useState } from 'react';
 import { Flex, Text, Tooltip } from '@chakra-ui/react';
 import { RxCross1 } from 'react-icons/rx';
 import { IoCube, IoReorderThree } from 'react-icons/io5';
-import { FiMinimize2 } from 'react-icons/fi';
+import { FiMinimize2, FiPieChart } from 'react-icons/fi';
 import { useWindowSize } from 'rooks';
 import { WindowState } from '@/types/windows';
 import { WindowSettings } from './WindowSettings/WindowSettings';
 import { workspaceState } from '@/atoms/workspaceAtom';
+import { MdLibraryBooks, MdTimeline } from 'react-icons/md';
+import { TbCards } from 'react-icons/tb';
 
 interface State {
   width: number | string;
@@ -216,6 +218,21 @@ const WindowWrapper:React.FC<Props> = (props) => {
         }));
     };
 
+    const getWindowIcon = (type: string) => {
+        switch (type) {
+        case 'timeseries':
+            return <MdTimeline fontSize='20px' />;
+        case 'notes':
+            return <MdLibraryBooks fontSize='14px' />;
+        case 'pre flop analysis':
+            return <TbCards fontSize='18px' />;
+        case 'pie':
+            return <FiPieChart fontSize='16px' />;
+        default:
+            return;
+        }
+    };
+
     return (
         <Rnd
             key={props.processId}
@@ -244,8 +261,11 @@ const WindowWrapper:React.FC<Props> = (props) => {
                     bg={`#${windowColor}`}
                     borderBottom='1px solid #2f2f2f'
                 >   
-                    <Flex overflowX='scroll' w="100%" _hover={{cursor: 'all-scroll'}}>   
-                        <Text fontSize="11pt" fontWeight={600} whiteSpace='nowrap'>{windowTitle}</Text>
+                    <Flex align='center' overflowX='scroll' w="100%" _hover={{cursor: 'all-scroll'}}>
+                        <>
+                            {/* {getWindowIcon(props.type.type)} */}
+                            <Text as="span" color='white' fontSize="11pt" fontWeight={600} whiteSpace='nowrap'>{windowTitle}</Text>
+                        </>
                     </Flex>  
                     <Flex align="center" h="100%" mr={-2} color='#C2C2C2'>
                         <Tooltip fontSize='11px' bg='black' label={props.type.settingsOpen ? 'Widget Content' : 'Widget Settings'} openDelay={1200} placement='top'>
