@@ -45,7 +45,7 @@ export default function Pricing() {
                     </Flex>
                     <Text w='695px' mt={5} fontFamily='TWKEverett-Regular' fontSize='96px' fontWeight={600} lineHeight='95px' textAlign='center'>Become a Poker Legend.</Text>
                     <Flex w='44%' h='400px' mt='80px'>
-                        <Flex direction='column'  w='50%' h='680px' mr={5} bg='#212121' borderRadius='10px'>
+                        <Flex direction='column'  w='50%' h='580px' mr={5} bg='#212121' borderRadius='10px'>
                             <Flex w='100%' h='180px' bgImage="url('/images/bg2.png')" bgSize='cover' bgPosition='center' borderTopRadius='10px' >
 
                             </Flex>
@@ -55,31 +55,28 @@ export default function Pricing() {
                                         <Text fontSize='14px' fontWeight={500}>Recommended</Text>
                                     </Flex>
                                     <Text mt={3} ml={0.5} fontSize='28px' fontWeight={600}>Rollsolid Basic</Text>
-                                    <Text ml={1} color='#acacac' fontStyle='italic'>$4.99/mo</Text>
-                                    <Text mt={10} ml={1} color='#acacac' fontStyle='italic'>Features</Text>
-                                    <Flex justify='center' w='100%'>
+                                    <Text ml={1} color='#acacac' fontStyle='italic'>Free</Text>
+                                    <Text mt={4} ml={1} color='#acacac' fontStyle='italic'>Features</Text>
+                                    <Flex justify='center' w='100%' mt={2}>
                                         <List textAlign='center'>
                                             <ListItem>
-                                                • Customizable Dashboard
+                                                Customizable Dashboard
                                             </ListItem>
                                             <ListItem>
-                                                • 3 Workspaces
+                                                3 Workspaces
                                             </ListItem>
                                             <ListItem>
-                                                • All standard widgets
+                                                All standard widgets
+                                            </ListItem>
+                                            {/* <ListItem>
+                                                Ranges
                                             </ListItem>
                                             <ListItem>
-                                                • Ranges
-                                            </ListItem>
-                                            <ListItem>
-                                                • EQ
-                                            </ListItem>
-                                            <ListItem>
-                                                • GTO Hand Play
-                                            </ListItem>
+                                                Ranges
+                                            </ListItem> */}
                                         </List>
                                     </Flex>
-                                    <Button minH='40px' mt='122px' ml={2} bg='#121212' _hover={{bg: '#181818'}}>Register Now</Button>
+                                    <Button minH='40px' mt='82px' ml={2} bg='#121212' _hover={{bg: '#181818'}}>Register Now</Button>
                                 </Flex>
                             </Flex>
                         </Flex>
