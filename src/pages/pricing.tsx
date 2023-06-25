@@ -80,7 +80,7 @@ export default function Pricing() {
                                 </Flex>
                             </Flex>
                         </Flex>
-                        <Flex direction='column'  w='50%' h='680px' ml={5} bg='#212121' borderRadius='10px'>
+                        <Flex direction='column'  w='50%' h='580px' ml={5} bg='#212121' borderRadius='10px'>
                             <Flex w='100%' h='180px' bgImage="url('/images/bg1.png')" bgSize='cover' bgPosition='center' borderTopRadius='10px' >
 
                             </Flex>
@@ -91,6 +91,30 @@ export default function Pricing() {
                                     </Flex>
                                     <Text mt={3} ml={0.5} fontSize='28px' fontWeight={600}>Rollsolid Pro</Text>
                                     <Text ml={1} color='#acacac' fontStyle='italic'>$9.99/mo</Text>
+                                    <Text mt={4} ml={1} color='#acacac' fontStyle='italic'>Features</Text>
+                                    <Flex justify='center' w='100%' mt={2}>
+                                        <List textAlign='center'>
+                                            <ListItem>
+                                                Advanced widgets
+                                            </ListItem>
+                                            <ListItem>
+                                                Unlimited workspaces
+                                            </ListItem>
+                                            <ListItem>
+                                                Additional widget settings
+                                            </ListItem>
+                                            <ListItem>
+                                                24/7 support
+                                            </ListItem>
+                                            {/* <ListItem>
+                                                Ranges
+                                            </ListItem>
+                                            <ListItem>
+                                                Ranges
+                                            </ListItem> */}
+                                        </List>
+                                    </Flex>
+                                    <Button minH='40px' mt='48px' ml={2} bg='#121212' _hover={{bg: '#181818'}}>Register Now</Button>
                                 </Flex>
                             </Flex>
                             
