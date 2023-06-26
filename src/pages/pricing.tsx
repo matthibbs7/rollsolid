@@ -106,12 +106,7 @@ export default function Pricing() {
                                             <ListItem>
                                                 24/7 support
                                             </ListItem>
-                                            {/* <ListItem>
-                                                Ranges
-                                            </ListItem>
-                                            <ListItem>
-                                                Ranges
-                                            </ListItem> */}
+                                        
                                         </List>
                                     </Flex>
                                     <Button minH='40px' mt='48px' ml={2} bg='#121212' _hover={{bg: '#181818'}}>Register Now</Button>
