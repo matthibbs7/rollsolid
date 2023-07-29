@@ -19,6 +19,8 @@ const Classic = () => {
         setSimulations(Number(event.target.value));
     };
 
+    const ranks = ['a', 'k', 'q', 't', '9', '8', '7', '6', '5', '4', '3', '2'];
+
     return (
         <>
             {selectorView ? <>
@@ -29,46 +31,58 @@ const Classic = () => {
                 </Flex>
                 <Flex direction='column' w='100%' minW='170px' mt={4} mr={3}>
                     <Text fontSize='14.5px' fontWeight={600}>Hearts</Text>
+
                     <Flex mt={2}>
-                        <Flex align='center' justify='center' w='24px' h='24px' bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {setCardOne('ah');setSelectorView(false);}}>
-                            <Text fontSize='11pt' fontWeight={600}>A</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {view === 'ONE' ? setCardOne('kh') : setCardTwo('kh'); setSelectorView(false);}}>
-                            <Text fontSize='11pt' fontWeight={600}>K</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>Q</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>J</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>T</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>9</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>8</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>7</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>6</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>5</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>4</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>3</Text>
-                        </Flex>
-                        <Flex align='center' justify='center' w='24px' h='24px' ml={2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}}>
-                            <Text fontSize='11pt' fontWeight={600}>2</Text>
-                        </Flex>
+                        {ranks.map((val, i) => {
+                            return (
+                                <Flex key={`${val}+${i}`} align='center' justify='center' w='24px' h='24px' ml={i === 0 ? 0 : 2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {view === 'ONE' ? setCardOne(`${val}h`) : setCardTwo(`${val}h`);setSelectorView(false);}}>
+                                    <Text fontSize='11pt' fontWeight={600}>{val.toUpperCase()}</Text>
+                                </Flex>
+                            );
+                        })}
+                    
+                    </Flex>
+                </Flex>
+                <Flex direction='column' w='100%' minW='170px' mt={4} mr={3}>
+                    <Text fontSize='14.5px' fontWeight={600}>Diamonds</Text>
+
+                    <Flex mt={2}>
+                        {ranks.map((val, i) => {
+                            return (
+                                <Flex key={`${val}+${i}`} align='center' justify='center' w='24px' h='24px' ml={i === 0 ? 0 : 2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {view === 'ONE' ? setCardOne(`${val}d`) : setCardTwo(`${val}d`);setSelectorView(false);}}>
+                                    <Text fontSize='11pt' fontWeight={600}>{val.toUpperCase()}</Text>
+                                </Flex>
+                            );
+                        })}
+                    
+                    </Flex>
+                </Flex>
+                <Flex direction='column' w='100%' minW='170px' mt={4} mr={3}>
+                    <Text fontSize='14.5px' fontWeight={600}>Spades</Text>
+
+                    <Flex mt={2}>
+                        {ranks.map((val, i) => {
+                            return (
+                                <Flex key={`${val}+${i}`} align='center' justify='center' w='24px' h='24px' ml={i === 0 ? 0 : 2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {view === 'ONE' ? setCardOne(`${val}s`) : setCardTwo(`${val}s`);setSelectorView(false);}}>
+                                    <Text fontSize='11pt' fontWeight={600}>{val.toUpperCase()}</Text>
+                                </Flex>
+                            );
+                        })}
+                    
+                    </Flex>
+                </Flex>
+                <Flex direction='column' w='100%' minW='170px' mt={4} mr={3}>
+                    <Text fontSize='14.5px' fontWeight={600}>Clubs</Text>
+
+                    <Flex mt={2}>
+                        {ranks.map((val, i) => {
+                            return (
+                                <Flex key={`${val}+${i}`} align='center' justify='center' w='24px' h='24px' ml={i === 0 ? 0 : 2} bg='#202020' _hover={{bg: '#303030', cursor: 'pointer'}} onClick={() => {view === 'ONE' ? setCardOne(`${val}c`) : setCardTwo(`${val}c`);setSelectorView(false);}}>
+                                    <Text fontSize='11pt' fontWeight={600}>{val.toUpperCase()}</Text>
+                                </Flex>
+                            );
+                        })}
+                    
                     </Flex>
                 </Flex>
             </> : <>
@@ -83,15 +97,23 @@ const Classic = () => {
                         {cardOne === '' ?
                             <Flex align='center' justify='center' w='48px' h='62px' border='1px dashed #505050' _hover={{cursor: 'pointer', border: '1px dashed #808080'}} onClick={() => {setView('ONE');setSelectorView(true);}}>
                                 <Text color='#505050'>+</Text>
-                            </Flex> : (<Flex mt={-8}>
+                            </Flex> : (<Flex mt={-8} onClick={() => {setView('ONE');setSelectorView(true);}}>
                                 
-                                <PlayCard suit={cardOne[1] as ('spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd')} value={cardOne[0] as ('a' | 'q' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'A' | 'K' | 'k' | 'Q' | 'J' | 'j' | 't')} fontSize='60pt' />
+                                <PlayCard isClickable={true} suit={cardOne[1] as ('spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd')} value={cardOne[0] as ('a' | 'q' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'A' | 'K' | 'k' | 'Q' | 'J' | 'j' | 't')} fontSize='60pt' />
                             </Flex>
                             )
                         }
-                        <Flex align='center' justify='center' w='48px' h='62px' ml={2} border='1px dashed #505050' _hover={{cursor: 'pointer', border: '1px dashed #808080'}}>
-                            <Text color='#505050'>+</Text>
-                        </Flex>
+                        {cardTwo === '' ?
+                            <Flex align='center' justify='center' w='48px' h='62px' ml={2} border='1px dashed #505050' _hover={{cursor: 'pointer', border: '1px dashed #808080'}} onClick={() => {setView('TWO');setSelectorView(true);}}>
+                                <Text color='#505050'>+</Text>
+                            </Flex> : (<Flex mt={-8} onClick={() => {setView('TWO');setSelectorView(true);}}>
+                                
+                                <PlayCard isClickable={true} suit={cardTwo[1] as ('spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd')} value={cardTwo[0] as ('a' | 'q' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'A' | 'K' | 'k' | 'Q' | 'J' | 'j' | 't')} fontSize='60pt' />
+                            </Flex>
+
+                            )
+                        }
+                        
                         {/* {analysisForm.hand.length > 1 &&
                                         <PlayCard suit={analysisForm.hand[1] as ('spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd')} value={analysisForm.hand[0] as ('a' | 'q' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'A' | 'K' | 'k' | 'Q' | 'J' | 'j' | 't')} fontSize='48pt' />
                     }

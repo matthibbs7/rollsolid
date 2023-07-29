@@ -5,9 +5,10 @@ interface PlayCardProps {
     fontSize: string;
     suit: 'spade' | 's' | 'club' | 'c' | 'heart' | 'h' | 'diamond' | 'd';
     value: 'A' | 'a' | 'K' | 'k' | 'Q' | 'q' | 'J' | 'j' | '10' | 't' | '9' | '8' | '7' | '6' | '5' | '4' | '3' | '2';
+    isClickable?: boolean,
 }
 
-const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
+const PlayCard = ({ fontSize, suit, value, isClickable }: PlayCardProps) => {
 
     const getCardFace = (s: string, v: string) => {
 
@@ -166,7 +167,7 @@ const PlayCard = ({ fontSize, suit, value }: PlayCardProps) => {
 
     return (
         
-        <Text color='#666666' fontSize={fontSize}>{getCardFace(suit, value)}</Text>
+        <Text color='#666666' fontSize={fontSize} _hover={{cursor: isClickable ? 'pointer' : 'auto', color: isClickable ? '#888888' : '#666666'}}>{getCardFace(suit, value)}</Text>
         
     );
 };
