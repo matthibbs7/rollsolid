@@ -121,6 +121,20 @@ const defaultWorkspaceState: WorkspaceState = {
             chartData: [{id: '1', amount: 250, hand: 1}, {id: '2', amount: 269, hand: 2}, {id: '3', amount: 100, hand: 3}, {id: '4', amount: 165, hand: 4}, {id: '5', amount: 180, hand: 5}, {id: '6', amount: 80, hand: 6}, {id: '7', amount: 100, hand: 7}, {id: '8', amount: 160, hand: 8}]
         },
         {
+            widgetName: 'minimized widget', // default type title -> can be overridden in settings
+            processId: -7,
+            type: 'notes',
+            x: 200,
+            y: 220,
+            z: 7,
+            width: 460, // px val
+            height: 360,
+            isMinimizied: true,
+            settingsOpen: false,
+            handleColor: '121212', //TODO # default #121212 -> overridden
+            textContent: '<p>Nice! You`ve found a widget that was <b>minimized</b>.</p><p></p><p>You can <b><i>minimize</i></b> widgets by clicking the button with two arrows on the top right of a widget.</p><p></p><p>To <b><i>close</i></b> a widget, click the button with a cross in the top right of a widget or click the cross in the minimized widget view.</p>',
+        },
+        {
             widgetName: 'Demo Widget', // default type title -> can be overridden in settings
             processId: -3,
             type: 'notes',

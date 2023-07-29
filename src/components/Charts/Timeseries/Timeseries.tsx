@@ -98,7 +98,7 @@ const Timeseries = ({ processId }: TimeseriesProps) => {
                                     lineJointType="monotoneX"
                                     name="Values"
                                 />
-                                <Tooltip content={<CustomTooltip />} />
+                                <Tooltip wrapperStyle={{ outline: 'none' }} content={<CustomTooltip />} />
                                 <CartesianGrid vertical={false} opacity={0.15} strokeDasharray="3 3" />
                             </ScatterChart>
                         </ResponsiveContainer>

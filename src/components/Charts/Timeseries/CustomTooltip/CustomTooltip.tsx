@@ -7,7 +7,7 @@ export const CustomTooltip = ({ active, payload }: any) => {
     const [time, value] = payload;
     if (active) {
         return (
-            <Flex className="custom-tooltip" direction='column'>
+            <Flex className="custom-tooltip" direction='column' border='none' shadow='none' _focus={{boxShadow: 'none'}}>
                 <Text fontSize='10.5pt'>Stack Size: {value.value}</Text>
                 <Text fontSize='10.5pt'>Hand: #{time.value}</Text>
             </Flex>
