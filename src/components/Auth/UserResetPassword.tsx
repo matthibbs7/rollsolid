@@ -48,16 +48,15 @@ const UserResetPassword:React.FC = () => {
                             <InputLeftElement
                                 pointerEvents='none'
                             >
-                                <Box mt={6}><MdAlternateEmail fontSize="16pt" color='#454545' /></Box>
+                                <Box mt={6} mr={-3}><MdAlternateEmail fontSize="14pt" color='#454545' /></Box>
                             </InputLeftElement>
-                            <Input h="48px" mt={2} mb="17px" color="white" fontWeight={700} bg="#282828" border="none" borderRadius="5px" _placeholder={{color: 'white', fontFamily: 'AvenirNext-DemiBold'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
-                            
+                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={500} bg="#202020" border="1px solid #202020" borderRadius="0px" _hover={{border: '1px solid #202020'}} _active={{border: '1px solid #202020'}} _focus={{border: '1px solid #202020', boxShadow: 'none'}} _placeholder={{color: 'white'}} name="email" onChange={onChange} placeholder="" required type="email" />
                         </InputGroup>
                         
                         <Box h="17px">
                             <Text color="red.300" fontSize="10pt">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                         </Box>
-                        <Button w="100%" h="48px" mt={-2} color="black" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" border="none" borderRadius="0px" _hover={{color: 'white'}} isLoading={loading} type="submit">Reset Password&nbsp;&nbsp;→</Button>
+                        <Button w="100%" h="45px" mt={-2} color="black" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" border="none" borderRadius="0px" _hover={{color: 'white'}} isLoading={loading} type="submit">Reset Password&nbsp;&nbsp;→</Button>
                         <Text mt={2} fontSize="10pt">Back to <Text as="span" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/login')}>login</Text></Text>
                         <Text mt={5} fontSize="10pt" textAlign="center">New to Rollsolid? <Text as="span" fontFamily='AvenirNext-DemiBold' textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/signup')}>Sign Up</Text></Text>
                     </form>

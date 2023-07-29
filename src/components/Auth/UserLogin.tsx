@@ -68,17 +68,17 @@ const UserLogin:React.FC = () => {
                         <form onSubmit={onSubmit}>
                             <Text fontWeight={500}>Username</Text>
                             
-                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={600} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="email" onChange={onChange} placeholder="" required type="email" />
+                            <Input h="45px" mt={2} mb="17px" color="white" fontWeight={500} bg="#202020" border="1px solid #202020" borderRadius="0px" _hover={{border: '1px solid #202020'}} _active={{border: '1px solid #202020'}} _focus={{border: '1px solid #202020', boxShadow: 'none'}} _placeholder={{color: 'white'}} name="email" onChange={onChange} placeholder="" required type="email" />
                         
                             <Text fontWeight={500}>Password</Text>
                                 
-                            <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#202020" border="none" borderRadius="0px" _placeholder={{color: 'white'}} focusBorderColor='black' name="password" onChange={onChange} placeholder="" required type="password" />
+                            <Input h="45px" mt={2} color="white" fontFamily='Inter' fontSize='13.5pt' fontWeight={800} bg="#202020" border="1px solid #202020" borderRadius="0px" shadow='none' _hover={{border: '1px solid #202020'}} _active={{border: '1px solid #202020'}} _focus={{border: '1px solid #202020', boxShadow: 'none'}} _placeholder={{color: 'white'}} name="password" onChange={onChange} placeholder="" required type="password" />
                             
                             <Text mt={2} fontSize="10pt">Forget your <Text as="span" color="white" fontWeight={600} textDecoration="underline" _hover={{cursor: 'pointer'}} onClick={() => router.push('/reset-password')}>password</Text> ?</Text>
                             <Box h="17px">
                                 <Text color="red.300" fontSize="10pt">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
                             </Box>
-                            <Button w="100%" h="48px" mt={6} color="black" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" border="1px solid #494D51" borderRadius="0px" _hover={{color: 'white'}} isLoading={loading} type="submit">Login to Your Account&nbsp;&nbsp;→</Button>
+                            <Button w="100%" h="48px" mt={6} color="black" bg="linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)" border="1px solid #494D51" borderRadius="0px" shadow='none' _hover={{color: 'white'}} _focus={{boxShadow: 'none'}} isLoading={loading} type="submit">Login to Your Account&nbsp;&nbsp;→</Button>
                             <Box w="100%" mt={5}>
                                 <GoogleSignIn />
                             </Box>

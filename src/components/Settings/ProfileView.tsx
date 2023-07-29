@@ -63,7 +63,10 @@ const ProfileView:React.FC = () => {
                             <IdenticonImg username={user.email.match(emailRegex)?.toString() ?? ''}  saturation='50' lightness='50' height="59px" width="59px" />
                         </Flex> 
                         }
-                        <Text mt={6} fontFamily='AvenirNext-DemiBold' fontSize='14.5pt'>@{user?.email?.match(emailRegex)?.toString() ?? ''}</Text>
+                        <Flex>
+                            <Text mt={6} fontFamily='AvenirNext-DemiBold' fontSize='14.5pt'>@</Text>
+                            <Text mt='22.5px' ml='2.5px' fontFamily='AvenirNext-DemiBold' fontSize='14.5pt'>{user?.email?.match(emailRegex)?.toString() ?? ''}</Text>
+                        </Flex>
                     </Flex>
                     <Flex direction='column' h="35px" mt={4} ml={-1} px={1} onClick={() => signOut(auth)}>
                         <Text fontSize='13px' fontWeight={400}>Email</Text>

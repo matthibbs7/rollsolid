@@ -44,7 +44,7 @@ export const Navbar = () => {
         >   <Box minW='16px'>
                 <GiRollingBomb />
             </Box>
-            <Text ml={2} color={cmt} fontFamily='TWKEverett-Regular' fontSize='14.5px' fontWeight={600} _hover={{cursor: 'pointer'}} onClick={() => router.push('/')}>Rollsolid</Text>
+            <Text ml={2} color={cmt} fontFamily='TWKEverett-Regular' fontSize='14.5px' fontWeight={600} fontStyle='italic' _hover={{cursor: 'pointer'}} onClick={() => router.push('/')}>Rollsolid</Text>
             <Box w="1px" h="45%" ml={5} borderLeft="1px solid " />
             <Flex align='center' overflow='scroll' h='100%'>
                 <Button minW='85px' h="60%" ml={7} fontSize="11px" fontWeight={400} bg={cmb} border="1px solid #161616" borderRadius="0px" _hover={{border: '1px solid #494D51'}} _active={{border: '1px solid #494D51'}} onClick={() => router.push('/about')}><SiInformatica color="#A3A3A3" />&nbsp;&nbsp;<Text color='#A3A3A3' fontSize="12px">About</Text></Button>

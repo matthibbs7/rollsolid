@@ -1,4 +1,4 @@
-import { Flex, Text, Box } from '@chakra-ui/react';
+import { Flex, Text, Box, Tooltip } from '@chakra-ui/react';
 import { BiEdit } from 'react-icons/bi';
 import { VscDiffAdded } from 'react-icons/vsc';
 import React, { useEffect, useState } from 'react';
@@ -62,14 +62,18 @@ export const WorkspaceNavbar = () => {
                     );
                 })}
             </Flex>
-            <Box mr={1} ml={2.5} color='#333333' _hover={{cursor: 'pointer', color: '#404040'}} onClick={() => setOpen(true)}>
-                <VscDiffAdded fontSize='14.5px' />
+            <Tooltip fontSize='11px' bg='black' label='New Workspace' openDelay={1200} placement='bottom'>
+                <Box mr={1} ml={2.5} color='#333333' _hover={{cursor: 'pointer', color: '#404040'}} onClick={() => setOpen(true)}>
+                    <VscDiffAdded fontSize='14.5px' />
                     
-            </Box>
-            <Box mt='-1px' mr={5} ml='auto' color='#333333' _hover={{cursor: 'pointer', color: '#404040'}} onClick={() => setEditOpen(true)}>
-                <BiEdit fontSize='15px' />
+                </Box>
+            </Tooltip>
+            <Tooltip fontSize='11px' bg='black' label='Edit Workspaces' openDelay={1200} placement='bottom'>
+                <Box mt='-1px' mr={5} ml='auto' color='#333333' _hover={{cursor: 'pointer', color: '#404040'}} onClick={() => setEditOpen(true)}>
+                    <BiEdit fontSize='15px' />
                     
-            </Box>
+                </Box>
+            </Tooltip>
             <WorkspaceAddModal isOpen={open} handleClose={() => setOpen(false)} />
             <WorkspaceEditModal isOpen={editOpen} handleClose={() => setEditOpen(false)} />  
         </Flex>

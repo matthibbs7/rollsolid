@@ -28,7 +28,7 @@ export default function Home() {
 
                 <meta
                     name="description"
-                    content="Advanced Poker strategy and analysis"
+                    content="Advanced Poker Strategy and Analysis"
                 />
                 <meta
                     name="viewport"

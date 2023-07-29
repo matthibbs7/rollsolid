@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PlayerNumber from './PlayerNumber';
 import { GuardSpinner } from 'react-spinners-kit';
 import PlayCard from '@/components/PlayCard/PlayCard';
+import Classic from './Classic/Classic';
 
 interface PreFlopComponentProps {
     processId: number;
@@ -56,7 +57,7 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
                     <Divider mt={3} borderColor='#434343' />
                     <TabPanels>
                         <TabPanel>
-                            <p>one!</p>
+                            <Classic />
                         </TabPanel>
                         <TabPanel>
                             <Flex wrap='wrap' w='100%'>
