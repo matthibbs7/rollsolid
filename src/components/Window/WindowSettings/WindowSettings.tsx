@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, Flex, Input, Box, Switch, Button } from '@chakra-ui/react';
 import { WindowState } from '@/types/windows';
 import { windowsState } from '@/atoms/windowsAtom';
@@ -24,6 +24,7 @@ export const WindowSettings = ({
 }: WindowSettingsProps) => {
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
     const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
+    const [saved, setSaved] = useState(false);
     // persisted memory after 'save' clicked
     
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -59,22 +60,30 @@ export const WindowSettings = ({
 
     };
 
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    const saver = async () => {
+        setSaved(true);
+        await sleep(800);
+        setSaved(false);
+    };
+
     return (
         <Flex direction='column' overflow='scroll' minH='80px' mt={1} mb={10} p={2} px={3} bg='#121212' border='1px solid #343434'>
             <form onSubmit={onSubmit}>
                 <Text color='#C7AE7A' fontWeight={600}>Settings</Text>
-                <Flex align='center' mt={2}>
+                <Flex align='center' mt={3}>
                     <Flex direction='column'>
-                        <Text>Widget Name</Text>
-                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Title displayed on the window handle</Text>
+                        <Text fontSize='11pt' fontWeight={600}>Widget Name</Text>
+                        <Text color='#868686' fontSize='10pt' fontStyle='italic'>Widget title displayed on the window handle</Text>
                     </Flex>
                     <Input maxW='120px' maxH='26px' ml='auto' pl={2} fontSize='10.5pt' border='1px solid #494D51' borderRadius='0' _focus={{border: '1px solid white'}} _placeholder={{color: 'grey'}} maxLength={20} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setWindowTitle(event.target.value)} placeholder={windowDefaultTitle} value={windowTitle} />
                     {/* <Switch ml='auto' variant='boxy' /> */}
                 </Flex>
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
-                        <Text>Handle Color</Text>
-                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Hex code for handle color</Text>
+                        <Text fontSize='11pt' fontWeight={600}>Handle Color</Text>
+                        <Text color='#868686' fontSize='10pt' fontStyle='italic'>Hex code for handle color</Text>
                     </Flex>
                     <Flex align='center' ml='auto'>
                         <Box w='24px' h='24px' mr={-0.5} bg={`#${windowColor}`} border='1px solid #494D51' _hover={{cusor: 'pointer'}} />
@@ -84,12 +93,12 @@ export const WindowSettings = ({
                 </Flex>
                 <Flex align='center' mt={2}>
                     <Flex direction='column'>
-                        <Text>Lock Position</Text>
-                        <Text color='#868686' fontSize='10.5pt' fontStyle='italic'>Disable resize/drag</Text>
+                        <Text fontSize='11pt' fontWeight={600}>Lock Position</Text>
+                        <Text color='#868686' fontSize='10pt' fontStyle='italic'>Disable resize/drag</Text>
                     </Flex>
                     <Switch ml='auto' variant='boxy' />
                 </Flex>
-                <Button w='84px' h='26px' mt={5} mb={1} bg='black' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} type='submit'>Save</Button>
+                <Button w='84px' h='24px' minH='24px' maxH='24px' mt={6} mb={1}  fontSize='10pt' bg='#121212' border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} onClick={() => saver()} type='submit'>{saved ? 'Saved' : 'Save'}</Button>
             </form>
         </Flex>
     );

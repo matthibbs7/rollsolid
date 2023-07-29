@@ -19,6 +19,13 @@ export default function Home() {
         >
             <Head>
                 <title>Rollsolid</title>
+                <meta property="og:url" content="https://rollsolid.com/" />
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="Rollsolid - Advanced Poker strategy and analysis" />
+                <meta property="og:title" content="Rollsolid - Advanced Poker strategy and analysis" />
+                <meta property="og:description" content="Data-based tools for Texas Holdem Poker featuring Monte Carlo simulations of dynamic game states, odd ratio calculators, time series analysis, and more!" />
+                <meta property="og:image" content="https://i.imgur.com/cy2cu4e.png" />
+
                 <meta
                     name="description"
                     content="Advanced Poker strategy and analysis"

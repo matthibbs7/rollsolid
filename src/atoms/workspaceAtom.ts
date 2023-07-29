@@ -9,8 +9,21 @@ export interface WorkspaceState {
 // stack of stacks for workspaces feature
 const defaultWorkspaceState: WorkspaceState = {
     workspaces: [{id: '1', name: 'Poker Workspace', workspace_stack: {stack: [{
-        widgetName: 'Demo Widget', // default type title -> can be overridden in settings
         processId: -1,
+        type: 'pie',
+        x: 20,
+        y: 250,
+        z: 0,
+        width: 460,
+        height: 400,
+        isMinimizied: false,
+        settingsOpen: false,
+        handleColor: '121212',
+        pieData: [{id: '1', amount: 300, hand: 'Matt'}, {id: '2', amount: 120, hand: 'Nate'}, {id: '3', amount: 400, hand: 'Patrick'}]
+    },
+    {
+        widgetName: 'Demo Widget', // default type title -> can be overridden in settings
+        processId: -3,
         type: 'notes',
         x: 80,
         y: 80,
@@ -21,7 +34,8 @@ const defaultWorkspaceState: WorkspaceState = {
         settingsOpen: false,
         handleColor: '121212', //TODO # default #121212 -> overridden
         textContent: '<h1>Welcome to Rollsolid</h1><p></p><p>This is a <b>notes</b> widget.</p><p>You can load additional widgets to your <i>dashboard</i>.</p><p></p><code>p.s. you can edit this text!</code><p></p>',
-    }, {
+    }, 
+    {
         widgetName: 'Timeseries Example',
         processId: -2,
         type: 'timeseries',
@@ -41,8 +55,21 @@ const defaultWorkspaceState: WorkspaceState = {
         id: '1',
         name: 'Poker Workspace',
         workspace_stack: {stack: [{
-            widgetName: 'Demo Widget', // default type title -> can be overridden in settings
             processId: -1,
+            type: 'pie',
+            x: 20,
+            y: 250,
+            z: 0,
+            width: 460,
+            height: 400,
+            isMinimizied: false,
+            settingsOpen: false,
+            handleColor: '121212',
+            pieData: [{id: '1', amount: 300, hand: 'Matt'}, {id: '2', amount: 120, hand: 'Nate'}, {id: '3', amount: 400, hand: 'Patrick'}]
+        },
+        {
+            widgetName: 'Demo Widget', // default type title -> can be overridden in settings
+            processId: -3,
             type: 'notes',
             x: 80,
             y: 80,
@@ -53,7 +80,8 @@ const defaultWorkspaceState: WorkspaceState = {
             settingsOpen: false,
             handleColor: '121212', //TODO # default #121212 -> overridden
             textContent: '<h1>Welcome to Rollsolid</h1><p></p><p>This is a <b>notes</b> widget.</p><p>You can load additional widgets to your <i>dashboard</i>.</p><p></p><code>p.s. you can edit this text!</code><p></p>',
-        }, {
+        }, 
+        {
             widgetName: 'Timeseries Example',
             processId: -2,
             type: 'timeseries',
