@@ -1,4 +1,3 @@
-import { windowsState } from '@/atoms/windowsAtom';
 import { workspaceState } from '@/atoms/workspaceAtom';
 import { WindowState } from '@/types/windows';
 import { Flex } from '@chakra-ui/react';
@@ -18,7 +17,6 @@ interface NotesProps {
 const Notes = ({ processId}: NotesProps) =>  {
 
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
-    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
 
     // const [notesContent, setNotesContent] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].textContent : '<p>Edit this text...</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>');
     const [notesContent, setNotesContent] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].textContent ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].textContent : '<p>Edit this text...</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>');

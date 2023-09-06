@@ -3,8 +3,6 @@ import { Button, Text, Flex, useColorMode, Menu, MenuButton, MenuItem, MenuList,
 import { MdAddChart, MdLibraryBooks, MdOutlineGradient, MdOutlineWidgets, MdStackedLineChart } from 'react-icons/md';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
-import { windowsState } from '@/atoms/windowsAtom';
-import { processSchedulerState } from '@/atoms/processSchedulerAtom';
 import { GiCardPick } from 'react-icons/gi';
 import { workspaceState } from '@/atoms/workspaceAtom';
 import { TbCards } from 'react-icons/tb';
@@ -15,13 +13,13 @@ const WidgetNavbar:React.FC = () => {
     const cmb = colorMode === 'light' ? '#161616' : '#161616';
 
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
-    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
-    const [processState, setProcessState] = useRecoilState(processSchedulerState);
+    // const [processState, setProcessState] = useRecoilState(processSchedulerState);
 
     const toast = useToast();
 
     const addPreFlopAnalysisWidget = () => {
-        const newPid = processState.previousId + 1;
+        const newPid = workspaces.previousProcessId + 1;
+        // const newPid = processState.previousId + 1;
         const preFlopAnalysisWindowState: WindowState = {
             processId: newPid,
             type: 'pre flop analysis',
@@ -34,15 +32,16 @@ const WidgetNavbar:React.FC = () => {
             settingsOpen: false,
             handleColor: '121212',
         };
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
+        // setProcessState((prevState: typeof processState) => ({
+        //     ...prevState,
+        //     previousId: newPid,
+        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, preFlopAnalysisWindowState]}};
 
         setWorkspaces((prevState) => ({
             ...prevState,
+            previousProcessId: newPid,
             active: newActive,
         }));
 
@@ -60,7 +59,8 @@ const WidgetNavbar:React.FC = () => {
     };
 
     const addBettingOddsWidget = () => {
-        const newPid = processState.previousId + 1;
+        // const newPid = processState.previousId + 1;
+        const newPid = workspaces.previousProcessId + 1;
         const bettingOddsWindowState: WindowState = {
             processId: newPid,
             type: 'pot odds',
@@ -73,15 +73,16 @@ const WidgetNavbar:React.FC = () => {
             settingsOpen: false,
             handleColor: '121212',
         };
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
+        // setProcessState((prevState: typeof processState) => ({
+        //     ...prevState,
+        //     previousId: newPid,
+        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, bettingOddsWindowState]}};
 
         setWorkspaces((prevState) => ({
             ...prevState,
+            previousProcessId: newPid,
             active: newActive,
         }));
 
@@ -99,7 +100,8 @@ const WidgetNavbar:React.FC = () => {
     };
 
     const addImpliedOddsWidget = () => {
-        const newPid = processState.previousId + 1;
+        // const newPid = processState.previousId + 1;
+        const newPid = workspaces.previousProcessId + 1;
         const impliedOddsWindowState: WindowState = {
             processId: newPid,
             type: 'implied odds',
@@ -112,15 +114,16 @@ const WidgetNavbar:React.FC = () => {
             settingsOpen: false,
             handleColor: '121212',
         };
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
+        // setProcessState((prevState: typeof processState) => ({
+        //     ...prevState,
+        //     previousId: newPid,
+        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, impliedOddsWindowState]}};
 
         setWorkspaces((prevState) => ({
             ...prevState,
+            previousProcessId: newPid,
             active: newActive,
         }));
 
@@ -138,7 +141,8 @@ const WidgetNavbar:React.FC = () => {
     };
 
     const addNotesWidget = () => {
-        const newPid = processState.previousId + 1;
+        // const newPid = processState.previousId + 1;
+        const newPid = workspaces.previousProcessId + 1;
         const notesWindowState: WindowState = {
             processId: newPid,
             type: 'notes',
@@ -151,15 +155,16 @@ const WidgetNavbar:React.FC = () => {
             settingsOpen: false,
             handleColor: '121212',
         };
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
+        // setProcessState((prevState: typeof processState) => ({
+        //     ...prevState,
+        //     previousId: newPid,
+        // }));
 
         const newActive = {id: workspaces.active.id, name: workspaces.active.name, workspace_stack: {stack: [...workspaces.active.workspace_stack.stack, notesWindowState]}};
 
         setWorkspaces((prevState) => ({
             ...prevState,
+            previousProcessId: newPid,
             active: newActive,
         }));
 
@@ -177,7 +182,8 @@ const WidgetNavbar:React.FC = () => {
     };
 
     const addHandReferenceWidget = () => {
-        const newPid = processState.previousId + 1;
+        // const newPid = processState.previousId + 1;
+        const newPid = workspaces.previousProcessId + 1;
         const notesWindowState: WindowState = {
             processId: newPid,
             type: 'reference',
@@ -190,10 +196,10 @@ const WidgetNavbar:React.FC = () => {
             settingsOpen: false,
             handleColor: '121212',
         };
-        setProcessState((prevState: typeof processState) => ({
-            ...prevState,
-            previousId: newPid,
-        }));
+        // setProcessState((prevState: typeof processState) => ({
+        //     ...prevState,
+        //     previousId: newPid,
+        // }));
         // setMinimizedWindows((prevState: typeof minimizedWindows) => ({
         //     ...prevState,
         //     stack: [...prevState.stack, notesWindowState],
@@ -203,6 +209,7 @@ const WidgetNavbar:React.FC = () => {
 
         setWorkspaces((prevState) => ({
             ...prevState,
+            previousProcessId: newPid,
             active: newActive,
         }));
 

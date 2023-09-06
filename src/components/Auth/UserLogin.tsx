@@ -30,7 +30,7 @@ const UserLogin:React.FC = () => {
 
     useEffect(() => {
         if (userAuth) {
-            router.push('/dashboard');
+            router.push('/');
         }
     }, [user]);
 
@@ -58,7 +58,7 @@ const UserLogin:React.FC = () => {
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
                 <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" direction="row" mt={9}>
-                        <Text fontFamily='TWKEverett-Regular' fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={500}>Login to Rollsolid&nbsp;</Text>
+                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={500}>Login to Rollsolid&nbsp;</Text>
                         
                         {/* <1Text fontSize="28pt" fontWeight={700} fontFamily="AvenirNext-DemiBold">&nbsp;Rollsolid</Text> */}
                         <GiRollingBomb fontSize="28pt" />

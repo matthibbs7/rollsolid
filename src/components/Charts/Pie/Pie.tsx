@@ -11,7 +11,6 @@ import {
 import { v4 as uuid } from 'uuid';
 import { WindowState } from '@/types/windows';
 import { useRecoilState } from 'recoil';
-import { windowsState } from '@/atoms/windowsAtom';
 import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 import { workspaceState } from '@/atoms/workspaceAtom';
 
@@ -23,7 +22,6 @@ const COLORS = ['#9560E2', '#4DC0B5', '#F6993F', '#F66D9B', '#3490DC', '#6574CD'
 
 const renderLegend = (props: any) => {
     const { payload } = props;
-    console.log(payload, 'PAYLOAD');
     return (
         <Flex wrap='wrap' w='100%'>
             {
@@ -45,10 +43,9 @@ const PieChartComponent = ({ processId }: PieChartComponentProps) => {
     const [newName, setNewName] = useState<string>('');
     
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
-    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [errorText, setErrorText] = useState('');
     // const [data, setData] = useState(minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? minimizedWindows.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
-    const [data, setData] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData : []);
+    const [data, setData] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === processId)[0].pieData);
 
     useEffect(() => {
         const newActiveStack = workspaces.active.workspace_stack.stack.map((w: WindowState) => {

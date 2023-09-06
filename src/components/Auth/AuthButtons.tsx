@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Text, Flex, useColorMode, Box, Menu, MenuButton, MenuList, MenuItem, Divider } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { BsChevronDown } from 'react-icons/bs';
-import { MdAccountBox, MdLanguage, MdLockPerson, MdLogout } from 'react-icons/md';
+import { MdAccountBox, MdLockPerson, MdLogout, MdOutlineDashboardCustomize } from 'react-icons/md';
 import { auth } from '@/firebase/clientApp';
 import { signOut } from 'firebase/auth';
 
@@ -40,11 +40,11 @@ const AuthButtons:React.FC<AuthButtonsProps> = ({ user }) => {
                                         <Text color='#a3a3a3' fontSize='11px'>Configure user settings</Text>
                                     </Flex>
                                 </MenuItem>
-                                <MenuItem h='48px' mt={0} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}}>
-                                    <MdLanguage color='#a3a3a3' fontSize='28px' />
+                                <MenuItem h='48px' mt={0} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => router.push('/')}>
+                                    <MdOutlineDashboardCustomize color='#a3a3a3' fontSize='28px' />
                                     <Flex direction='column' ml={3}>
-                                        <Text color='#d1d1d1' fontSize='12px'>Language</Text>
-                                        <Text color='#a3a3a3' fontSize='11px'>Selected Language: EN</Text>
+                                        <Text color='#d1d1d1' fontSize='12px'>Dashboard</Text>
+                                        <Text color='#a3a3a3' fontSize='11px'>View existing workspaces</Text>
                                     </Flex>
                                 </MenuItem>
                                 <MenuItem h='48px' mt={0} px={3} color='#A3A3A3' bg='none' borderRadius='6px' _hover={{cursor: 'pointer', bg: '#111111'}} onClick={() => router.push('/reset-password')}>

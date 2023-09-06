@@ -19,11 +19,11 @@ const Footer:React.FC = () => {
                         </Box>
                         {/* <Image src="/images/logowhite.png" height="64px" minWidth="64px" /> */}
                         <Link href='/' style={{ textDecoration: 'none' }}>
-                            <Text color="white" fontSize="22pt" fontWeight="600">Rollsolid</Text>
+                            <Text color="white" fontFamily='Kosmos' fontSize="22pt" fontWeight="600">Rollsolid</Text>
                         </Link>
                         
                     </Flex>
-                    <Text mt={-1} ml={4} color="#A3A3A3" fontSize="11pt" textOverflow="unset">Develop your strategy and dominate Poker today!</Text>
+                    <Text mt={3} ml={4} color="#A3A3A3" fontSize="11pt" textOverflow="unset">Develop your strategy and dominate Poker today!</Text>
                     <Text mt={2} ml={4} color="#A3A3A3" fontSize="11pt">© 2023 | All rights reserved</Text>
                     <Text mt={4} ml={4} fontSize="13pt" fontWeight={700}>Contact</Text>
                     <Button w="120px" mt={2} mb="auto" ml={4} bg="none" border="1px solid #2F2F2F" borderRadius="0" _hover={{bg: '#1c1c1c'}}>Email Us</Button>

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, Flex, Input, Box, InputGroup, InputLeftElement, InputRightElement, IconButton } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { GiRollingBomb } from 'react-icons/gi';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/clientApp';
+import { auth, firestore } from '../../firebase/clientApp';
 import { FIREBASE_ERRORS } from '../../firebase/errors';
 import { MdAlternateEmail } from 'react-icons/md';
 import { HiFingerPrint } from 'react-icons/hi';
 import GoogleSignIn from './GoogleSignIn';
 import Footer from '../Footer/Footer';
+import { GiRollingBomb } from 'react-icons/gi';
+import { doc, setDoc } from 'firebase/firestore';
+import { UserProfile } from '@/types/user-profile';
 
 const UserSignUp:React.FC = () => {
     // const [authenticated, setAuthenticated]
@@ -42,6 +44,30 @@ const UserSignUp:React.FC = () => {
             return;
         }
         createUserWithEmailAndPassword(signUpForm.email, signUpForm.password);
+        createUserProfileDocument();
+    };
+
+    const createUserProfileDocument = async () => {
+        try {
+            const eventDocRef = doc(firestore, 'users', signUpForm.email);
+            // const eventDoc = await getDoc(eventDocRef);
+              
+            // if (eventDoc.exists()) {
+            //     setError('An Event with this id already exists. Please change it and try again.');
+            //     setLoading(false);
+            //     return;
+            // }
+    
+            const newUserProfile: UserProfile = {
+                userEmail: signUpForm.email,
+                userSettings: {notifications: true, widgetLock: false},
+                userDashboards: [],
+            };
+
+            await setDoc(doc(firestore, 'users', signUpForm.email), {...newUserProfile});
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +83,7 @@ const UserSignUp:React.FC = () => {
 
     useEffect(() => {
         if (userAuth) {
-            router.push('/dashboard');
+            router.push('/');
         }
     }, [user]);
     
@@ -66,7 +92,7 @@ const UserSignUp:React.FC = () => {
             <Flex justify="center" w="100%" h={['640px','640px','720px','720px']}>
                 <Flex align="center" direction="column" w={['100%', '90%', '80%', '60%']} maxW="500px" h="620px" mt={[0,0,5,5]} bg="#121212" border="1px solid #2F2F2F">
                     <Flex align="center" mt={5}>
-                        <Text fontSize={['24pt', '24pt', '28pt', '28pt']} fontWeight={600}>Create an Account&nbsp;</Text>
+                        <Text fontSize={['24pt', '24pt', '26pt', '26pt']} fontWeight={600}>Create an Account&nbsp;</Text>
                         <GiRollingBomb fontSize="28pt" />
                     </Flex>
                     <Text w={['90%', '90%', '65%', '65%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text>

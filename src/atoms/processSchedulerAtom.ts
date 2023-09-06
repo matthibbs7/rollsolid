@@ -8,7 +8,7 @@ export interface ProcessSchedulerState {
 
 // Auth Modal, default state
 const defaultProcessSchedulerState: ProcessSchedulerState = {
-    previousId: -1,
+    previousId: 100,
     processMatrix: new Set<number>(),
 };
 

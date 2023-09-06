@@ -10,7 +10,7 @@ export default function Login() {
     const [user, loading, error] = useAuthState(auth);
 
     if (user) {
-        router.push('/dashboard');
+        router.push('/');
     }
 
     return (

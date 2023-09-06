@@ -21,7 +21,18 @@ const config = {
     useSystemColorMode: false,
 };
 
-const components = { Switch: switchTheme };
+const components = { 
+    Button: {
+        baseStyle: {
+            color: 'white'
+        },
+        defaultProps: {
+            // Then here we set the base variant as the default
+            variant: 'base'
+        }
+    }, 
+    Switch: switchTheme 
+};
 
 const colors = {
     primary: '#e29578',

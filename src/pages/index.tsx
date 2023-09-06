@@ -1,16 +1,59 @@
 import Head from 'next/head';
 import React from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text, Image } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
-import WidgetTaskbar from '@/components/Widget/WidgetTaskbar/WidgetTaskbar';
-import { WorkspaceNavbar } from '@/components/Workspace/WorkspaceNavbar/WorkspaceNavbar';
 import { workspaceState } from '@/atoms/workspaceAtom';
-import { getWindowComponent } from '@/util/getWindowComponent';
-import { getWindowTypeProps } from '@/util/get-window-type-props';
-import WindowWrapper from '@/components/Window/WindowWrapper';
+import { auth } from '@/firebase/clientApp';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { GuardSpinner } from 'react-spinners-kit';
+import Footer from '@/components/Footer/Footer';
+import { ToolNavbar } from '@/components/Navbar/ToolNavbar/ToolNavbar';
+import { useRouter } from 'next/router';
+import { DashboardComponent } from '@/Dashboard/Dashboard';
 
 export default function Home() {
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
+    const [user, loading, error] = useAuthState(auth);
+    const router = useRouter();
+
+    if (loading) {
+        return (
+            <Flex p={8}>
+                <GuardSpinner size='32' frontColor='#A99AFB' />
+                
+            </Flex>
+        );
+    } else if (error) {
+        return (
+            <Text>Error occurred</Text>
+        );
+    } else if (!user) {
+        return (
+            <Flex direction="column" w="100%"
+                mt="-45px">
+                <ToolNavbar />
+                <Flex
+                    align="center"
+                    direction="column"
+                    h="100%"
+                >
+                    <Flex justify='center' wrap='wrap' direction='row' w='100%' mb={8}>
+                        <Flex justify='space-around' display='flex' mt='80px' mr={8} mb={-8}>
+                            <Image w='100%' maxW={[null, '680px']} h='auto' maxH='480px' pl={2} src='https://i.imgur.com/cy2cu4e.png' />
+                        </Flex>
+                        <Flex direction='column' display='flex' maxW='510px' h='500px' mt='120px' mb={8} ml={8} pr={4}>
+                            <Text fontFamily='TWKEverett-Regular' fontSize='38px' fontWeight={500}>Advanced Poker Analysis</Text>
+                            <Text color='#999999' fontFamily='TWKEverett-Regular' fontSize='34px' fontWeight={500}>Supercharge your gameplay</Text>
+                            <Text mt={3} mb={3.5} color='#969696' fontSize='17px'>Rollsolid is a Data-based customizable dashboard for applications of advanced Texas Holdem Poker theory</Text>
+                            <Text mt={3} mb={3.5} color='#969696' fontSize='16.5px'>Inside, you will find widgets for Hand/flop scenario estimations using Monte Carlo simulations, Odds Ratio calculators, Ranges, Timeseries analysis and many more.</Text>
+                            <Text mt={1} color='#B693F4' fontSize='18px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => router.push('/login')}>Create an account today →</Text>
+                        </Flex>
+                    </Flex>
+                </Flex>
+                <Footer />
+            </Flex>
+        );
+    }
 
     return (
         <Flex
@@ -40,19 +83,16 @@ export default function Home() {
                 />
             </Head>
             <Flex
-                pos="fixed"
-                top="45px"
-                right="0"
-                bottom="0"
-                left="0"
+                
                 direction="column"
-                h='calc(100vh - 47px)'
+                
             >
-                <Flex
+                <DashboardComponent />
+                {/* <Flex
                     direction="column"
                     h="100%"
-                >
-                    <WorkspaceNavbar />
+                > */}
+                {/* <WorkspaceNavbar />
                     <>
                         {workspaces.active.workspace_stack.stack.length === 0 && (
                             <Flex mt={10} ml={10}>
@@ -72,7 +112,8 @@ export default function Home() {
                         })}
                     </>
                 </Flex> 
-                <WidgetTaskbar />
+                <WidgetTaskbar /> */}
+                {/* <Footer /> */}
             </Flex>
         </Flex>
     );

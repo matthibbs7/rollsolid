@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Kosmos";
+    src: url('../fonts/Kosmos/kosmos.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Aero";
+    src: url('../fonts/Kosmos/Aero.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "BirdsOfParadise";
+    src: url('../fonts/BirdsOfParadise/BirdsOfParadise.ttf');
+    font-weight: normal;
+    font-style: normal;
+}

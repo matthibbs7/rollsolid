@@ -47,7 +47,7 @@ const WindowWrapper:React.FC<Props> = (props) => {
     const [windowColor, setWindowColor] = useState(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].handleColor);
     
     // voodoo magic
-    const [windowTitle, setWindowTitle] = useState<string>(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName ? workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! : props.title!);
+    const [windowTitle, setWindowTitle] = useState<string>(workspaces.active.workspace_stack.stack.filter((w: WindowState) => w.processId === props.type.processId)[0].widgetName! ?? props.title!);
 
     // default 400 x 400 size
     const [windowState, setWindowState] = useState<State>({

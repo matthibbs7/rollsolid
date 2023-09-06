@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, Flex, Input, Box, Switch, Button } from '@chakra-ui/react';
 import { WindowState } from '@/types/windows';
-import { windowsState } from '@/atoms/windowsAtom';
 import { useRecoilState } from 'recoil';
 import { workspaceState } from '@/atoms/workspaceAtom';
 
@@ -23,7 +22,6 @@ export const WindowSettings = ({
     setWindowColor,
 }: WindowSettingsProps) => {
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
-    const [minimizedWindows, setMinimizedWindows] = useRecoilState(windowsState);
     const [saved, setSaved] = useState(false);
     // persisted memory after 'save' clicked
     

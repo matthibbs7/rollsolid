@@ -1,8 +1,7 @@
 import { workspaceState } from '@/atoms/workspaceAtom';
-import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Input } from '@chakra-ui/react';
+import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Input, ModalOverlay } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { v4 as uuid } from 'uuid';
 
 type WorkspaceEditModalProps = {
     isOpen: boolean;
@@ -32,22 +31,6 @@ const WorkspaceEditModal:React.FC<WorkspaceEditModalProps> = ({ isOpen, handleCl
     const handleBrandChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length > 6) return;
         setBrandColor(event.target.value);
-    };
-
-    const handleCreateCommunity = () => {
-        setLoading(true);
-        
-        const newWorkspace = {id: uuid(), name: companyName, workspace_stack: { stack: []}};
-        const newWorkspaces = [...workspaces.workspaces, newWorkspace];
-
-        setWorkspaces((prevState) => ({
-            ...prevState,
-            workspaces: newWorkspaces,
-        }));
-
-        setCompanyName(`Workspace ${workspaces.workspaces.length + 2}`);
-        setLoading(false);
-        handleClose();
     };
 
     const deleteWorkspace = (selectedId: string) => {
@@ -133,8 +116,8 @@ const WorkspaceEditModal:React.FC<WorkspaceEditModalProps> = ({ isOpen, handleCl
     return (
         <>
             <Modal isOpen={isOpen} onClose={handleClose}>
-                {/* <ModalOverlay /> */}
-                <ModalContent bg='#181818' border='1px solid #2F2F2F' borderRadius='8px'>
+                <ModalOverlay />
+                <ModalContent bg='#181818' border='1px solid #2F2F2F' borderRadius='5px'>
                     <ModalHeader flexDir='column' display="flex" p={3} color='white' fontSize={15} fontWeight={600}><Flex align='center'><Text>Edit your Workspaces</Text></Flex></ModalHeader>
                     <Box pr={3} pl={3}> 
                         <Divider borderColor='#2f2f2f' />
@@ -163,7 +146,7 @@ const WorkspaceEditModal:React.FC<WorkspaceEditModalProps> = ({ isOpen, handleCl
                     </Box>
                     <ModalFooter h='64px' mt={5} bg='#121212' borderBottomRadius="8px">
                         <Button h='34px' mr={3} px={2} py={0.5} color='white' fontSize='13.5px' bg='#0E0E0E' border='1px solid #242424' borderRadius={0} _hover={{bg: 'red.300', color: 'black'}} onClick={() => deleteWorkspace(activeId)}>Delete</Button>
-                        <Button w='146px' h='34px' px={4} py={0.5} fontSize='13.5px' fontWeight={500} bg='#0E0E0E' border='1px solid #242424' borderRadius='0' _hover={{bg: '#181818'}} isLoading={loading} onClick={handleCreateCommunity}>Save Changes</Button>
+                        <Button w='146px' h='34px' px={4} py={0.5} fontSize='13.5px' fontWeight={500} bg='#0E0E0E' border='1px solid #242424' borderRadius='0' _hover={{bg: '#181818'}} isLoading={loading} onClick={handleClose}>Save Changes</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

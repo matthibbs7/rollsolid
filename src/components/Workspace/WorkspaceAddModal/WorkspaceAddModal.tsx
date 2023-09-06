@@ -1,5 +1,5 @@
 import { workspaceState } from '@/atoms/workspaceAtom';
-import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Input } from '@chakra-ui/react';
+import { Flex, Box, Text, Button, Divider, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Input, ModalOverlay } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
@@ -49,8 +49,8 @@ const WorkspaceAddModal:React.FC<WorkspaceAddModalProps> = ({ isOpen, handleClos
     return (
         <>
             <Modal isOpen={isOpen} onClose={handleClose}>
-                {/* <ModalOverlay /> */}
-                <ModalContent bg='#181818' border='1px solid #2F2F2F' borderRadius='8px'>
+                <ModalOverlay />
+                <ModalContent bg='#181818' border='1px solid #2F2F2F' borderRadius='5px'>
                     <ModalHeader flexDir='column' display="flex" p={3} color='white' fontSize={15} fontWeight={600}><Flex align='center'><Text>Add New Workspace</Text></Flex></ModalHeader>
                     <Box pr={3} pl={3}> 
                         <Divider borderColor='#2f2f2f' />
