@@ -2,8 +2,8 @@ import { IdenticonImg } from '@/components/Navbar/IdenticonImage.tsx/IdenticonIm
 import DeleteDropDown from '@/components/Navbar/ShareDropDown/DeleteDropDown/DeleteDropDown';
 import { auth, firestore } from '@/firebase/clientApp';
 import { UserDashboard } from '@/types/user-dashboard';
-import { SandboxTemplate } from '@/util/dashboard-templates';
-import { Flex, Text, Image, Divider, Button, Input, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from '@chakra-ui/react';
+import { PokerWizTemplate, SandboxTemplate, StarterTemplate } from '@/util/dashboard-templates';
+import { Flex, Text, Image, Divider, Button, Input, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Skeleton } from '@chakra-ui/react';
 import { signOut } from 'firebase/auth';
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
@@ -73,23 +73,30 @@ export const DashboardComponent = () => {
     const [viewState, setViewState] = useState<'DASHBOARD' | 'CREATE'>('DASHBOARD');
     
     const [name, setName] = useState('');
-    const [dashSelected, setDashSelected] = useState<TemplateDashboard>(TemplateDashboard.SANDBOX);
+    const [dashSelected, setDashSelected] = useState<TemplateDashboard>(TemplateDashboard.STARTER);
     const [color, setColor] = useState<DashboardColor>(DashboardColor.GRAY);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [dashboardData, setDashboardData] = useState<any>([]);
-    
+    const [loadingData, setLoadingData] = useState(true);
+
     useEffect(() => {
         let active = true;
+        
         loadUserData();
         return () => { active = false; };
 
         async function loadUserData() {
+            if (active === false) {
+                setLoadingData(true);
+            }
             if (!user) {
+                setLoadingData(false);
                 return;
             }
             const userEmail = user.email;
             if (userEmail === null) {
+                setLoadingData(false);
                 return;
             }
     
@@ -97,11 +104,16 @@ export const DashboardComponent = () => {
             const userDoc = await getDoc(eventDocRef);
             const userData = userDoc.exists() ? JSON.parse(safeJsonStringify({...userDoc.data()})) : '';
             if (userData === '') {
+                setLoadingData(false);
                 return;
             } 
             const newUserDashboards = [...userData.userDashboards];
-            if (!active) { return; }
+            if (!active) { 
+                setLoadingData(false);
+                return; 
+            }
             setDashboardData(newUserDashboards);
+            setLoadingData(false);
         }
         
     }, [user, dashboardData]);
@@ -121,7 +133,6 @@ export const DashboardComponent = () => {
             setLoading(false);
             return;
         }
-        console.log(name, color, dashSelected);
 
         // create new dashboard document with newID
         // add dashboard ID to user document attribute
@@ -155,10 +166,18 @@ export const DashboardComponent = () => {
         const newId = await generateUUID();
         
         try {
+            let templateSelected: any = SandboxTemplate;
+
+            if (dashSelected === TemplateDashboard.STARTER) {
+                templateSelected = StarterTemplate;
+            } else if (dashSelected === TemplateDashboard.POKERWIZ) {
+                templateSelected = PokerWizTemplate;
+            }
+
             const newDashboard: UserDashboard = {
                 dashboardName: name,
                 dashboardColor: color,
-                dashboardWorkspaces: SandboxTemplate,
+                dashboardWorkspaces: templateSelected,
             };
     
             await setDoc(doc(firestore, 'dashboard', newId), {...newDashboard});
@@ -270,22 +289,24 @@ export const DashboardComponent = () => {
                                     <Text fontFamily="AvenirNext-DemiBold" fontSize={['20pt', '24pt', '24pt', '28pt']}>Welcome Back</Text>
                                 </Flex>
                                 <Text fontSize='24px' fontWeight={400}>Your Dashboards</Text>
-                                {/* <Text mt={4} color='#999' fontSize='16px'>Currently you don{'\''}t have any dashboards.</Text> */}
-                                <Flex wrap='wrap'>
-                                    {dashboardData.map((d: {dashboardId: string, dashboardName: string, dashboardColor: string}, i: number) => {
-                                        return (
-                                            <Flex key={i}>
-                                                <DeleteDropDown color={d.dashboardColor} dashboardId={d.dashboardId} onDelete={onDelete} />
+                                {dashboardData.length === 0 && <Text mt={4} color='#999' fontSize='16px'>You don{'\''}t have any dashboards. Create one below.</Text>}
+                                <Skeleton isLoaded={!loadingData}>
+                                    <Flex wrap='wrap'>
+                                        {dashboardData.map((d: {dashboardId: string, dashboardName: string, dashboardColor: string}, i: number) => {
+                                            return (
+                                                <Flex key={i}>
+                                                    <DeleteDropDown color={d.dashboardColor} dashboardId={d.dashboardId} onDelete={onDelete} />
                                                 
-                                                <Flex zIndex={2} w='260px' h='150px' mt={8} mr={4} bg={d.dashboardColor ?? '#222'} borderRight="1.5px solid #333" borderBottom='2px solid #333' borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => router.push(`/${d.dashboardId}`)}>
+                                                    <Flex zIndex={2} w='260px' h='150px' mt={8} mr={4} bg={d.dashboardColor ?? '#222'} borderRight="1.5px solid #333" borderBottom='2px solid #333' borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => router.push(`/${d.dashboardId}`)}>
                                 
-                                                    <Text pos='absolute' mt='116px' ml={1.5} px={2} fontSize='14px' fontWeight={600}>{d.dashboardName} →</Text>
+                                                        <Text pos='absolute' mt='116px' ml={1.5} px={2} fontSize='14px' fontWeight={600}>{d.dashboardName} →</Text>
+                                                    </Flex>
                                                 </Flex>
-                                            </Flex>
-                                        );
-                                    })}
+                                            );
+                                        })}
                                     
-                                </Flex>
+                                    </Flex>
+                                </Skeleton>
                                 <Divider mt='90px' />
                                 <Flex w='260px' h='150px' mt={8} mb={14} bg='#222' border='2px dashed #292929' borderRadius={4} shadow='#222 20px 20px 40px 100px inset' _hover={{ transform: 'translateY(-1.5px)', bg: '#222', cursor: 'pointer' }} onClick={() => setViewState('CREATE')}>
                                     <Image opacity='24%' borderRadius={4}  _hover={{scale: '1.5'}} src='https://i.imgur.com/cy2cu4e.png' />
@@ -307,10 +328,10 @@ export const DashboardComponent = () => {
                                 <Text color='#acacac' fontSize='13px'>Dashboard name</Text>
                                 
                                 <Input w={['100px', '200px', '416px', '320px']} h='34px' mt={2} color='#acacac' fontSize='14px' fontWeight={500} bg='#222' border='1px solid #222' borderRadius={3} shadow='none' _hover={{border: '1px solid #644ED4'}} _active={{border: '1px solid #644ED4'}}_focus={{border: '1px solid #644ED4', boxShadow: 'none'}} _placeholder={{color: '#444'}} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} placeholder={`${user?.email?.match(emailRegex)?.toString() ?? 'rollsolid'}'s dashboard`} value={name} />
-                                <Text mt={8} color='#acacac' fontSize='12px'>Begin with a blank dashboard</Text>
+                                <Text mt={8} color='#acacac' fontSize='12px'>Begin with the starter dashboard</Text>
                                 <Flex mt={-4}>      
-                                    <Flex zIndex={2} w='200px' h='120px' mt={8} mr={4} bg={'#222'}  borderRight={'1.5px solid #333'} borderBottom={'2px solid #333'} borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => setDashSelected(TemplateDashboard.SANDBOX)}>
-                                        {dashSelected === TemplateDashboard.SANDBOX && (
+                                    <Flex zIndex={2} w='200px' h='120px' mt={8} mr={4} bg={'#222'}  borderRight={'1.5px solid #333'} borderBottom={'2px solid #333'} borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => setDashSelected(TemplateDashboard.STARTER)}>
+                                        {dashSelected === TemplateDashboard.STARTER && (
                                             <Flex pos='absolute' align='center' justify='center' w='60px' h='20px' mt='12px' ml='13px' bg='#644ED5' borderRadius={4}>
                                                 <Text color='white' fontSize='12px'>Selected</Text>
                                             </Flex>
@@ -319,7 +340,7 @@ export const DashboardComponent = () => {
                                             <Text color='black' fontSize='12px'>Default</Text>
                                         </Flex>
                                         <GiRollingBomb style={{position: 'absolute',marginLeft: '12px', marginTop: '90px'}} />
-                                        <Text pos='absolute' mt='88px' ml={7} px={2} fontSize='14px' fontWeight={600}>Sandbox →</Text>
+                                        <Text pos='absolute' mt='88px' ml={7} px={2} fontSize='14px' fontWeight={600}>Starter →</Text>
                                     </Flex>
                                 </Flex>
                                 <Accordion border='none' allowToggle>
@@ -334,8 +355,8 @@ export const DashboardComponent = () => {
                                             <Flex wrap='wrap' mt={-4} ml={-4}>
                                     
                                                 <Flex>      
-                                                    <Flex zIndex={2} w='200px' h='120px' mt={8} mr={4} bg={'#222'} borderRight={'1.5px solid #333'} borderBottom={'2px solid #333'} borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => setDashSelected(TemplateDashboard.STARTER)}>
-                                                        {dashSelected === TemplateDashboard.STARTER && (
+                                                    <Flex zIndex={2} w='200px' h='120px' mt={8} mr={4} bg={'#222'} borderRight={'1.5px solid #333'} borderBottom={'2px solid #333'} borderRadius={4} _hover={{ transform: 'translateY(-1.5px)', cursor: 'pointer' }} onClick={() => setDashSelected(TemplateDashboard.SANDBOX)}>
+                                                        {dashSelected === TemplateDashboard.SANDBOX && (
                                                             <Flex pos='absolute' align='center' justify='center' w='60px' h='20px' mt='12px' ml='13px' bg='#644ED5' borderRadius={4}>
                                                                 <Text color='white' fontSize='12px'>Selected</Text>
                                                             </Flex>
@@ -344,7 +365,7 @@ export const DashboardComponent = () => {
                                                             <Text color='black' fontSize='12px'>Beginner</Text>
                                                         </Flex>
                                                         <GiRollingBomb style={{position: 'absolute',marginLeft: '12px', marginTop: '90px'}} />
-                                                        <Text pos='absolute' mt='88px' ml={7} px={2} fontSize='14px' fontWeight={600}>Starter →</Text>
+                                                        <Text pos='absolute' mt='88px' ml={7} px={2} fontSize='14px' fontWeight={600}>Sandbox →</Text>
                                                     </Flex>
                                                 </Flex>
 

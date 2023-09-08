@@ -12,6 +12,8 @@ import { getWindowTypeProps } from '@/util/get-window-type-props';
 import WindowWrapper from '@/components/Window/WindowWrapper';
 import { workspaceState } from '@/atoms/workspaceAtom';
 import { useRecoilState } from 'recoil';
+import { ToolNavbar } from '@/components/Navbar/ToolNavbar/ToolNavbar';
+import Footer from '@/components/Footer/Footer';
 
 interface DashboardPageProps {
     dashboardData: any | '';
@@ -43,18 +45,24 @@ const DashboardPage:React.FC<DashboardPageProps> = ({ dashboardData }) => {
             setIsFirstRender(false);
             const eventDocRef = doc(firestore, 'dashboard', router.query.dashboardId as string);
             const eventDoc = await getDoc(eventDocRef);
-            setInitialWorkspace(eventDoc.exists() ? JSON.parse(safeJsonStringify({...eventDoc.data()})).dashboardWorkspaces : '');
+            if (eventDoc.exists()) {
+                setInitialWorkspace(eventDoc.exists() ? JSON.parse(safeJsonStringify({...eventDoc.data()})).dashboardWorkspaces : '');
+            } else {
+                setInitialWorkspace('NOTFOUND');
+            }
         }
     };
-
-    getDashboardData();
 
     if (workspaces === undefined) {
         return <></>;
     }
-
+    getDashboardData();
     useMemo(()=>{
+        
         if (initialWorkspace) {
+            if (initialWorkspace === 'NOTFOUND') {
+                return;
+            }
             setWorkspaces(initialWorkspace);
             console.log(workspaces);
         }
@@ -78,6 +86,53 @@ const DashboardPage:React.FC<DashboardPageProps> = ({ dashboardData }) => {
                             Dashboard does not exist :(
                         </Text>
                     </Flex>
+                </Flex>
+            </Flex>
+        );
+    }
+
+    if (initialWorkspace === 'NOTFOUND') {
+        return (
+            <Flex
+                direction="column"
+                h="100%"
+            >
+                <Head>
+                    <title>Rollsolid</title>
+                    <meta property="og:url" content="https://rollsolid.com/" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:site_name" content="Rollsolid - Advanced Poker strategy and analysis" />
+                    <meta property="og:title" content="Rollsolid - Advanced Poker strategy and analysis" />
+                    <meta property="og:description" content="Data-based tools for Texas Holdem Poker featuring Monte Carlo simulations of dynamic game states, odd ratio calculators, time series analysis, and more!" />
+                    <meta property="og:image" content="https://i.imgur.com/cy2cu4e.png" />
+
+                    <meta
+                        name="description"
+                        content="Advanced Poker Strategy and Analysis"
+                    />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1"
+                    />
+                    <link
+                        rel="icon"
+                        href="/favicon.ico"
+                    />
+                </Head>
+                <Flex
+                    direction="column"
+                    w="100%"
+                >
+                    <ToolNavbar />
+                    <Flex
+                        align="center"
+                        direction="column"
+                        h="720px"
+                    >
+                        <Text w='700px' mt="140px" ml='100px' fontFamily='TWKEverett-Regular' fontSize='96px' fontWeight={600} lineHeight='96px'>404 Page Not Found</Text>
+                        <Text mt={7} ml='20px' color='#B693F4' fontSize='20px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => router.push('/')}>Go back home →</Text>
+                    </Flex>
+                    <Footer />
                 </Flex>
             </Flex>
         );
