@@ -80,14 +80,14 @@ const ProfileView:React.FC = () => {
                         <Flex align='center'>
                             <Flex direction='column'>
                                 <Text color='white' fontSize='13px' fontWeight={400}>Active</Text>
-                                <Text color='#868686'>Expires April 2023</Text>
+                                <Text color='#868686'>Free Tier</Text>
                             </Flex>
                             {/* <Switch ml='auto' /> */}
                         </Flex>
                     </Flex>
-                    <Flex direction='column' w='33%'>
-                        <Flex direction='column' w='110px' mt={8} mb={3}>
-                            <Text color='#F8D585' fontSize='13px' fontWeight={400}>Site Settings</Text>
+                    <Flex direction='column' w='40%'>
+                        <Flex direction='column' w='240px' mt={8} mb={3}>
+                            <Text color='#F8D585' fontSize='13px' fontWeight={400}>Site Settings (Pro Version Required)</Text>
                             {/* <Divider borderColor='#7083B3' /> */}
                         </Flex> 
                         <Flex align='center'>
@@ -95,7 +95,7 @@ const ProfileView:React.FC = () => {
                                 <Text fontSize='13px' fontWeight={400}>Notifications</Text>
                                 <Text color='#868686' fontSize='13px' fontWeight={400} >Adjust toast popups for dashboards</Text>
                             </Flex>
-                            <Switch ml='auto' variant='boxy' />
+                            <Switch ml='auto' disabled={true} variant='boxy' />
                         </Flex>
                         <Flex align='center'>
                             <Flex direction='column'>
@@ -103,7 +103,7 @@ const ProfileView:React.FC = () => {
                                 <Text color='#868686' fontSize='13px' fontWeight={400}>Feature description languages</Text>
                                 
                             </Flex>
-                            <Switch ml='auto' variant='boxy' />
+                            <Switch ml='auto' disabled={true} variant='boxy' />
                         </Flex>
                         <Flex align='center'>
                             <Flex direction='column'>
@@ -111,7 +111,7 @@ const ProfileView:React.FC = () => {
                                 <Text color='#868686' fontSize='13px' fontWeight={400}>Toggle Dark Mode (default)</Text>
                                 
                             </Flex>
-                            <Switch ml='auto' variant='boxy' />
+                            <Switch ml='auto' disabled={true} variant='boxy' />
                         </Flex>
                     </Flex>
                     {/* <Text w={['90%', '90%', '65%', '65%']} mt={3} mb={1} color="#868686" fontFamily="AvenirNext-Regular" fontSize="13pt" lineHeight="19px" textAlign="center">Explore your Poker games and simulate your strategy through the power of data</Text> */}

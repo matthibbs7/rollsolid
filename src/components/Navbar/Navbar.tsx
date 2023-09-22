@@ -17,7 +17,7 @@ import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import FeatureDropDown from './FeatureDropDown/FeatureDropDown';
 import ChartsDropDown from '../Charts/ChartsDropDown/ChartsDropDown';
 import ResourcesModal from '../Resources/ResourcesModal/ResourcesModal';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useRecoilState } from 'recoil';
 import ShareDropDown from './ShareDropDown/ShareDropDown';
 
@@ -37,9 +37,10 @@ export const Navbar = ({
     const cmt = colorMode === 'light' ? '#F6F7F9' : '#F6F7F9C';
     const emailRegex = /.+?(?=@)/;
     const [user] = useAuthState(auth);
-
+    const [isFirstRender, setIsFirstRender] = useState(true);
     const [open, setOpen] = useState(false);
     const [workspaces, setWorkspaces] = useRecoilState(workspaceState);
+    const [initialWorkspace, setInitialWorkspace] = useState('');
 
     const publishDoc = async () => {
         // setError('');
@@ -52,6 +53,20 @@ export const Navbar = ({
             return;
         }
     };
+
+    // pull document data -> store in initialWorkspace -> store that value in recoil atom
+    
+    const getDashboardData = async () => {
+        if (router.query.dashboardId as string && isFirstRender) {
+            setIsFirstRender(false);
+            const eventDocRef = doc(firestore, 'dashboard', router.query.dashboardId as string);
+            const eventDoc = await getDoc(eventDocRef);
+            if (!eventDoc.exists()) {
+                setInitialWorkspace('NOTFOUND');
+            }
+        }
+    };
+    getDashboardData();
 
     return (
         <Flex
@@ -92,21 +107,25 @@ export const Navbar = ({
                     </>
                 )}
             </Flex>
-            {!(router.pathname === '/' || router.pathname === '/about' || router.pathname === '/login' || router.pathname === '/signup' || router.pathname === '/reset-password' || router.pathname === '/support' || router.pathname === '/pricing') ? (
-                <>
-                    {unsaved ? (
-                        <Flex mr={4} ml='auto' p="3.5px" px="9px" bg="#121212" border="1px solid #303030" borderRadius={3} _hover={{bg: '#191919', border: '1px solid #303030', cursor: 'pointer'}} onClick={() => {publishDoc();setUnsaved(false);}}>
-                            <Text color='white' fontSize='11px' fontWeight={500}>Publish Changes</Text>
-                        </Flex>
-                    ) : (
-                        <Flex mr={4} ml='auto' p="3.5px" px="9px" bg="#202020" borderRadius={3}>
-                            <Text  color='white' fontSize='11px' fontWeight={500}>Saved</Text>
-                        </Flex>
-                    )}
-                    <ShareDropDown />
-                </>
-            ) : (
+            {initialWorkspace === 'NOTFOUND' || !user ? (
                 <Flex ml='auto' />
+            ) : (
+                !(router.pathname === '/' || router.pathname === '/about' || router.pathname === '/login' || router.pathname === '/signup' || router.pathname === '/reset-password' || router.pathname === '/support' || router.pathname === '/pricing') ? (
+                    <>
+                        {unsaved ? (
+                            <Flex mr={4} ml='auto' p="3.5px" px="9px" bg="#121212" border="1px solid #303030" borderRadius={3} _hover={{bg: '#191919', border: '1px solid #303030', cursor: 'pointer'}} onClick={() => {publishDoc();setUnsaved(false);}}>
+                                <Text color='white' fontSize='11px' fontWeight={500}>Publish Changes</Text>
+                            </Flex>
+                        ) : (
+                            <Flex mr={4} ml='auto' p="3.5px" px="9px" bg="#202020" borderRadius={3}>
+                                <Text  color='white' fontSize='11px' fontWeight={500}>Saved</Text>
+                            </Flex>
+                        )}
+                        <ShareDropDown />
+                    </>
+                ) : (
+                    <Flex ml='auto' />
+                )
             )}
             
             {user?.email &&

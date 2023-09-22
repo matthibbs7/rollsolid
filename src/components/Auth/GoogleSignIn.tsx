@@ -1,8 +1,10 @@
+import { UserProfile } from '@/types/user-profile';
 import { Button } from '@chakra-ui/react';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import router from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/clientApp';
+import { auth, firestore } from '../../firebase/clientApp';
 
 const GoogleSignIn:React.FC = () => {
 
@@ -10,9 +12,42 @@ const GoogleSignIn:React.FC = () => {
         signInWithGoogle,
         user,
     ] = useSignInWithGoogle(auth);
+    const [error, setError] = useState('');
+
+    const createUserProfileDocument = async () => {
+        try {
+            const userEmail = user?.user.email;
+            if (userEmail === null || userEmail === undefined) {
+                setError('Invalid User Email');
+                return;
+            }
+
+            const eventDocRef = doc(firestore, 'users', userEmail);
+            const eventDoc = await getDoc(eventDocRef);
+              
+            // google profile already exists
+            if (eventDoc.exists()) {
+                return;
+            }
+    
+            const newUserProfile: UserProfile = {
+                userEmail: userEmail,
+                userSettings: {notifications: true, widgetLock: false},
+                userDashboards: [],
+            };
+
+            await setDoc(doc(firestore, 'users', userEmail), {...newUserProfile});
+            return;
+        } catch (err) {
+            console.log(err);
+            return;
+        }
+    };
 
     useEffect(() => {
         if (user) {
+            createUserProfileDocument();
+
             router.push('/');
         }
     }, [user]);

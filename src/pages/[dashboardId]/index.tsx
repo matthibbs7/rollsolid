@@ -22,14 +22,6 @@ interface DashboardPageProps {
 const DashboardPage:React.FC<DashboardPageProps> = ({ dashboardData }) => {
     const router = useRouter();
     const [isFirstRender, setIsFirstRender] = useState(true);
-    const [respondMode, setRespondMode] = useState<'DEFAULT' | 'USER' | 'USERWITHNAME'>('DEFAULT');
-    const [inviteText, setInviteText] = useState('Invite');
-    const [addingPerson, setAddingPerson] = useState<'RESPOND' | 'CANCEL' | 'DONE'>('RESPOND');
-    const [saving, setSaving] = useState(false);
-    const [displaySaving, setDisplaySaving] = useState(false);
-    const [name, setName] = useState('');
-    const [error, setError] = useState('');
-    const [inspectCollab, setInspectCollab] = useState(-1);
 
     // used to view time in cal by responses
     const [hoverIndex, setHoverIndex] = useState(-1);
@@ -130,7 +122,7 @@ const DashboardPage:React.FC<DashboardPageProps> = ({ dashboardData }) => {
                         h="720px"
                     >
                         <Text w='700px' mt="140px" ml='100px' fontFamily='TWKEverett-Regular' fontSize='96px' fontWeight={600} lineHeight='96px'>404 Page Not Found</Text>
-                        <Text mt={7} ml='20px' color='#B693F4' fontSize='20px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => router.push('/')}>Go back home →</Text>
+                        <Text mt={7} ml='20px' color='#B693F4' fontSize='20px' _hover={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => router.push('/')}>Go back to dashboard →</Text>
                     </Flex>
                     <Footer />
                 </Flex>

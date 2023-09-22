@@ -19,7 +19,7 @@ const ShareDropDown:React.FC = () => {
     const { asPath } = useRouter();
     const [user] = useAuthState(auth);
     const [copied, setCopied] = useState(false);
-    const [invitedUsersList, setInvitedUsersList] = useState<Array<string>>(['spade']);
+    const [invitedUsersList, setInvitedUsersList] = useState<Array<string>>(['user']);
 
     const copyLink = async () => {
         setCopied(true);
