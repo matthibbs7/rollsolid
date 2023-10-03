@@ -22,7 +22,7 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
     const [estimate, setEstimate] = useState('');
 
     const getPreFlopAnalysis = async () => {
-        const request = await fetch(`http://${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
+        const request = await fetch(`https://${HOST_PREFIX}/get_win_rate/?my_hand=${analysisForm.hand}&num_sims=${analysisForm.sims}&n_other_players=${activeNumber}`, {
             method: 'GET',
         });
         const data = request.json();
@@ -31,7 +31,7 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
 
     const onSubmit = () => {
         setLoading(true);
-    
+        console.log('TEST');
         getPreFlopAnalysis()
             .then((response) => {
                 setEstimate(response.win_rate);

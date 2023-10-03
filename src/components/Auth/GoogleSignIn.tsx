@@ -37,6 +37,7 @@ const GoogleSignIn:React.FC = () => {
             };
 
             await setDoc(doc(firestore, 'users', userEmail), {...newUserProfile});
+            router.push('/');
             return;
         } catch (err) {
             console.log(err);
@@ -47,8 +48,6 @@ const GoogleSignIn:React.FC = () => {
     useEffect(() => {
         if (user) {
             createUserProfileDocument();
-
-            router.push('/');
         }
     }, [user]);
 
