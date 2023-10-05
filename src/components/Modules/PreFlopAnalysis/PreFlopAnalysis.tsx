@@ -30,6 +30,7 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
 
     const onSubmit = () => {
         setLoading(true);
+        console.log('testloading', loading);
         getPreFlopAnalysis()
             .then((response) => {
                 console.log('RES',response);
@@ -99,7 +100,7 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
                             <Button w='94px' h='24px' minH='25px' maxH='25px' mt={6} mb={3} fontSize='10pt' bg='#121212'  border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} isLoading={loading} onClick={onSubmit} type='submit'>Estimate</Button>
                             <Divider mt={3} mb={4} borderColor='#434343' />
                             {loading ? <GuardSpinner size='24' frontColor='#E9D8FD' /> : <Text ml='auto' fontWeight={600}>{estimate}%</Text>}
-                            <Text>{JSON.stringify(estimate)}</Text>
+                            <Text>estimate: {estimate}</Text>
                             <Text>Test</Text>
                             {/* <Slider w='50%' aria-label='slider-ex-1' defaultValue={30}>
                                 <SliderTrack bg='#333333'>
