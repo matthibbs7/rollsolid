@@ -34,10 +34,14 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
         getPreFlopAnalysis()
             .then((response) => {
                 console.log('RES',response);
+                console.log('win_rate', response.win_rate);
                 setEstimate(response.win_rate);
                 setLoading(false);
-            });
-        setLoading(false);
+            }).then(() => {
+                console.log('estimate',estimate);
+            }
+
+            );
     };
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
