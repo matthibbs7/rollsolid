@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PlayerNumber from './PlayerNumber';
 import { GuardSpinner } from 'react-spinners-kit';
 import PlayCard from '@/components/PlayCard/PlayCard';
+import Classic from './Classic/Classic';
 
 interface PreFlopComponentProps {
     processId: number;
@@ -30,18 +31,11 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
 
     const onSubmit = () => {
         setLoading(true);
-        console.log('testloading', loading);
         getPreFlopAnalysis()
             .then((response) => {
-                console.log('RES',response);
-                console.log('win_rate', response.win_rate);
-                setEstimate(response.win_rate);
+                setEstimate(response.win_percent);
                 setLoading(false);
-            }).then(() => {
-                console.log('estimate',estimate);
-            }
-
-            );
+            });
     };
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,9 +55,9 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
                     </TabList>
                     <Divider mt={3} borderColor='#434343' />
                     <TabPanels>
-                        {/* <TabPanel>
+                        <TabPanel>
                             <Classic />
-                        </TabPanel> */}
+                        </TabPanel>
                         <TabPanel>
                             <Flex wrap='wrap' w='100%'>
                                 <Flex direction='column' w='40%' minW='170px' maxW='270px' mr={3}>
@@ -104,8 +98,6 @@ const PreFlopAnalysis = ({ processId }: PreFlopComponentProps) => {
                             <Button w='94px' h='24px' minH='25px' maxH='25px' mt={6} mb={3} fontSize='10pt' bg='#121212'  border='1px solid #494D51' borderRadius='0' _hover={{bg: '#171717', border: '1px solid grey'}} isLoading={loading} onClick={onSubmit} type='submit'>Estimate</Button>
                             <Divider mt={3} mb={4} borderColor='#434343' />
                             {loading ? <GuardSpinner size='24' frontColor='#E9D8FD' /> : <Text ml='auto' fontWeight={600}>{estimate}%</Text>}
-                            <Text>estimate: {estimate}</Text>
-                            <Text>Test</Text>
                             {/* <Slider w='50%' aria-label='slider-ex-1' defaultValue={30}>
                                 <SliderTrack bg='#333333'>
                                     <SliderFilledTrack bg='#A99BFB' />
