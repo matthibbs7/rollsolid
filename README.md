@@ -3,21 +3,23 @@
 
 **Live Production: [https://rollsolid.com](https://rollsolid.com)**
 
-Rollsolid is a flexible dashboard tool that can be used alongside Poker games to assist in applications of advanced Poker theory and strategy.
+Rollsolid is a flexible collection of dashboard tools that can be used alongside Poker games to assist in applications of advanced Poker theory and strategy.
 
 * Features various widgets which can be dragged, resized, minimized, edited, and loaded onto workspaces
 * Existing widgets include a Monte Carlo Simulation tool for Ranges, Pot Odd calculators, a rich text editor, etc
 * Dynamic workspaces to expand your existing workspaces with new utilities
+* Dynamic dashboards to organize collections of workspaces
+* Shareable dashboards hosted on public or private links
 * Check out **[rs-api](https://github.com/Rollsolid/rs-api)** to view the **Rollsolid Backend API**
 * Customizable settings for widgets
 * Resource hub and documentation
 
-
-
-
 ## Built with
 
 * [React](https://github.com/facebook/react), [TypeScript](https://github.com/microsoft/TypeScript), [Next.js](https://github.com/vercel/next.js/), [Firebase](https://github.com/firebase/), [ChakraUI](https://github.com/chakra-ui/chakra-ui), [Recoil](https://github.com/facebookexperimental/Recoil), [Tiptap](https://github.com/ueberdosis/tiptap), [Rnd](https://github.com/bokuweb/react-rnd), [d3.js](https://github.com/d3/d3), Python, FastAPI
+
+## Demo
+![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWF2eTJnYXo1ZjJkbXpydHR5OXVyZ2dpbHlxaHdtc3g1MWR0eHBtZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h41RvSrshQSWIVR2iX/giphy.gif)
 
 
 ## How It Works
